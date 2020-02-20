@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sahab_Desktop.Models
 {
-    class Task
+    public class Task
     {
         public int Id { get; set; }
 
@@ -36,6 +36,14 @@ namespace Sahab_Desktop.Models
         public RepeatMethod RepeatMethod { get; set; }
         public int ContinuousTimes { get; set; }
         public int DiscreteTimes { get; set; }
+
+        private readonly ObservableListSource<DoctrineRelation> doctrineRelations = new ObservableListSource<DoctrineRelation>();
+
+        private readonly ObservableListSource<FrameRelation> frameRelations = new ObservableListSource<FrameRelation>();
+
+        public TaskPriority TaskPriority { get; set; }
+
+        public ulong TaskPriorityScore { get; set; }
     }
     public enum RepeatMethod
     {
@@ -45,6 +53,14 @@ namespace Sahab_Desktop.Models
     }
     public enum TaskPriority
     {
-
+        CompulsiveCompulsive = 1,
+        CompulsiveNormal = 2,
+        CompulsiveDaily = 3,
+        NormalCompulsive = 4,
+        NormalNormal = 5,
+        NormalDaily = 6,
+        VariableCompulsive = 7,
+        VariableNormal = 8,
+        VariableDaily = 9,
     }
 }

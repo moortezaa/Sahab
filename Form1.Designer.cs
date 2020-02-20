@@ -28,20 +28,192 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.برنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.اضافهکردنبرنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.نمایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.روزToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StartDateLable = new System.Windows.Forms.Label();
+            this.StartDateTextBox = new System.Windows.Forms.TextBox();
+            this.panel = new System.Windows.Forms.Panel();
+            this.taskViewTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.Show = new System.Windows.Forms.Button();
+            this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
+            this.menuStrip1.SuspendLayout();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.برنامهToolStripMenuItem,
+            this.نمایشToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // برنامهToolStripMenuItem
+            // 
+            this.برنامهToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.اضافهکردنبرنامهToolStripMenuItem});
+            this.برنامهToolStripMenuItem.Name = "برنامهToolStripMenuItem";
+            this.برنامهToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.برنامهToolStripMenuItem.Text = "برنامه";
+            // 
+            // اضافهکردنبرنامهToolStripMenuItem
+            // 
+            this.اضافهکردنبرنامهToolStripMenuItem.Name = "اضافهکردنبرنامهToolStripMenuItem";
+            this.اضافهکردنبرنامهToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.اضافهکردنبرنامهToolStripMenuItem.Text = "اضافه کردن برنامه";
+            this.اضافهکردنبرنامهToolStripMenuItem.Click += new System.EventHandler(this.اضافهکردنبرنامهToolStripMenuItem_Click);
+            // 
+            // نمایشToolStripMenuItem
+            // 
+            this.نمایشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.روزToolStripMenuItem});
+            this.نمایشToolStripMenuItem.Name = "نمایشToolStripMenuItem";
+            this.نمایشToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.نمایشToolStripMenuItem.Text = "نمایش";
+            // 
+            // روزToolStripMenuItem
+            // 
+            this.روزToolStripMenuItem.Name = "روزToolStripMenuItem";
+            this.روزToolStripMenuItem.Size = new System.Drawing.Size(89, 22);
+            this.روزToolStripMenuItem.Text = "روز";
+            // 
+            // StartDateLable
+            // 
+            this.StartDateLable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartDateLable.AutoSize = true;
+            this.StartDateLable.Location = new System.Drawing.Point(753, 38);
+            this.StartDateLable.Name = "StartDateLable";
+            this.StartDateLable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartDateLable.Size = new System.Drawing.Size(35, 13);
+            this.StartDateLable.TabIndex = 1;
+            this.StartDateLable.Text = "تاریخ:";
+            // 
+            // StartDateTextBox
+            // 
+            this.StartDateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartDateTextBox.Location = new System.Drawing.Point(647, 35);
+            this.StartDateTextBox.Name = "StartDateTextBox";
+            this.StartDateTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartDateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.StartDateTextBox.TabIndex = 1;
+            // 
+            // panel
+            // 
+            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.BackColor = System.Drawing.Color.White;
+            this.panel.Controls.Add(this.taskViewTableLayoutPanel);
+            this.panel.Location = new System.Drawing.Point(12, 61);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(753, 377);
+            this.panel.TabIndex = 3;
+            this.panel.Resize += new System.EventHandler(this.Panel_Resize);
+            // 
+            // taskViewTableLayoutPanel
+            // 
+            this.taskViewTableLayoutPanel.BackColor = System.Drawing.Color.White;
+            this.taskViewTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.taskViewTableLayoutPanel.ColumnCount = 4;
+            this.taskViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.048607F));
+            this.taskViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.91965F));
+            this.taskViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.01712F));
+            this.taskViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.01462F));
+            this.taskViewTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.taskViewTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.taskViewTableLayoutPanel.Name = "taskViewTableLayoutPanel";
+            this.taskViewTableLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.taskViewTableLayoutPanel.RowCount = 24;
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.taskViewTableLayoutPanel.Size = new System.Drawing.Size(753, 480);
+            this.taskViewTableLayoutPanel.TabIndex = 0;
+            this.taskViewTableLayoutPanel.Resize += new System.EventHandler(this.TaskViewTableLayoutPanel_Resize);
+            // 
+            // Show
+            // 
+            this.Show.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Show.Location = new System.Drawing.Point(566, 33);
+            this.Show.Name = "Show";
+            this.Show.Size = new System.Drawing.Size(75, 23);
+            this.Show.TabIndex = 2;
+            this.Show.Text = "مشاهده";
+            this.Show.UseVisualStyleBackColor = true;
+            this.Show.Click += new System.EventHandler(this.Show_Click);
+            // 
+            // dailyTaskViewVScrollBar
+            // 
+            this.dailyTaskViewVScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dailyTaskViewVScrollBar.Location = new System.Drawing.Point(768, 61);
+            this.dailyTaskViewVScrollBar.Name = "dailyTaskViewVScrollBar";
+            this.dailyTaskViewVScrollBar.Size = new System.Drawing.Size(23, 377);
+            this.dailyTaskViewVScrollBar.TabIndex = 5;
+            this.dailyTaskViewVScrollBar.ValueChanged += new System.EventHandler(this.DailyTaskViewVScrollBar_ValueChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dailyTaskViewVScrollBar);
+            this.Controls.Add(this.Show);
+            this.Controls.Add(this.panel);
+            this.Controls.Add(this.StartDateTextBox);
+            this.Controls.Add(this.StartDateLable);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "سحاب";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.panel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem برنامهToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem اضافهکردنبرنامهToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem نمایشToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem روزToolStripMenuItem;
+        private System.Windows.Forms.Label StartDateLable;
+        private System.Windows.Forms.TextBox StartDateTextBox;
+        private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.Button Show;
+        private System.Windows.Forms.TableLayoutPanel taskViewTableLayoutPanel;
+        private System.Windows.Forms.VScrollBar dailyTaskViewVScrollBar;
     }
 }
 

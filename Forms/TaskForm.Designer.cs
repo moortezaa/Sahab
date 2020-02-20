@@ -47,36 +47,39 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.FramesListBox = new System.Windows.Forms.ListBox();
-            this.DoctrineComboBox = new System.Windows.Forms.ComboBox();
+            this.DoctrinesComboBox = new System.Windows.Forms.ComboBox();
             this.FramesComboBox = new System.Windows.Forms.ComboBox();
             this.DoctrineButton = new System.Windows.Forms.Button();
             this.FrameButton = new System.Windows.Forms.Button();
             this.RepeatCheckBox = new System.Windows.Forms.CheckBox();
-            this.NoRepeatGroupBox = new System.Windows.Forms.GroupBox();
-            this.PeriodComboBox = new System.Windows.Forms.ComboBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.PeriodNumeric = new System.Windows.Forms.NumericUpDown();
-            this.RepeatTimesNumeric = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.RepeatGroupBox = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.EndRepeatGroupBox = new System.Windows.Forms.GroupBox();
+            this.PeriodComboBox = new System.Windows.Forms.ComboBox();
+            this.UpToDateRadioButton = new System.Windows.Forms.RadioButton();
+            this.PeriodNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PeriodRadioButton = new System.Windows.Forms.RadioButton();
+            this.UpToDateTextBox = new System.Windows.Forms.TextBox();
+            this.RepeatTimesRadioButton = new System.Windows.Forms.RadioButton();
+            this.RepeatTimesNumeric = new System.Windows.Forms.NumericUpDown();
+            this.DiscreteTimesNumeric = new System.Windows.Forms.NumericUpDown();
+            this.ContinuousTimesNumeric = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.MonthlyRadioButton = new System.Windows.Forms.RadioButton();
-            this.UpToTextBox = new System.Windows.Forms.TextBox();
             this.WeeklyRadioButton = new System.Windows.Forms.RadioButton();
             this.DailyRadioButton = new System.Windows.Forms.RadioButton();
             this.info = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.PriorityScoreLable = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.TaskPriority = new System.Windows.Forms.ComboBox();
-            this.NoRepeatGroupBox.SuspendLayout();
+            this.TaskPriorityComboBox = new System.Windows.Forms.ComboBox();
+            this.SubmitButton = new System.Windows.Forms.Button();
+            this.RepeatGroupBox.SuspendLayout();
+            this.EndRepeatGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatTimesNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscreteTimesNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContinuousTimesNumeric)).BeginInit();
             this.info.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +97,7 @@
             // 
             // TitleTextBox
             // 
+            this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TitleTextBox.Location = new System.Drawing.Point(639, 12);
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(112, 20);
@@ -113,6 +117,8 @@
             // 
             // DescriptionTextBox
             // 
+            this.DescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DescriptionTextBox.Location = new System.Drawing.Point(12, 12);
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(252, 20);
@@ -171,6 +177,7 @@
             // 
             // StartTimeTextBox
             // 
+            this.StartTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StartTimeTextBox.Location = new System.Drawing.Point(639, 58);
             this.StartTimeTextBox.Name = "StartTimeTextBox";
             this.StartTimeTextBox.Size = new System.Drawing.Size(81, 20);
@@ -190,6 +197,7 @@
             // 
             // LocationTextBox
             // 
+            this.LocationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LocationTextBox.Location = new System.Drawing.Point(484, 12);
             this.LocationTextBox.Name = "LocationTextBox";
             this.LocationTextBox.Size = new System.Drawing.Size(112, 20);
@@ -197,6 +205,7 @@
             // 
             // PeaoplesTextBox
             // 
+            this.PeaoplesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PeaoplesTextBox.Location = new System.Drawing.Point(322, 12);
             this.PeaoplesTextBox.Name = "PeaoplesTextBox";
             this.PeaoplesTextBox.Size = new System.Drawing.Size(112, 20);
@@ -204,10 +213,11 @@
             // 
             // EndTimeTextBox
             // 
+            this.EndTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EndTimeTextBox.Location = new System.Drawing.Point(484, 58);
             this.EndTimeTextBox.Name = "EndTimeTextBox";
             this.EndTimeTextBox.Size = new System.Drawing.Size(85, 20);
-            this.EndTimeTextBox.TabIndex = 7;
+            this.EndTimeTextBox.TabIndex = 6;
             // 
             // label7
             // 
@@ -223,10 +233,12 @@
             // 
             // StartDateTextBox
             // 
+            this.StartDateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StartDateTextBox.Location = new System.Drawing.Point(611, 106);
             this.StartDateTextBox.Name = "StartDateTextBox";
             this.StartDateTextBox.Size = new System.Drawing.Size(112, 20);
-            this.StartDateTextBox.TabIndex = 6;
+            this.StartDateTextBox.TabIndex = 7;
+            this.StartDateTextBox.TextChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
             // 
             // DoctrinesListBox
             // 
@@ -235,6 +247,7 @@
             this.DoctrinesListBox.Name = "DoctrinesListBox";
             this.DoctrinesListBox.Size = new System.Drawing.Size(200, 316);
             this.DoctrinesListBox.TabIndex = 9;
+            this.DoctrinesListBox.TabStop = false;
             // 
             // label10
             // 
@@ -265,14 +278,16 @@
             this.FramesListBox.Name = "FramesListBox";
             this.FramesListBox.Size = new System.Drawing.Size(200, 316);
             this.FramesListBox.TabIndex = 9;
+            this.FramesListBox.TabStop = false;
             // 
-            // DoctrineComboBox
+            // DoctrinesComboBox
             // 
-            this.DoctrineComboBox.FormattingEnabled = true;
-            this.DoctrineComboBox.Location = new System.Drawing.Point(12, 53);
-            this.DoctrineComboBox.Name = "DoctrineComboBox";
-            this.DoctrineComboBox.Size = new System.Drawing.Size(165, 21);
-            this.DoctrineComboBox.TabIndex = 10;
+            this.DoctrinesComboBox.FormattingEnabled = true;
+            this.DoctrinesComboBox.Location = new System.Drawing.Point(12, 53);
+            this.DoctrinesComboBox.Name = "DoctrinesComboBox";
+            this.DoctrinesComboBox.Size = new System.Drawing.Size(165, 21);
+            this.DoctrinesComboBox.TabIndex = 25;
+            this.DoctrinesComboBox.SelectedIndexChanged += new System.EventHandler(this.DoctrineComboBox_SelectedIndexChanged);
             // 
             // FramesComboBox
             // 
@@ -280,143 +295,178 @@
             this.FramesComboBox.Location = new System.Drawing.Point(234, 53);
             this.FramesComboBox.Name = "FramesComboBox";
             this.FramesComboBox.Size = new System.Drawing.Size(130, 21);
-            this.FramesComboBox.TabIndex = 10;
+            this.FramesComboBox.TabIndex = 23;
+            this.FramesComboBox.SelectedIndexChanged += new System.EventHandler(this.FramesComboBox_SelectedIndexChanged);
             // 
             // DoctrineButton
             // 
             this.DoctrineButton.Location = new System.Drawing.Point(12, 80);
             this.DoctrineButton.Name = "DoctrineButton";
             this.DoctrineButton.Size = new System.Drawing.Size(200, 23);
-            this.DoctrineButton.TabIndex = 11;
+            this.DoctrineButton.TabIndex = 26;
             this.DoctrineButton.Text = "↓اضافه کردن↓";
             this.DoctrineButton.UseVisualStyleBackColor = true;
+            this.DoctrineButton.Click += new System.EventHandler(this.DoctrineButton_Click);
             // 
             // FrameButton
             // 
             this.FrameButton.Location = new System.Drawing.Point(234, 80);
             this.FrameButton.Name = "FrameButton";
             this.FrameButton.Size = new System.Drawing.Size(200, 23);
-            this.FrameButton.TabIndex = 11;
+            this.FrameButton.TabIndex = 24;
             this.FrameButton.Text = "↓اضافه کردن↓";
             this.FrameButton.UseVisualStyleBackColor = true;
+            this.FrameButton.Click += new System.EventHandler(this.FrameButton_Click);
             // 
             // RepeatCheckBox
             // 
+            this.RepeatCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RepeatCheckBox.AutoSize = true;
-            this.RepeatCheckBox.Location = new System.Drawing.Point(39, 0);
+            this.RepeatCheckBox.Enabled = false;
+            this.RepeatCheckBox.Location = new System.Drawing.Point(523, 131);
             this.RepeatCheckBox.Name = "RepeatCheckBox";
             this.RepeatCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RepeatCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.RepeatCheckBox.TabIndex = 12;
+            this.RepeatCheckBox.TabIndex = 8;
             this.RepeatCheckBox.UseVisualStyleBackColor = true;
+            this.RepeatCheckBox.CheckedChanged += new System.EventHandler(this.RepeatCheckBox_CheckedChanged);
             // 
-            // NoRepeatGroupBox
+            // RepeatGroupBox
             // 
-            this.NoRepeatGroupBox.Controls.Add(this.PeriodComboBox);
-            this.NoRepeatGroupBox.Controls.Add(this.radioButton3);
-            this.NoRepeatGroupBox.Controls.Add(this.radioButton2);
-            this.NoRepeatGroupBox.Controls.Add(this.radioButton1);
-            this.NoRepeatGroupBox.Controls.Add(this.PeriodNumeric);
-            this.NoRepeatGroupBox.Controls.Add(this.RepeatTimesNumeric);
-            this.NoRepeatGroupBox.Controls.Add(this.numericUpDown2);
-            this.NoRepeatGroupBox.Controls.Add(this.numericUpDown1);
-            this.NoRepeatGroupBox.Controls.Add(this.label13);
-            this.NoRepeatGroupBox.Controls.Add(this.label12);
-            this.NoRepeatGroupBox.Controls.Add(this.label9);
-            this.NoRepeatGroupBox.Controls.Add(this.MonthlyRadioButton);
-            this.NoRepeatGroupBox.Controls.Add(this.UpToTextBox);
-            this.NoRepeatGroupBox.Controls.Add(this.WeeklyRadioButton);
-            this.NoRepeatGroupBox.Controls.Add(this.DailyRadioButton);
-            this.NoRepeatGroupBox.Controls.Add(this.RepeatCheckBox);
-            this.NoRepeatGroupBox.Enabled = false;
-            this.NoRepeatGroupBox.Location = new System.Drawing.Point(484, 132);
-            this.NoRepeatGroupBox.Name = "NoRepeatGroupBox";
-            this.NoRepeatGroupBox.Size = new System.Drawing.Size(304, 198);
-            this.NoRepeatGroupBox.TabIndex = 13;
-            this.NoRepeatGroupBox.TabStop = false;
-            this.NoRepeatGroupBox.Text = "تکرار";
-            // 
-            // PeriodComboBox
-            // 
-            this.PeriodComboBox.FormattingEnabled = true;
-            this.PeriodComboBox.Location = new System.Drawing.Point(64, 139);
-            this.PeriodComboBox.Name = "PeriodComboBox";
-            this.PeriodComboBox.Size = new System.Drawing.Size(121, 21);
-            this.PeriodComboBox.TabIndex = 17;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(231, 166);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton3.Size = new System.Drawing.Size(64, 17);
-            this.radioButton3.TabIndex = 16;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "تا تاریخ:";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(237, 140);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton2.Size = new System.Drawing.Size(58, 17);
-            this.radioButton2.TabIndex = 16;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "به مدت:";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(244, 114);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton1.Size = new System.Drawing.Size(51, 17);
-            this.radioButton1.TabIndex = 16;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "تعداد:";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // PeriodNumeric
-            // 
-            this.PeriodNumeric.Location = new System.Drawing.Point(191, 140);
-            this.PeriodNumeric.Name = "PeriodNumeric";
-            this.PeriodNumeric.Size = new System.Drawing.Size(40, 20);
-            this.PeriodNumeric.TabIndex = 15;
-            // 
-            // RepeatTimesNumeric
-            // 
-            this.RepeatTimesNumeric.Location = new System.Drawing.Point(191, 114);
-            this.RepeatTimesNumeric.Name = "RepeatTimesNumeric";
-            this.RepeatTimesNumeric.Size = new System.Drawing.Size(40, 20);
-            this.RepeatTimesNumeric.TabIndex = 15;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(115, 46);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown2.TabIndex = 15;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(211, 46);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown1.TabIndex = 15;
+            this.RepeatGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RepeatGroupBox.Controls.Add(this.label13);
+            this.RepeatGroupBox.Controls.Add(this.EndRepeatGroupBox);
+            this.RepeatGroupBox.Controls.Add(this.DiscreteTimesNumeric);
+            this.RepeatGroupBox.Controls.Add(this.ContinuousTimesNumeric);
+            this.RepeatGroupBox.Controls.Add(this.label12);
+            this.RepeatGroupBox.Controls.Add(this.label9);
+            this.RepeatGroupBox.Controls.Add(this.MonthlyRadioButton);
+            this.RepeatGroupBox.Controls.Add(this.WeeklyRadioButton);
+            this.RepeatGroupBox.Controls.Add(this.DailyRadioButton);
+            this.RepeatGroupBox.Enabled = false;
+            this.RepeatGroupBox.Location = new System.Drawing.Point(484, 132);
+            this.RepeatGroupBox.Name = "RepeatGroupBox";
+            this.RepeatGroupBox.Size = new System.Drawing.Size(304, 198);
+            this.RepeatGroupBox.TabIndex = 9;
+            this.RepeatGroupBox.TabStop = false;
+            this.RepeatGroupBox.Text = "تکرار";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(238, 82);
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(64, 57);
             this.label13.Name = "label13";
-            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label13.Size = new System.Drawing.Size(60, 13);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "پایان تکرار:";
+            this.label13.Size = new System.Drawing.Size(169, 73);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "بزودی";
+            // 
+            // EndRepeatGroupBox
+            // 
+            this.EndRepeatGroupBox.Controls.Add(this.PeriodComboBox);
+            this.EndRepeatGroupBox.Controls.Add(this.UpToDateRadioButton);
+            this.EndRepeatGroupBox.Controls.Add(this.PeriodNumeric);
+            this.EndRepeatGroupBox.Controls.Add(this.PeriodRadioButton);
+            this.EndRepeatGroupBox.Controls.Add(this.UpToDateTextBox);
+            this.EndRepeatGroupBox.Controls.Add(this.RepeatTimesRadioButton);
+            this.EndRepeatGroupBox.Controls.Add(this.RepeatTimesNumeric);
+            this.EndRepeatGroupBox.Location = new System.Drawing.Point(6, 86);
+            this.EndRepeatGroupBox.Name = "EndRepeatGroupBox";
+            this.EndRepeatGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.EndRepeatGroupBox.Size = new System.Drawing.Size(292, 106);
+            this.EndRepeatGroupBox.TabIndex = 18;
+            this.EndRepeatGroupBox.TabStop = false;
+            this.EndRepeatGroupBox.Text = "پایان تکرار";
+            // 
+            // PeriodComboBox
+            // 
+            this.PeriodComboBox.FormattingEnabled = true;
+            this.PeriodComboBox.Location = new System.Drawing.Point(60, 47);
+            this.PeriodComboBox.Name = "PeriodComboBox";
+            this.PeriodComboBox.Size = new System.Drawing.Size(121, 21);
+            this.PeriodComboBox.TabIndex = 20;
+            this.PeriodComboBox.SelectedIndexChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // UpToDateRadioButton
+            // 
+            this.UpToDateRadioButton.AutoSize = true;
+            this.UpToDateRadioButton.Location = new System.Drawing.Point(220, 74);
+            this.UpToDateRadioButton.Name = "UpToDateRadioButton";
+            this.UpToDateRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.UpToDateRadioButton.Size = new System.Drawing.Size(64, 17);
+            this.UpToDateRadioButton.TabIndex = 17;
+            this.UpToDateRadioButton.TabStop = true;
+            this.UpToDateRadioButton.Text = "تا تاریخ:";
+            this.UpToDateRadioButton.UseVisualStyleBackColor = true;
+            this.UpToDateRadioButton.CheckedChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // PeriodNumeric
+            // 
+            this.PeriodNumeric.Location = new System.Drawing.Point(187, 48);
+            this.PeriodNumeric.Name = "PeriodNumeric";
+            this.PeriodNumeric.Size = new System.Drawing.Size(40, 20);
+            this.PeriodNumeric.TabIndex = 19;
+            this.PeriodNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // PeriodRadioButton
+            // 
+            this.PeriodRadioButton.AutoSize = true;
+            this.PeriodRadioButton.Location = new System.Drawing.Point(226, 48);
+            this.PeriodRadioButton.Name = "PeriodRadioButton";
+            this.PeriodRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.PeriodRadioButton.Size = new System.Drawing.Size(58, 17);
+            this.PeriodRadioButton.TabIndex = 16;
+            this.PeriodRadioButton.TabStop = true;
+            this.PeriodRadioButton.Text = "به مدت:";
+            this.PeriodRadioButton.UseVisualStyleBackColor = true;
+            this.PeriodRadioButton.CheckedChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // UpToDateTextBox
+            // 
+            this.UpToDateTextBox.Location = new System.Drawing.Point(102, 73);
+            this.UpToDateTextBox.Name = "UpToDateTextBox";
+            this.UpToDateTextBox.Size = new System.Drawing.Size(112, 20);
+            this.UpToDateTextBox.TabIndex = 21;
+            this.UpToDateTextBox.TextChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // RepeatTimesRadioButton
+            // 
+            this.RepeatTimesRadioButton.AutoSize = true;
+            this.RepeatTimesRadioButton.Location = new System.Drawing.Point(233, 22);
+            this.RepeatTimesRadioButton.Name = "RepeatTimesRadioButton";
+            this.RepeatTimesRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RepeatTimesRadioButton.Size = new System.Drawing.Size(51, 17);
+            this.RepeatTimesRadioButton.TabIndex = 15;
+            this.RepeatTimesRadioButton.TabStop = true;
+            this.RepeatTimesRadioButton.Text = "تعداد:";
+            this.RepeatTimesRadioButton.UseVisualStyleBackColor = true;
+            this.RepeatTimesRadioButton.CheckedChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // RepeatTimesNumeric
+            // 
+            this.RepeatTimesNumeric.Location = new System.Drawing.Point(187, 22);
+            this.RepeatTimesNumeric.Name = "RepeatTimesNumeric";
+            this.RepeatTimesNumeric.Size = new System.Drawing.Size(40, 20);
+            this.RepeatTimesNumeric.TabIndex = 18;
+            this.RepeatTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // DiscreteTimesNumeric
+            // 
+            this.DiscreteTimesNumeric.Location = new System.Drawing.Point(115, 46);
+            this.DiscreteTimesNumeric.Name = "DiscreteTimesNumeric";
+            this.DiscreteTimesNumeric.Size = new System.Drawing.Size(40, 20);
+            this.DiscreteTimesNumeric.TabIndex = 14;
+            this.DiscreteTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // ContinuousTimesNumeric
+            // 
+            this.ContinuousTimesNumeric.Location = new System.Drawing.Point(211, 46);
+            this.ContinuousTimesNumeric.Name = "ContinuousTimesNumeric";
+            this.ContinuousTimesNumeric.Size = new System.Drawing.Size(40, 20);
+            this.ContinuousTimesNumeric.TabIndex = 13;
+            this.ContinuousTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
             // 
             // label12
             // 
@@ -445,17 +495,11 @@
             this.MonthlyRadioButton.Name = "MonthlyRadioButton";
             this.MonthlyRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.MonthlyRadioButton.Size = new System.Drawing.Size(54, 17);
-            this.MonthlyRadioButton.TabIndex = 13;
+            this.MonthlyRadioButton.TabIndex = 12;
             this.MonthlyRadioButton.TabStop = true;
             this.MonthlyRadioButton.Text = "ماهانه";
             this.MonthlyRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // UpToTextBox
-            // 
-            this.UpToTextBox.Location = new System.Drawing.Point(119, 166);
-            this.UpToTextBox.Name = "UpToTextBox";
-            this.UpToTextBox.Size = new System.Drawing.Size(112, 20);
-            this.UpToTextBox.TabIndex = 6;
+            this.MonthlyRadioButton.CheckedChanged += new System.EventHandler(this.MonthlyRadioButton_CheckedChanged);
             // 
             // WeeklyRadioButton
             // 
@@ -464,10 +508,11 @@
             this.WeeklyRadioButton.Name = "WeeklyRadioButton";
             this.WeeklyRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.WeeklyRadioButton.Size = new System.Drawing.Size(58, 17);
-            this.WeeklyRadioButton.TabIndex = 13;
+            this.WeeklyRadioButton.TabIndex = 11;
             this.WeeklyRadioButton.TabStop = true;
             this.WeeklyRadioButton.Text = "هفتگی";
             this.WeeklyRadioButton.UseVisualStyleBackColor = true;
+            this.WeeklyRadioButton.CheckedChanged += new System.EventHandler(this.WeeklyRadioButton_CheckedChanged);
             // 
             // DailyRadioButton
             // 
@@ -476,14 +521,15 @@
             this.DailyRadioButton.Name = "DailyRadioButton";
             this.DailyRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.DailyRadioButton.Size = new System.Drawing.Size(53, 17);
-            this.DailyRadioButton.TabIndex = 13;
+            this.DailyRadioButton.TabIndex = 10;
             this.DailyRadioButton.TabStop = true;
             this.DailyRadioButton.Text = "روزانه";
             this.DailyRadioButton.UseVisualStyleBackColor = true;
+            this.DailyRadioButton.CheckedChanged += new System.EventHandler(this.DailyRadioButton_CheckedChanged);
             // 
             // info
             // 
-            this.info.Controls.Add(this.label14);
+            this.info.Controls.Add(this.PriorityScoreLable);
             this.info.Location = new System.Drawing.Point(484, 375);
             this.info.Name = "info";
             this.info.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -492,13 +538,13 @@
             this.info.TabStop = false;
             this.info.Text = "اطلاعات";
             // 
-            // label14
+            // PriorityScoreLable
             // 
-            this.label14.Location = new System.Drawing.Point(6, 20);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(292, 27);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "امتیاز اولویت این کار";
+            this.PriorityScoreLable.Location = new System.Drawing.Point(6, 20);
+            this.PriorityScoreLable.Name = "PriorityScoreLable";
+            this.PriorityScoreLable.Size = new System.Drawing.Size(292, 27);
+            this.PriorityScoreLable.TabIndex = 0;
+            this.PriorityScoreLable.Text = "امتیاز اولویت این کار";
             // 
             // label15
             // 
@@ -510,27 +556,41 @@
             this.label15.TabIndex = 15;
             this.label15.Text = "نوع کار:";
             // 
-            // TaskPriority
+            // TaskPriorityComboBox
             // 
-            this.TaskPriority.FormattingEnabled = true;
-            this.TaskPriority.Location = new System.Drawing.Point(618, 342);
-            this.TaskPriority.Name = "TaskPriority";
-            this.TaskPriority.Size = new System.Drawing.Size(121, 21);
-            this.TaskPriority.TabIndex = 16;
+            this.TaskPriorityComboBox.FormattingEnabled = true;
+            this.TaskPriorityComboBox.Location = new System.Drawing.Point(618, 342);
+            this.TaskPriorityComboBox.Name = "TaskPriorityComboBox";
+            this.TaskPriorityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.TaskPriorityComboBox.TabIndex = 22;
+            this.TaskPriorityComboBox.SelectedIndexChanged += new System.EventHandler(this.TaskPriorityComboBox_SelectedIndexChanged);
+            // 
+            // SubmitButton
+            // 
+            this.SubmitButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.SubmitButton.Location = new System.Drawing.Point(12, 431);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(776, 30);
+            this.SubmitButton.TabIndex = 27;
+            this.SubmitButton.Text = "ثبت";
+            this.SubmitButton.UseVisualStyleBackColor = false;
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 438);
-            this.Controls.Add(this.TaskPriority);
+            this.ClientSize = new System.Drawing.Size(800, 473);
+            this.Controls.Add(this.RepeatCheckBox);
+            this.Controls.Add(this.SubmitButton);
+            this.Controls.Add(this.TaskPriorityComboBox);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.info);
-            this.Controls.Add(this.NoRepeatGroupBox);
+            this.Controls.Add(this.RepeatGroupBox);
             this.Controls.Add(this.FrameButton);
             this.Controls.Add(this.DoctrineButton);
             this.Controls.Add(this.FramesComboBox);
-            this.Controls.Add(this.DoctrineComboBox);
+            this.Controls.Add(this.DoctrinesComboBox);
             this.Controls.Add(this.FramesListBox);
             this.Controls.Add(this.DoctrinesListBox);
             this.Controls.Add(this.DescriptionTextBox);
@@ -551,13 +611,16 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label8);
             this.Name = "TaskForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "برنامه";
-            this.NoRepeatGroupBox.ResumeLayout(false);
-            this.NoRepeatGroupBox.PerformLayout();
+            this.RepeatGroupBox.ResumeLayout(false);
+            this.RepeatGroupBox.PerformLayout();
+            this.EndRepeatGroupBox.ResumeLayout(false);
+            this.EndRepeatGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatTimesNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscreteTimesNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContinuousTimesNumeric)).EndInit();
             this.info.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -585,30 +648,32 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ListBox FramesListBox;
-        private System.Windows.Forms.ComboBox DoctrineComboBox;
+        private System.Windows.Forms.ComboBox DoctrinesComboBox;
         private System.Windows.Forms.ComboBox FramesComboBox;
         private System.Windows.Forms.Button DoctrineButton;
         private System.Windows.Forms.Button FrameButton;
         private System.Windows.Forms.CheckBox RepeatCheckBox;
-        private System.Windows.Forms.GroupBox NoRepeatGroupBox;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.GroupBox RepeatGroupBox;
+        private System.Windows.Forms.NumericUpDown DiscreteTimesNumeric;
+        private System.Windows.Forms.NumericUpDown ContinuousTimesNumeric;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton MonthlyRadioButton;
         private System.Windows.Forms.RadioButton WeeklyRadioButton;
         private System.Windows.Forms.RadioButton DailyRadioButton;
         private System.Windows.Forms.ComboBox PeriodComboBox;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton UpToDateRadioButton;
+        private System.Windows.Forms.RadioButton PeriodRadioButton;
+        private System.Windows.Forms.RadioButton RepeatTimesRadioButton;
         private System.Windows.Forms.NumericUpDown PeriodNumeric;
         private System.Windows.Forms.NumericUpDown RepeatTimesNumeric;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox UpToTextBox;
+        private System.Windows.Forms.TextBox UpToDateTextBox;
         private System.Windows.Forms.GroupBox info;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label PriorityScoreLable;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox TaskPriority;
+        private System.Windows.Forms.ComboBox TaskPriorityComboBox;
+        private System.Windows.Forms.Button SubmitButton;
+        private System.Windows.Forms.GroupBox EndRepeatGroupBox;
+        private System.Windows.Forms.Label label13;
     }
 }

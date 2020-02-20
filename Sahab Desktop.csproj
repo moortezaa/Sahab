@@ -15,6 +15,22 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>E:\morteza\projects\sahab\publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +50,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>1F4E7AD02A15D329E1CB69E64C11A69B64CF6EBD</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Sahab Desktop_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -63,18 +91,57 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DoctrineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DoctrineForm.Designer.cs">
+      <DependentUpon>DoctrineForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrameForm.Designer.cs">
+      <DependentUpon>FrameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002161917465_AddModels.cs" />
+    <Compile Include="Migrations\202002161917465_AddModels.designer.cs">
+      <DependentUpon>202002161917465_AddModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002181759279_AddRelations.cs" />
+    <Compile Include="Migrations\202002181759279_AddRelations.designer.cs">
+      <DependentUpon>202002181759279_AddRelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Doctrine.cs" />
+    <Compile Include="Models\DoctrineRelation.cs" />
+    <Compile Include="Models\Frame.cs" />
+    <Compile Include="Models\FrameRelation.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="ObservableListSource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskForm.cs">
+    <Compile Include="Forms\TaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TaskForm.Designer.cs">
+    <Compile Include="Forms\TaskForm.Designer.cs">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\TaskPriorityEffectCalculator.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DoctrineForm.resx">
+      <DependentUpon>DoctrineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrameForm.resx">
+      <DependentUpon>FrameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002161917465_AddModels.resx">
+      <DependentUpon>202002161917465_AddModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002181759279_AddRelations.resx">
+      <DependentUpon>202002181759279_AddRelations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,7 +152,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TaskForm.resx">
+    <EmbeddedResource Include="Forms\TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -98,9 +165,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Sahab Desktop_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
