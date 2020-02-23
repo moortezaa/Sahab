@@ -36,9 +36,9 @@
             this.StartDateLable = new System.Windows.Forms.Label();
             this.StartDateTextBox = new System.Windows.Forms.TextBox();
             this.panel = new System.Windows.Forms.Panel();
-            this.taskViewTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.Show = new System.Windows.Forms.Button();
             this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
+            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -109,54 +109,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel.BackColor = System.Drawing.Color.White;
-            this.panel.Controls.Add(this.taskViewTableLayoutPanel);
+            this.panel.Controls.Add(this.dailyTaskViewer);
             this.panel.Location = new System.Drawing.Point(12, 61);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(753, 377);
             this.panel.TabIndex = 3;
-            this.panel.Resize += new System.EventHandler(this.Panel_Resize);
-            // 
-            // taskViewTableLayoutPanel
-            // 
-            this.taskViewTableLayoutPanel.BackColor = System.Drawing.Color.White;
-            this.taskViewTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.taskViewTableLayoutPanel.ColumnCount = 4;
-            this.taskViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.048607F));
-            this.taskViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.91965F));
-            this.taskViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.01712F));
-            this.taskViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.01462F));
-            this.taskViewTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.taskViewTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.taskViewTableLayoutPanel.Name = "taskViewTableLayoutPanel";
-            this.taskViewTableLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.taskViewTableLayoutPanel.RowCount = 24;
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.taskViewTableLayoutPanel.Size = new System.Drawing.Size(753, 480);
-            this.taskViewTableLayoutPanel.TabIndex = 0;
-            this.taskViewTableLayoutPanel.Resize += new System.EventHandler(this.TaskViewTableLayoutPanel_Resize);
             // 
             // Show
             // 
@@ -179,6 +136,13 @@
             this.dailyTaskViewVScrollBar.TabIndex = 5;
             this.dailyTaskViewVScrollBar.ValueChanged += new System.EventHandler(this.DailyTaskViewVScrollBar_ValueChanged);
             // 
+            // dailyTaskViewer
+            // 
+            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
+            this.dailyTaskViewer.Name = "dailyTaskViewer";
+            this.dailyTaskViewer.Size = new System.Drawing.Size(753, 1436);
+            this.dailyTaskViewer.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,6 +157,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "سحاب";
+            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel.ResumeLayout(false);
@@ -212,8 +177,8 @@
         private System.Windows.Forms.TextBox StartDateTextBox;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.Button Show;
-        private System.Windows.Forms.TableLayoutPanel taskViewTableLayoutPanel;
         private System.Windows.Forms.VScrollBar dailyTaskViewVScrollBar;
+        private Controls.DailyTaskViewer dailyTaskViewer;
     }
 }
 

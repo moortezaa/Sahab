@@ -16,7 +16,10 @@ namespace Sahab_Desktop
 {
     public partial class TaskForm : Form
     {
-        public event EventHandler OnTaskSubmited;
+        public event TaskSubmitEventHandler OnTaskSubmited;
+
+        public delegate void TaskSubmitEventHandler(Models.Task task);
+
         AppDBContext _context;
         public List<Doctrine> Doctrines = new List<Doctrine>();
         public List<Frame> Frames = new List<Frame>();
@@ -144,7 +147,7 @@ namespace Sahab_Desktop
 
             _context.Tasks.Add(task);
             _context.SaveChanges();
-            OnTaskSubmited?.Invoke(sender, new EventArgs());
+            OnTaskSubmited?.Invoke(task);
             Close();
         }
 
