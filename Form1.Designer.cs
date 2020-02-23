@@ -36,9 +36,10 @@
             this.StartDateLable = new System.Windows.Forms.Label();
             this.StartDateTextBox = new System.Windows.Forms.TextBox();
             this.panel = new System.Windows.Forms.Panel();
+            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
             this.Show = new System.Windows.Forms.Button();
             this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
-            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
+            this.calendarView = new Sahab_Desktop.Controls.CalendarView();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +88,7 @@
             // 
             this.StartDateLable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StartDateLable.AutoSize = true;
-            this.StartDateLable.Location = new System.Drawing.Point(753, 38);
+            this.StartDateLable.Location = new System.Drawing.Point(753, 347);
             this.StartDateLable.Name = "StartDateLable";
             this.StartDateLable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartDateLable.Size = new System.Drawing.Size(35, 13);
@@ -97,7 +98,7 @@
             // StartDateTextBox
             // 
             this.StartDateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StartDateTextBox.Location = new System.Drawing.Point(647, 35);
+            this.StartDateTextBox.Location = new System.Drawing.Point(647, 344);
             this.StartDateTextBox.Name = "StartDateTextBox";
             this.StartDateTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartDateTextBox.Size = new System.Drawing.Size(100, 20);
@@ -110,15 +111,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel.BackColor = System.Drawing.Color.White;
             this.panel.Controls.Add(this.dailyTaskViewer);
-            this.panel.Location = new System.Drawing.Point(12, 61);
+            this.panel.Location = new System.Drawing.Point(12, 375);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(753, 377);
+            this.panel.Size = new System.Drawing.Size(753, 330);
             this.panel.TabIndex = 3;
+            // 
+            // dailyTaskViewer
+            // 
+            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
+            this.dailyTaskViewer.Name = "dailyTaskViewer";
+            this.dailyTaskViewer.Size = new System.Drawing.Size(753, 1436);
+            this.dailyTaskViewer.TabIndex = 0;
             // 
             // Show
             // 
             this.Show.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Show.Location = new System.Drawing.Point(566, 33);
+            this.Show.Location = new System.Drawing.Point(566, 342);
             this.Show.Name = "Show";
             this.Show.Size = new System.Drawing.Size(75, 23);
             this.Show.TabIndex = 2;
@@ -130,24 +138,28 @@
             // 
             this.dailyTaskViewVScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dailyTaskViewVScrollBar.Location = new System.Drawing.Point(768, 61);
+            this.dailyTaskViewVScrollBar.Location = new System.Drawing.Point(768, 375);
             this.dailyTaskViewVScrollBar.Name = "dailyTaskViewVScrollBar";
-            this.dailyTaskViewVScrollBar.Size = new System.Drawing.Size(23, 377);
+            this.dailyTaskViewVScrollBar.Size = new System.Drawing.Size(23, 330);
             this.dailyTaskViewVScrollBar.TabIndex = 5;
             this.dailyTaskViewVScrollBar.ValueChanged += new System.EventHandler(this.DailyTaskViewVScrollBar_ValueChanged);
             // 
-            // dailyTaskViewer
+            // calendarView
             // 
-            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
-            this.dailyTaskViewer.Name = "dailyTaskViewer";
-            this.dailyTaskViewer.Size = new System.Drawing.Size(753, 1436);
-            this.dailyTaskViewer.TabIndex = 0;
+            this.calendarView.BackColor = System.Drawing.Color.LightYellow;
+            this.calendarView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calendarView.Location = new System.Drawing.Point(12, 27);
+            this.calendarView.Name = "calendarView";
+            this.calendarView.SelectedDate = new System.DateTime(2020, 2, 23, 22, 33, 10, 994);
+            this.calendarView.Size = new System.Drawing.Size(459, 309);
+            this.calendarView.TabIndex = 6;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 717);
+            this.Controls.Add(this.calendarView);
             this.Controls.Add(this.dailyTaskViewVScrollBar);
             this.Controls.Add(this.Show);
             this.Controls.Add(this.panel);
@@ -179,6 +191,7 @@
         private System.Windows.Forms.Button Show;
         private System.Windows.Forms.VScrollBar dailyTaskViewVScrollBar;
         private Controls.DailyTaskViewer dailyTaskViewer;
+        private Controls.CalendarView calendarView;
     }
 }
 

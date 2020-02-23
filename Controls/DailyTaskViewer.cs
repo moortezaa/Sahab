@@ -20,6 +20,11 @@ namespace Sahab_Desktop.Controls
         {
             InitializeComponent();
             Height = 24 * 60;
+            AddTimeLabels();
+        }
+
+        private void AddTimeLabels()
+        {
             for (int i = 0; i < 24 * 4; i++)
             {
                 if (i % 4 == 0)
@@ -60,13 +65,9 @@ namespace Sahab_Desktop.Controls
 
         public override void Refresh()
         {
-            foreach (Control control in Controls)
-            {
-                if (control.GetType() == typeof(SingleTaskView))
-                {
-                    Controls.Remove(control);
-                }
-            }
+            Controls.Clear();
+            AddTimeLabels();
+
             DailyTaskViewer_Load(this, new EventArgs());
         }
 
@@ -109,18 +110,23 @@ namespace Sahab_Desktop.Controls
         {
             var them = new List<Color>()
             {
-                Color.AliceBlue,
-                Color.LightGreen,
-                Color.PaleVioletRed,
-                Color.LightYellow,
-                Color.MintCream,
+                Color.FromArgb(237,85,59),
+                Color.FromArgb(246,213,92),
+                Color.FromArgb(60,174,163),
+                Color.FromArgb(32,99,155),
+                Color.FromArgb(23,63,95),
             };
             var colorindex = 0;
             foreach (var control in Controls)
             {
                 if (control.GetType() == typeof(SingleTaskView))
                 {
-                    (control as SingleTaskView).BackColor = them[colorindex % them.Count];
+                    var color = them[colorindex % them.Count];
+                    (control as SingleTaskView).BackColor = color;
+                    if (color.GetBrightness() < 0.5)
+                    {
+                        (control as SingleTaskView).ForeColor = Color.White;
+                    }
                     colorindex += 1;
                 }
             }

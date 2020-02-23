@@ -85,6 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDBContext.cs" />
+    <Compile Include="Controls\CalendarView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CalendarView.Designer.cs">
+      <DependentUpon>CalendarView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DailyTaskViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </Compile>
     <Compile Include="Utils\TaskPriorityEffectCalculator.cs" />
     <Compile Include="Utils\Utils.cs" />
+    <EmbeddedResource Include="Controls\CalendarView.resx">
+      <DependentUpon>CalendarView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\DailyTaskViewer.resx">
       <DependentUpon>DailyTaskViewer.cs</DependentUpon>
     </EmbeddedResource>

@@ -26,6 +26,15 @@ namespace Sahab_Desktop
             MouseWheel += MainForm_MouseWheel;
             StartDateTextBox.KeyDown += Enter_KeyDown;
             dailyTaskViewVScrollBar.Maximum = dailyTaskViewer.Height;
+
+            calendarView.DateSelect += CalendarView_DateSelect;
+        }
+
+        private void CalendarView_DateSelect(DateTime date)
+        {
+            CurrentDate = date;
+            StartDateTextBox.Text = date.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
+            RefreshTaskView();
         }
 
         private void Enter_KeyDown(object sender, KeyEventArgs e)
