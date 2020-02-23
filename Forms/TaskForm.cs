@@ -32,6 +32,8 @@ namespace Sahab_Desktop
             InitializeComponent();
             _context = new AppDBContext();
 
+            StartDateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
+
             RefreshDoctrineComboBox();
 
             RefreshFramComboBox();
