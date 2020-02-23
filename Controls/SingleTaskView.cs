@@ -20,6 +20,22 @@ namespace Sahab_Desktop.Controls
 
         private void SingleTaskView_Load(object sender, EventArgs e)
         {
+            RefreshSize();
+            if (Task!=null)
+            {
+                titleLabel.Text = Task.Title;
+                personsLabel.Text = Task.Peoples;
+                locationLabel.Text = Task.Location;
+            }
+        }
+
+        private void SingleTaskView_Resize(object sender, EventArgs e)
+        {
+            RefreshSize();
+        }
+
+        private void RefreshSize()
+        {
             int width = Width / 3;
             locationLabel.Width = width;
             locationLabel.Left = 0;
@@ -27,12 +43,6 @@ namespace Sahab_Desktop.Controls
             personsLabel.Left = width;
             titleLabel.Width = width;
             titleLabel.Left = width * 2;
-            if (Task!=null)
-            {
-                titleLabel.Text = Task.Title;
-                personsLabel.Text = Task.Peoples;
-                locationLabel.Text = Task.Location;
-            }
         }
     }
 }

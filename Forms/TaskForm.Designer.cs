@@ -53,7 +53,6 @@
             this.FrameButton = new System.Windows.Forms.Button();
             this.RepeatCheckBox = new System.Windows.Forms.CheckBox();
             this.RepeatGroupBox = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.EndRepeatGroupBox = new System.Windows.Forms.GroupBox();
             this.PeriodComboBox = new System.Windows.Forms.ComboBox();
             this.UpToDateRadioButton = new System.Windows.Forms.RadioButton();
@@ -322,7 +321,6 @@
             // 
             this.RepeatCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RepeatCheckBox.AutoSize = true;
-            this.RepeatCheckBox.Enabled = false;
             this.RepeatCheckBox.Location = new System.Drawing.Point(523, 131);
             this.RepeatCheckBox.Name = "RepeatCheckBox";
             this.RepeatCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -334,7 +332,6 @@
             // RepeatGroupBox
             // 
             this.RepeatGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RepeatGroupBox.Controls.Add(this.label13);
             this.RepeatGroupBox.Controls.Add(this.EndRepeatGroupBox);
             this.RepeatGroupBox.Controls.Add(this.DiscreteTimesNumeric);
             this.RepeatGroupBox.Controls.Add(this.ContinuousTimesNumeric);
@@ -346,22 +343,11 @@
             this.RepeatGroupBox.Enabled = false;
             this.RepeatGroupBox.Location = new System.Drawing.Point(484, 132);
             this.RepeatGroupBox.Name = "RepeatGroupBox";
+            this.RepeatGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RepeatGroupBox.Size = new System.Drawing.Size(304, 198);
             this.RepeatGroupBox.TabIndex = 9;
             this.RepeatGroupBox.TabStop = false;
             this.RepeatGroupBox.Text = "تکرار";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(64, 57);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(169, 73);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "بزودی";
             // 
             // EndRepeatGroupBox
             // 
@@ -463,9 +449,19 @@
             // ContinuousTimesNumeric
             // 
             this.ContinuousTimesNumeric.Location = new System.Drawing.Point(211, 46);
+            this.ContinuousTimesNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.ContinuousTimesNumeric.Name = "ContinuousTimesNumeric";
             this.ContinuousTimesNumeric.Size = new System.Drawing.Size(40, 20);
             this.ContinuousTimesNumeric.TabIndex = 13;
+            this.ContinuousTimesNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.ContinuousTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
             // 
             // label12
@@ -674,6 +670,5 @@
         private System.Windows.Forms.ComboBox TaskPriorityComboBox;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.GroupBox EndRepeatGroupBox;
-        private System.Windows.Forms.Label label13;
     }
 }

@@ -24,7 +24,7 @@ namespace Sahab_Desktop
         public List<Doctrine> Doctrines = new List<Doctrine>();
         public List<Frame> Frames = new List<Frame>();
         public RepeatMethod RepeatMethod { get; set; } = RepeatMethod.Daily;
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; } = null;
         public TaskPriority TaskPriority { get; set; }
         public ulong TaskPriorityScore { get; set; }
         public TaskForm()
@@ -102,7 +102,7 @@ namespace Sahab_Desktop
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-
+            bool valid = true;
             var task = new Models.Task()
             {
                 Title = TitleTextBox.Text,
@@ -110,7 +110,7 @@ namespace Sahab_Desktop
                 Peoples = PeaoplesTextBox.Text,
                 Description = DescriptionTextBox.Text,
                 StartTime = Utils.Utils.ParsePersianTimeString(StartTimeTextBox.Text),
-                StartDate =Utils.Utils.ParsePersianDateString(StartDateTextBox.Text),
+                StartDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text),
                 EndTime = Utils.Utils.ParsePersianTimeString(EndTimeTextBox.Text),
                 EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text),
                 TaskPriority = TaskPriority,
@@ -142,7 +142,14 @@ namespace Sahab_Desktop
                 task.RepeatMethod = RepeatMethod;
                 task.ContinuousTimes = (int)ContinuousTimesNumeric.Value;
                 task.DiscreteTimes = (int)DiscreteTimesNumeric.Value;
-                task.EndDate = EndDate;
+                if (EndDate != null)
+                {
+                    task.EndDate = EndDate.Value;
+                }
+                else
+                {
+                    valid = false;
+                }
             }
 
             _context.Tasks.Add(task);
@@ -192,6 +199,7 @@ namespace Sahab_Desktop
             {
                 RepeatMethod = RepeatMethod.Weekly;
                 EffectiveControllsOnEndDate_Changed(sender, e);
+                ContinuousTimesNumeric.Enabled = false;
             }
         }
 
@@ -201,6 +209,7 @@ namespace Sahab_Desktop
             {
                 RepeatMethod = RepeatMethod.Monthly;
                 EffectiveControllsOnEndDate_Changed(sender, e);
+                ContinuousTimesNumeric.Enabled = false;
             }
         }
 
@@ -213,13 +222,13 @@ namespace Sahab_Desktop
                     switch (RepeatMethod)
                     {
                         case RepeatMethod.Daily:
-                            EndDate =DateTime.ParseExact(StartDateTextBox.Text,"yyyy/MM/dd",new CultureInfo("fa-IR")).ToUniversalTime().ToUniversalTime().ToLocalTime().AddDays((double)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)));
+                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddDays((double)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)));
                             break;
                         case RepeatMethod.Weekly:
-                            EndDate =DateTime.ParseExact(StartDateTextBox.Text,"yyyy/MM/dd",new CultureInfo("fa-IR")).ToUniversalTime().ToLocalTime().AddDays((double)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)) * 7);
+                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddDays((double)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)) * 7);
                             break;
                         case RepeatMethod.Monthly:
-                            EndDate =DateTime.ParseExact(StartDateTextBox.Text,"yyyy/MM/dd",new CultureInfo("fa-IR")).ToUniversalTime().ToLocalTime().AddMonths((int)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)));
+                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddMonths((int)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)));
                             break;
                     }
                 }
@@ -233,16 +242,16 @@ namespace Sahab_Desktop
                     switch (period)
                     {
                         case "روز":
-                            EndDate =DateTime.ParseExact(StartDateTextBox.Text,"yyyy/MM/dd",new CultureInfo("fa-IR")).ToUniversalTime().ToLocalTime().AddDays((double)PeriodNumeric.Value);
+                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddDays((double)PeriodNumeric.Value);
                             break;
                         case "هفته":
-                            EndDate =DateTime.ParseExact(StartDateTextBox.Text,"yyyy/MM/dd",new CultureInfo("fa-IR")).ToUniversalTime().ToLocalTime().AddDays((double)(PeriodNumeric.Value * 7));
+                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddDays((double)(PeriodNumeric.Value * 7));
                             break;
                         case "ماه":
-                            EndDate =DateTime.ParseExact(StartDateTextBox.Text,"yyyy/MM/dd",new CultureInfo("fa-IR")).ToUniversalTime().ToLocalTime().AddMonths((int)PeriodNumeric.Value);
+                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddMonths((int)PeriodNumeric.Value);
                             break;
                         case "سال":
-                            EndDate =DateTime.ParseExact(StartDateTextBox.Text,"yyyy/MM/dd",new CultureInfo("fa-IR")).ToUniversalTime().ToLocalTime().AddYears((int)PeriodNumeric.Value);
+                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddYears((int)PeriodNumeric.Value);
                             break;
                     }
                 }
@@ -251,7 +260,7 @@ namespace Sahab_Desktop
             {
                 if (string.IsNullOrEmpty(UpToDateTextBox.Text))
                 {
-                    EndDate = DateTime.Parse(UpToDateTextBox.Text);
+                    EndDate = Utils.Utils.ParsePersianDateString(UpToDateTextBox.Text);
                 }
             }
         }

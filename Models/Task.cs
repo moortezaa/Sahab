@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,61 @@ namespace Sahab_Desktop.Models
         public TaskPriority TaskPriority { get; set; }
 
         public ulong TaskPriorityScore { get; set; }
+
+        [NotMapped]
+        public List<DateTime> Dates
+        {
+            get
+            {
+                var dates = new List<DateTime>();
+                switch (RepeatMethod)
+                {
+                    case RepeatMethod.Daily:
+                        var date = StartDate;
+                        do
+                        {
+                            date = date.AddDays(DiscreteTimes);
+                            for (int i = 1; i <= ContinuousTimes; i++)
+                            {
+                                date = date.AddDays(i);
+                                dates.Add(date);
+                            }
+                        } while (date.CompareTo(EndDate) < 0);
+                        dates.Add(StartDate);
+                        break;
+                    case RepeatMethod.Weekly:
+                        date = StartDate;
+                        do
+                        {
+                            date = date.AddDays(DiscreteTimes*7);
+                            for (int i = 1; i <= 1; i++)
+                            {
+                                date = date.AddDays(i);
+                                dates.Add(date);
+                            }
+                        } while (date.CompareTo(EndDate) < 0);
+                        dates.Add(StartDate);
+                        break;
+                    case RepeatMethod.Monthly:
+                        date = StartDate;
+                        do
+                        {
+                            date = date.AddMonths(DiscreteTimes);
+                            for (int i = 1; i <= 1; i++)
+                            {
+                                date = date.AddDays(i);
+                                dates.Add(date);
+                            }
+                        } while (date.CompareTo(EndDate) < 0);
+                        dates.Add(StartDate);
+                        break;
+                    default:
+                        dates.Add(StartDate);
+                        break;
+                }
+                return dates;
+            }
+        }
     }
     public enum RepeatMethod
     {

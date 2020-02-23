@@ -83,6 +83,7 @@
             this.Name = "SingleTaskView";
             this.Size = new System.Drawing.Size(148, 148);
             this.Load += new System.EventHandler(this.SingleTaskView_Load);
+            this.Resize += new System.EventHandler(this.SingleTaskView_Resize);
             this.ResumeLayout(false);
 
         }

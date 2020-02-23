@@ -43,9 +43,15 @@ namespace Sahab_Desktop.Utils
                 {
                     persianDates = (persianDates[0] + ":" + persianDates[1] + ":00").Split(':');
                 }
-                persianDates[0] = persianDates[0].Length == 2 ? (persianDates[0] == "24" ? "00" : persianDates[0]) : ($"0{persianDates[0]}" == "24" ? "00" : persianDates[0]);
+                persianDates[0] = persianDates[0].Length == 2 ? persianDates[0] : $"0{persianDates[0]}";
                 persianDates[1] = persianDates[1].Length == 2 ? persianDates[1] : $"0{persianDates[1]}";
                 persianDates[2] = persianDates[2].Length == 2 ? persianDates[2] : $"0{persianDates[2]}";
+
+                if (persianDates[0] == "24")
+                {
+                    persianDates[0] = "00";
+                    return DateTime.ParseExact(string.Join(":", persianDates), "HH:mm:ss", new CultureInfo("en-US")).ToUniversalTime().ToLocalTime().AddDays(1);
+                }
                 return DateTime.ParseExact(string.Join(":", persianDates), "HH:mm:ss", new CultureInfo("en-US")).ToUniversalTime().ToLocalTime();
             }
         }

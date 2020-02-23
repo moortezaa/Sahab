@@ -24,7 +24,7 @@ namespace Sahab_Desktop.Controls
             {
                 if (i % 4 == 0)
                 {
-                    Label label = GenerateTimeLabel($"{i / 4}:00", 10f, i * 15);
+                    Label label = GenerateTimeLabel($"{i / 4}", 10f, i * 15);
                     Controls.Add(label);
                 }
                 else
@@ -87,6 +87,7 @@ namespace Sahab_Desktop.Controls
 
             };
             Controls.Add(taskView);
+            ReColor();
         }
 
         private void DailyTaskViewer_Resize(object sender, EventArgs e)
@@ -100,6 +101,27 @@ namespace Sahab_Desktop.Controls
                 else if (control.GetType() == typeof(Label))
                 {
                     (control as Label).Left = this.Width - TimeLabelWidth;
+                }
+            }
+        }
+
+        private void ReColor()
+        {
+            var them = new List<Color>()
+            {
+                Color.AliceBlue,
+                Color.LightGreen,
+                Color.PaleVioletRed,
+                Color.LightYellow,
+                Color.MintCream,
+            };
+            var colorindex = 0;
+            foreach (var control in Controls)
+            {
+                if (control.GetType() == typeof(SingleTaskView))
+                {
+                    (control as SingleTaskView).BackColor = them[colorindex % them.Count];
+                    colorindex += 1;
                 }
             }
         }

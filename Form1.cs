@@ -18,7 +18,7 @@ namespace Sahab_Desktop
         public MainForm()
         {
             InitializeComponent();
-            
+
 
             StartDateTextBox.Text = CurrentDate.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
             RefreshTaskView();
@@ -68,15 +68,26 @@ namespace Sahab_Desktop
 
         private void RefreshTaskView()
         {
-            var tasks = _context.Tasks.Where(t => t.StartDate.CompareTo(CurrentDate.Date) == 0);
-            dailyTaskViewer.Tasks = tasks.ToList();
+            var tasks = _context.Tasks.Where(t => t.StartDate.CompareTo(CurrentDate.Date) <= 0 && t.EndDate.CompareTo(CurrentDate.Date) >= 0);
+            List<Models.Task> currentDateTasks = new List<Models.Task>();
+            foreach (var task in tasks)
+            {
+                if (task.Dates != null)
+                {
+                    if (task.Dates.Contains(CurrentDate.Date))
+                    {
+                        currentDateTasks.Add(task);
+                    }
+                }
+            }
+            dailyTaskViewer.Tasks = currentDateTasks;
             dailyTaskViewer.Refresh();
         }
 
         private void DailyTaskViewVScrollBar_ValueChanged(object sender, EventArgs e)
         {
             double positionAspect = (double)dailyTaskViewVScrollBar.Value / (double)dailyTaskViewVScrollBar.Maximum;
-            if (positionAspect>0.99)
+            if (positionAspect > 0.99)
             {
                 positionAspect = 1;
             }
@@ -92,6 +103,7 @@ namespace Sahab_Desktop
         private void MainForm_ResizeEnd(object sender, EventArgs e)
         {
             dailyTaskViewer.Width = panel.Width;
+            DailyTaskViewVScrollBar_ValueChanged(sender, e);
         }
     }
 }
