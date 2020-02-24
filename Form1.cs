@@ -89,6 +89,7 @@ namespace Sahab_Desktop
                     }
                 }
             }
+            dailyTaskViewer.CurrentDate = CurrentDate.Date;
             dailyTaskViewer.Tasks = currentDateTasks;
             dailyTaskViewer.Refresh();
         }

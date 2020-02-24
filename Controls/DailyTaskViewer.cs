@@ -14,6 +14,8 @@ namespace Sahab_Desktop.Controls
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Models.Task> Tasks { get; set; } = new List<Models.Task>();
+        public DateTime CurrentDate { get; internal set; }
+
         private const int TimeLabelWidth = 30;
 
         public DailyTaskViewer()
@@ -79,13 +81,12 @@ namespace Sahab_Desktop.Controls
 
         private void AddSingleTaskView(Models.Task task)
         {
-            var taskView = new SingleTaskView()
+            var taskView = new SingleTaskView(CurrentDate)
             {
                 Height = (int)task.EndTime.Subtract(task.StartTime).TotalMinutes,
                 Width = this.Width - TimeLabelWidth,
                 Top = (int)task.StartTime.Subtract(new DateTime(task.StartTime.Year, task.StartTime.Month, task.StartTime.Day, 0, 0, 0)).TotalMinutes,
                 Task = task,
-
             };
             Controls.Add(taskView);
             ReColor();
