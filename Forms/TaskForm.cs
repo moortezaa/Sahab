@@ -90,6 +90,7 @@ namespace Sahab_Desktop
                 "متغییر عادی",
                 "متغییر روزمره",
             });
+            HideWeeklyGroup();
         }
 
         private void SaturdayImageCheckBox_CheckedChange(object sender, EventArgs e)
@@ -268,10 +269,15 @@ namespace Sahab_Desktop
                 RepeatMethod = RepeatMethod.Daily;
                 EffectiveControllsOnEndDate_Changed(sender, e);
                 ContinuousTimesNumeric.Enabled = true;
-                weekDaysGroupBox.Visible = false;
-                specialDaysGroupBox.Height += specialDaysGroupBox.Top - 35;
-                specialDaysGroupBox.Top = 35;
+                HideWeeklyGroup();
             }
+        }
+
+        private void HideWeeklyGroup()
+        {
+            weekDaysGroupBox.Visible = false;
+            specialDaysGroupBox.Height += specialDaysGroupBox.Top - 35;
+            specialDaysGroupBox.Top = 35;
         }
 
         private void WeeklyRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -281,10 +287,15 @@ namespace Sahab_Desktop
                 RepeatMethod = RepeatMethod.Weekly;
                 EffectiveControllsOnEndDate_Changed(sender, e);
                 ContinuousTimesNumeric.Enabled = false;
-                weekDaysGroupBox.Visible = true;
-                specialDaysGroupBox.Top += 61;
-                specialDaysGroupBox.Height -= 61;
+                ShowWeeklyGroup();
             }
+        }
+
+        private void ShowWeeklyGroup()
+        {
+            weekDaysGroupBox.Visible = true;
+            specialDaysGroupBox.Top += 61;
+            specialDaysGroupBox.Height -= 61;
         }
 
         private void MonthlyRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -294,9 +305,7 @@ namespace Sahab_Desktop
                 RepeatMethod = RepeatMethod.Monthly;
                 EffectiveControllsOnEndDate_Changed(sender, e);
                 ContinuousTimesNumeric.Enabled = false;
-                weekDaysGroupBox.Visible = false;
-                specialDaysGroupBox.Height += specialDaysGroupBox.Top - 35;
-                specialDaysGroupBox.Top = 35;
+                HideWeeklyGroup();
             }
         }
 
