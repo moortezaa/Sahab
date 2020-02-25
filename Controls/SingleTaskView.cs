@@ -86,6 +86,8 @@ namespace Sahab_Desktop.Controls
                         {
                             var task = new Models.Task()
                             {
+                                DaysOfWeek = Task.DaysOfWeek,
+                                SpecialDates = Task.SpecialDates,
                                 ContinuousTimes = Task.ContinuousTimes,
                                 Description = Task.Description,
                                 DiscreteTimes = Task.DiscreteTimes,

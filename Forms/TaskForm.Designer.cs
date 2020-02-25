@@ -53,6 +53,17 @@
             this.FrameButton = new System.Windows.Forms.Button();
             this.RepeatCheckBox = new System.Windows.Forms.CheckBox();
             this.RepeatGroupBox = new System.Windows.Forms.GroupBox();
+            this.specialDaysGroupBox = new System.Windows.Forms.GroupBox();
+            this.specialDateTextBox = new System.Windows.Forms.TextBox();
+            this.addSpecialDayButton = new System.Windows.Forms.Button();
+            this.specialDaysListBox = new System.Windows.Forms.ListBox();
+            this.weekDaysGroupBox = new System.Windows.Forms.GroupBox();
+            this.advancedCheckBox = new System.Windows.Forms.CheckBox();
+            this.advancedGroupBox = new System.Windows.Forms.GroupBox();
+            this.DiscreteTimesNumeric = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ContinuousTimesNumeric = new System.Windows.Forms.NumericUpDown();
             this.EndRepeatGroupBox = new System.Windows.Forms.GroupBox();
             this.PeriodComboBox = new System.Windows.Forms.ComboBox();
             this.UpToDateRadioButton = new System.Windows.Forms.RadioButton();
@@ -61,10 +72,6 @@
             this.UpToDateTextBox = new System.Windows.Forms.TextBox();
             this.RepeatTimesRadioButton = new System.Windows.Forms.RadioButton();
             this.RepeatTimesNumeric = new System.Windows.Forms.NumericUpDown();
-            this.DiscreteTimesNumeric = new System.Windows.Forms.NumericUpDown();
-            this.ContinuousTimesNumeric = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.MonthlyRadioButton = new System.Windows.Forms.RadioButton();
             this.WeeklyRadioButton = new System.Windows.Forms.RadioButton();
             this.DailyRadioButton = new System.Windows.Forms.RadioButton();
@@ -73,12 +80,22 @@
             this.label15 = new System.Windows.Forms.Label();
             this.TaskPriorityComboBox = new System.Windows.Forms.ComboBox();
             this.SubmitButton = new System.Windows.Forms.Button();
+            this.saturdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.sundayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.mondayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.tuesdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.wednesdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.ThursdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.fridayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
             this.RepeatGroupBox.SuspendLayout();
+            this.specialDaysGroupBox.SuspendLayout();
+            this.weekDaysGroupBox.SuspendLayout();
+            this.advancedGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscreteTimesNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContinuousTimesNumeric)).BeginInit();
             this.EndRepeatGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatTimesNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscreteTimesNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ContinuousTimesNumeric)).BeginInit();
             this.info.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -241,10 +258,12 @@
             // 
             // DoctrinesListBox
             // 
+            this.DoctrinesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.DoctrinesListBox.FormattingEnabled = true;
             this.DoctrinesListBox.Location = new System.Drawing.Point(12, 109);
             this.DoctrinesListBox.Name = "DoctrinesListBox";
-            this.DoctrinesListBox.Size = new System.Drawing.Size(200, 316);
+            this.DoctrinesListBox.Size = new System.Drawing.Size(200, 446);
             this.DoctrinesListBox.TabIndex = 9;
             this.DoctrinesListBox.TabStop = false;
             // 
@@ -272,10 +291,12 @@
             // 
             // FramesListBox
             // 
+            this.FramesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.FramesListBox.FormattingEnabled = true;
             this.FramesListBox.Location = new System.Drawing.Point(234, 109);
             this.FramesListBox.Name = "FramesListBox";
-            this.FramesListBox.Size = new System.Drawing.Size(200, 316);
+            this.FramesListBox.Size = new System.Drawing.Size(200, 446);
             this.FramesListBox.TabIndex = 9;
             this.FramesListBox.TabStop = false;
             // 
@@ -331,12 +352,13 @@
             // 
             // RepeatGroupBox
             // 
-            this.RepeatGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RepeatGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RepeatGroupBox.Controls.Add(this.specialDaysGroupBox);
+            this.RepeatGroupBox.Controls.Add(this.weekDaysGroupBox);
+            this.RepeatGroupBox.Controls.Add(this.advancedCheckBox);
+            this.RepeatGroupBox.Controls.Add(this.advancedGroupBox);
             this.RepeatGroupBox.Controls.Add(this.EndRepeatGroupBox);
-            this.RepeatGroupBox.Controls.Add(this.DiscreteTimesNumeric);
-            this.RepeatGroupBox.Controls.Add(this.ContinuousTimesNumeric);
-            this.RepeatGroupBox.Controls.Add(this.label12);
-            this.RepeatGroupBox.Controls.Add(this.label9);
             this.RepeatGroupBox.Controls.Add(this.MonthlyRadioButton);
             this.RepeatGroupBox.Controls.Add(this.WeeklyRadioButton);
             this.RepeatGroupBox.Controls.Add(this.DailyRadioButton);
@@ -344,13 +366,150 @@
             this.RepeatGroupBox.Location = new System.Drawing.Point(484, 132);
             this.RepeatGroupBox.Name = "RepeatGroupBox";
             this.RepeatGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.RepeatGroupBox.Size = new System.Drawing.Size(304, 198);
+            this.RepeatGroupBox.Size = new System.Drawing.Size(304, 345);
             this.RepeatGroupBox.TabIndex = 9;
             this.RepeatGroupBox.TabStop = false;
             this.RepeatGroupBox.Text = "تکرار";
             // 
+            // specialDaysGroupBox
+            // 
+            this.specialDaysGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.specialDaysGroupBox.Controls.Add(this.specialDateTextBox);
+            this.specialDaysGroupBox.Controls.Add(this.addSpecialDayButton);
+            this.specialDaysGroupBox.Controls.Add(this.specialDaysListBox);
+            this.specialDaysGroupBox.Location = new System.Drawing.Point(6, 96);
+            this.specialDaysGroupBox.Name = "specialDaysGroupBox";
+            this.specialDaysGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.specialDaysGroupBox.Size = new System.Drawing.Size(292, 77);
+            this.specialDaysGroupBox.TabIndex = 21;
+            this.specialDaysGroupBox.TabStop = false;
+            this.specialDaysGroupBox.Text = "روز های خاص";
+            // 
+            // specialDateTextBox
+            // 
+            this.specialDateTextBox.Location = new System.Drawing.Point(154, 21);
+            this.specialDateTextBox.Name = "specialDateTextBox";
+            this.specialDateTextBox.Size = new System.Drawing.Size(130, 20);
+            this.specialDateTextBox.TabIndex = 2;
+            // 
+            // addSpecialDayButton
+            // 
+            this.addSpecialDayButton.Location = new System.Drawing.Point(122, 19);
+            this.addSpecialDayButton.Name = "addSpecialDayButton";
+            this.addSpecialDayButton.Size = new System.Drawing.Size(26, 23);
+            this.addSpecialDayButton.TabIndex = 1;
+            this.addSpecialDayButton.Text = ">";
+            this.addSpecialDayButton.UseVisualStyleBackColor = true;
+            this.addSpecialDayButton.Click += new System.EventHandler(this.AddSpecialDayButton_Click);
+            // 
+            // specialDaysListBox
+            // 
+            this.specialDaysListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.specialDaysListBox.FormattingEnabled = true;
+            this.specialDaysListBox.Location = new System.Drawing.Point(6, 12);
+            this.specialDaysListBox.Name = "specialDaysListBox";
+            this.specialDaysListBox.Size = new System.Drawing.Size(110, 56);
+            this.specialDaysListBox.TabIndex = 0;
+            // 
+            // weekDaysGroupBox
+            // 
+            this.weekDaysGroupBox.Controls.Add(this.saturdayImageCheckBox);
+            this.weekDaysGroupBox.Controls.Add(this.sundayImageCheckBox);
+            this.weekDaysGroupBox.Controls.Add(this.mondayImageCheckBox);
+            this.weekDaysGroupBox.Controls.Add(this.tuesdayImageCheckBox);
+            this.weekDaysGroupBox.Controls.Add(this.wednesdayImageCheckBox);
+            this.weekDaysGroupBox.Controls.Add(this.ThursdayImageCheckBox);
+            this.weekDaysGroupBox.Controls.Add(this.fridayImageCheckBox);
+            this.weekDaysGroupBox.Location = new System.Drawing.Point(6, 35);
+            this.weekDaysGroupBox.Name = "weekDaysGroupBox";
+            this.weekDaysGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.weekDaysGroupBox.Size = new System.Drawing.Size(292, 55);
+            this.weekDaysGroupBox.TabIndex = 20;
+            this.weekDaysGroupBox.TabStop = false;
+            // 
+            // advancedCheckBox
+            // 
+            this.advancedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.advancedCheckBox.AutoSize = true;
+            this.advancedCheckBox.Location = new System.Drawing.Point(231, 179);
+            this.advancedCheckBox.Name = "advancedCheckBox";
+            this.advancedCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.advancedCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.advancedCheckBox.TabIndex = 8;
+            this.advancedCheckBox.UseVisualStyleBackColor = true;
+            this.advancedCheckBox.CheckedChanged += new System.EventHandler(this.AdvancedCheckBox_CheckedChanged);
+            // 
+            // advancedGroupBox
+            // 
+            this.advancedGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.advancedGroupBox.Controls.Add(this.DiscreteTimesNumeric);
+            this.advancedGroupBox.Controls.Add(this.label12);
+            this.advancedGroupBox.Controls.Add(this.label9);
+            this.advancedGroupBox.Controls.Add(this.ContinuousTimesNumeric);
+            this.advancedGroupBox.Enabled = false;
+            this.advancedGroupBox.Location = new System.Drawing.Point(108, 179);
+            this.advancedGroupBox.Name = "advancedGroupBox";
+            this.advancedGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.advancedGroupBox.Size = new System.Drawing.Size(190, 48);
+            this.advancedGroupBox.TabIndex = 19;
+            this.advancedGroupBox.TabStop = false;
+            this.advancedGroupBox.Text = "پیشرفته";
+            // 
+            // DiscreteTimesNumeric
+            // 
+            this.DiscreteTimesNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DiscreteTimesNumeric.Location = new System.Drawing.Point(6, 19);
+            this.DiscreteTimesNumeric.Name = "DiscreteTimesNumeric";
+            this.DiscreteTimesNumeric.Size = new System.Drawing.Size(40, 20);
+            this.DiscreteTimesNumeric.TabIndex = 14;
+            this.DiscreteTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(52, 21);
+            this.label12.Name = "label12";
+            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "فاصله:";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(141, 21);
+            this.label9.Name = "label9";
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "استمرار:";
+            // 
+            // ContinuousTimesNumeric
+            // 
+            this.ContinuousTimesNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContinuousTimesNumeric.Location = new System.Drawing.Point(95, 19);
+            this.ContinuousTimesNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ContinuousTimesNumeric.Name = "ContinuousTimesNumeric";
+            this.ContinuousTimesNumeric.Size = new System.Drawing.Size(40, 20);
+            this.ContinuousTimesNumeric.TabIndex = 13;
+            this.ContinuousTimesNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ContinuousTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
+            // 
             // EndRepeatGroupBox
             // 
+            this.EndRepeatGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EndRepeatGroupBox.Controls.Add(this.PeriodComboBox);
             this.EndRepeatGroupBox.Controls.Add(this.UpToDateRadioButton);
             this.EndRepeatGroupBox.Controls.Add(this.PeriodNumeric);
@@ -358,7 +517,7 @@
             this.EndRepeatGroupBox.Controls.Add(this.UpToDateTextBox);
             this.EndRepeatGroupBox.Controls.Add(this.RepeatTimesRadioButton);
             this.EndRepeatGroupBox.Controls.Add(this.RepeatTimesNumeric);
-            this.EndRepeatGroupBox.Location = new System.Drawing.Point(6, 86);
+            this.EndRepeatGroupBox.Location = new System.Drawing.Point(6, 233);
             this.EndRepeatGroupBox.Name = "EndRepeatGroupBox";
             this.EndRepeatGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.EndRepeatGroupBox.Size = new System.Drawing.Size(292, 106);
@@ -438,52 +597,6 @@
             this.RepeatTimesNumeric.TabIndex = 18;
             this.RepeatTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
             // 
-            // DiscreteTimesNumeric
-            // 
-            this.DiscreteTimesNumeric.Location = new System.Drawing.Point(115, 46);
-            this.DiscreteTimesNumeric.Name = "DiscreteTimesNumeric";
-            this.DiscreteTimesNumeric.Size = new System.Drawing.Size(40, 20);
-            this.DiscreteTimesNumeric.TabIndex = 14;
-            this.DiscreteTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
-            // 
-            // ContinuousTimesNumeric
-            // 
-            this.ContinuousTimesNumeric.Location = new System.Drawing.Point(211, 46);
-            this.ContinuousTimesNumeric.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ContinuousTimesNumeric.Name = "ContinuousTimesNumeric";
-            this.ContinuousTimesNumeric.Size = new System.Drawing.Size(40, 20);
-            this.ContinuousTimesNumeric.TabIndex = 13;
-            this.ContinuousTimesNumeric.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ContinuousTimesNumeric.ValueChanged += new System.EventHandler(this.EffectiveControllsOnEndDate_Changed);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(161, 48);
-            this.label12.Name = "label12";
-            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label12.Size = new System.Drawing.Size(37, 13);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "فاصله:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(257, 48);
-            this.label9.Name = "label9";
-            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "استمرار:";
-            // 
             // MonthlyRadioButton
             // 
             this.MonthlyRadioButton.AutoSize = true;
@@ -525,8 +638,9 @@
             // 
             // info
             // 
+            this.info.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.info.Controls.Add(this.PriorityScoreLable);
-            this.info.Location = new System.Drawing.Point(484, 375);
+            this.info.Location = new System.Drawing.Point(484, 510);
             this.info.Name = "info";
             this.info.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.info.Size = new System.Drawing.Size(304, 50);
@@ -544,8 +658,9 @@
             // 
             // label15
             // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(745, 345);
+            this.label15.Location = new System.Drawing.Point(738, 486);
             this.label15.Name = "label15";
             this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label15.Size = new System.Drawing.Size(46, 13);
@@ -554,8 +669,9 @@
             // 
             // TaskPriorityComboBox
             // 
+            this.TaskPriorityComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TaskPriorityComboBox.FormattingEnabled = true;
-            this.TaskPriorityComboBox.Location = new System.Drawing.Point(618, 342);
+            this.TaskPriorityComboBox.Location = new System.Drawing.Point(611, 483);
             this.TaskPriorityComboBox.Name = "TaskPriorityComboBox";
             this.TaskPriorityComboBox.Size = new System.Drawing.Size(121, 21);
             this.TaskPriorityComboBox.TabIndex = 22;
@@ -563,8 +679,10 @@
             // 
             // SubmitButton
             // 
+            this.SubmitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SubmitButton.BackColor = System.Drawing.Color.LimeGreen;
-            this.SubmitButton.Location = new System.Drawing.Point(12, 431);
+            this.SubmitButton.Location = new System.Drawing.Point(12, 569);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(776, 30);
             this.SubmitButton.TabIndex = 27;
@@ -572,11 +690,74 @@
             this.SubmitButton.UseVisualStyleBackColor = false;
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
+            // saturdayImageCheckBox
+            // 
+            this.saturdayImageCheckBox.CheckedImage = null;
+            this.saturdayImageCheckBox.Location = new System.Drawing.Point(255, 15);
+            this.saturdayImageCheckBox.Name = "saturdayImageCheckBox";
+            this.saturdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.saturdayImageCheckBox.TabIndex = 0;
+            this.saturdayImageCheckBox.UnCheckedImage = null;
+            // 
+            // sundayImageCheckBox
+            // 
+            this.sundayImageCheckBox.CheckedImage = null;
+            this.sundayImageCheckBox.Location = new System.Drawing.Point(214, 15);
+            this.sundayImageCheckBox.Name = "sundayImageCheckBox";
+            this.sundayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.sundayImageCheckBox.TabIndex = 0;
+            this.sundayImageCheckBox.UnCheckedImage = null;
+            // 
+            // mondayImageCheckBox
+            // 
+            this.mondayImageCheckBox.CheckedImage = null;
+            this.mondayImageCheckBox.Location = new System.Drawing.Point(173, 15);
+            this.mondayImageCheckBox.Name = "mondayImageCheckBox";
+            this.mondayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.mondayImageCheckBox.TabIndex = 0;
+            this.mondayImageCheckBox.UnCheckedImage = null;
+            // 
+            // tusdayImageCheckBox
+            // 
+            this.tuesdayImageCheckBox.CheckedImage = null;
+            this.tuesdayImageCheckBox.Location = new System.Drawing.Point(132, 15);
+            this.tuesdayImageCheckBox.Name = "tusdayImageCheckBox";
+            this.tuesdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.tuesdayImageCheckBox.TabIndex = 0;
+            this.tuesdayImageCheckBox.UnCheckedImage = null;
+            // 
+            // wednesdayImageCheckBox
+            // 
+            this.wednesdayImageCheckBox.CheckedImage = null;
+            this.wednesdayImageCheckBox.Location = new System.Drawing.Point(91, 15);
+            this.wednesdayImageCheckBox.Name = "wednesdayImageCheckBox";
+            this.wednesdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.wednesdayImageCheckBox.TabIndex = 0;
+            this.wednesdayImageCheckBox.UnCheckedImage = null;
+            // 
+            // ThursdayImageCheckBox
+            // 
+            this.ThursdayImageCheckBox.CheckedImage = null;
+            this.ThursdayImageCheckBox.Location = new System.Drawing.Point(50, 15);
+            this.ThursdayImageCheckBox.Name = "ThursdayImageCheckBox";
+            this.ThursdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.ThursdayImageCheckBox.TabIndex = 0;
+            this.ThursdayImageCheckBox.UnCheckedImage = null;
+            // 
+            // fridayImageCheckBox
+            // 
+            this.fridayImageCheckBox.CheckedImage = null;
+            this.fridayImageCheckBox.Location = new System.Drawing.Point(9, 15);
+            this.fridayImageCheckBox.Name = "fridayImageCheckBox";
+            this.fridayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.fridayImageCheckBox.TabIndex = 0;
+            this.fridayImageCheckBox.UnCheckedImage = null;
+            // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 473);
+            this.ClientSize = new System.Drawing.Size(800, 611);
             this.Controls.Add(this.RepeatCheckBox);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.TaskPriorityComboBox);
@@ -606,17 +787,23 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label8);
+            this.MinimumSize = new System.Drawing.Size(816, 650);
             this.Name = "TaskForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "برنامه";
             this.RepeatGroupBox.ResumeLayout(false);
             this.RepeatGroupBox.PerformLayout();
+            this.specialDaysGroupBox.ResumeLayout(false);
+            this.specialDaysGroupBox.PerformLayout();
+            this.weekDaysGroupBox.ResumeLayout(false);
+            this.advancedGroupBox.ResumeLayout(false);
+            this.advancedGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscreteTimesNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContinuousTimesNumeric)).EndInit();
             this.EndRepeatGroupBox.ResumeLayout(false);
             this.EndRepeatGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatTimesNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscreteTimesNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ContinuousTimesNumeric)).EndInit();
             this.info.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -670,5 +857,19 @@
         private System.Windows.Forms.ComboBox TaskPriorityComboBox;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.GroupBox EndRepeatGroupBox;
+        private System.Windows.Forms.GroupBox specialDaysGroupBox;
+        private System.Windows.Forms.TextBox specialDateTextBox;
+        private System.Windows.Forms.Button addSpecialDayButton;
+        private System.Windows.Forms.ListBox specialDaysListBox;
+        private System.Windows.Forms.GroupBox weekDaysGroupBox;
+        private System.Windows.Forms.CheckBox advancedCheckBox;
+        private System.Windows.Forms.GroupBox advancedGroupBox;
+        private Controls.ImageCheckBox saturdayImageCheckBox;
+        private Controls.ImageCheckBox sundayImageCheckBox;
+        private Controls.ImageCheckBox mondayImageCheckBox;
+        private Controls.ImageCheckBox tuesdayImageCheckBox;
+        private Controls.ImageCheckBox wednesdayImageCheckBox;
+        private Controls.ImageCheckBox ThursdayImageCheckBox;
+        private Controls.ImageCheckBox fridayImageCheckBox;
     }
 }

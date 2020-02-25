@@ -33,6 +33,9 @@ namespace Sahab_Desktop.Models
         [Required]
         public DateTime EndDate { get; set; }
 
+        public string SpecialDates { get; set; }
+
+        public string DaysOfWeek { get; set; }
 
         public RepeatMethod RepeatMethod { get; set; }
         public int ContinuousTimes { get; set; }
@@ -68,16 +71,21 @@ namespace Sahab_Desktop.Models
                         dates.Add(StartDate);
                         break;
                     case RepeatMethod.Weekly:
-                        date = StartDate;
-                        do
+                        var daysOfWeek = DaysOfWeek.Split(',');
+                        foreach (var dayOfWeekString in daysOfWeek)
                         {
-                            date = date.AddDays(DiscreteTimes*7);
-                            for (int i = 1; i <= 1; i++)
+                            var dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayOfWeekString);
+                            date = StartDate;
+                            while (date.DayOfWeek != dayOfWeek && date.CompareTo(EndDate) < 0)
                             {
-                                date = date.AddDays(i);
-                                dates.Add(date);
+                                date = date.AddDays(1);
                             }
-                        } while (date.CompareTo(EndDate) < 0);
+                            do
+                            {
+                                dates.Add(date);
+                                date = date.AddDays(7);
+                            } while (date.CompareTo(EndDate) <= 0);
+                        }
                         dates.Add(StartDate);
                         break;
                     case RepeatMethod.Monthly:
@@ -96,6 +104,10 @@ namespace Sahab_Desktop.Models
                     default:
                         dates.Add(StartDate);
                         break;
+                }
+                if (!string.IsNullOrEmpty(SpecialDates))
+                {
+                    dates.AddRange(SpecialDates.Split(',').Select(s => DateTime.Parse(s)));
                 }
                 return dates;
             }

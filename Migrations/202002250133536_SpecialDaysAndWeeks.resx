@@ -117,50 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="friday_checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\friday-checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="friday_unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\friday-unchecked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="index" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\index.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="monday_checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\monday-checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="monday_unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\monday-unchecked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="saturday_checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\saturday-checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="saturday_unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\saturday-unchecked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sunday_checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\sunday-checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sunday_unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\sunday-unchecked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="thursday_checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\thursday-checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="thursday_unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\thursday-unchecked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tusday_checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\tusday-checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tusday_unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\tusday-unchecked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wednesday_checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\wednesday-checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wednesday_unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\wednesday-unchecked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

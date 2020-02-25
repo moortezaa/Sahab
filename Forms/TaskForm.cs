@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,9 +28,39 @@ namespace Sahab_Desktop
         public DateTime? EndDate { get; set; } = null;
         public TaskPriority TaskPriority { get; set; }
         public ulong TaskPriorityScore { get; set; }
+        public List<DayOfWeek> DayOfWeeks = new List<DayOfWeek>();
         public TaskForm()
         {
             InitializeComponent();
+            fridayImageCheckBox.UnCheckedImage = Properties.Resources.friday_unchecked;
+            fridayImageCheckBox.CheckedImage = Properties.Resources.friday_checked;
+            fridayImageCheckBox.RefreshImages();
+            fridayImageCheckBox.CheckedChange += FridayImageCheckBox_CheckedChange; ;
+            ThursdayImageCheckBox.UnCheckedImage = Properties.Resources.thursday_unchecked;
+            ThursdayImageCheckBox.CheckedImage = Properties.Resources.thursday_checked;
+            ThursdayImageCheckBox.RefreshImages();
+            ThursdayImageCheckBox.CheckedChange += ThursdayImageCheckBox_CheckedChange;
+            wednesdayImageCheckBox.UnCheckedImage = Properties.Resources.wednesday_unchecked;
+            wednesdayImageCheckBox.CheckedImage = Properties.Resources.wednesday_checked;
+            wednesdayImageCheckBox.RefreshImages();
+            wednesdayImageCheckBox.CheckedChange += WednesdayImageCheckBox_CheckedChange; ;
+            tuesdayImageCheckBox.UnCheckedImage = Properties.Resources.tusday_unchecked;
+            tuesdayImageCheckBox.CheckedImage = Properties.Resources.tusday_checked;
+            tuesdayImageCheckBox.RefreshImages();
+            tuesdayImageCheckBox.CheckedChange += TuesdayImageCheckBox_CheckedChange;
+            mondayImageCheckBox.UnCheckedImage = Properties.Resources.monday_unchecked;
+            mondayImageCheckBox.CheckedImage = Properties.Resources.monday_checked;
+            mondayImageCheckBox.RefreshImages();
+            mondayImageCheckBox.CheckedChange += MondayImageCheckBox_CheckedChange;
+            sundayImageCheckBox.UnCheckedImage = Properties.Resources.sunday_unchecked;
+            sundayImageCheckBox.CheckedImage = Properties.Resources.sunday_checked;
+            sundayImageCheckBox.RefreshImages();
+            sundayImageCheckBox.CheckedChange += SundayImageCheckBox_CheckedChange;
+            saturdayImageCheckBox.UnCheckedImage = Properties.Resources.saturday_unchecked;
+            saturdayImageCheckBox.CheckedImage = Properties.Resources.saturday_checked;
+            saturdayImageCheckBox.RefreshImages();
+            saturdayImageCheckBox.CheckedChange += SaturdayImageCheckBox_CheckedChange;
+
             _context = new AppDBContext();
 
             StartDateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
@@ -59,6 +90,41 @@ namespace Sahab_Desktop
                 "متغییر عادی",
                 "متغییر روزمره",
             });
+        }
+
+        private void SaturdayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        {
+            DayOfWeeks.Add(DayOfWeek.Saturday);
+        }
+
+        private void SundayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        {
+            DayOfWeeks.Add(DayOfWeek.Sunday);
+        }
+
+        private void MondayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        {
+            DayOfWeeks.Add(DayOfWeek.Monday);
+        }
+
+        private void TuesdayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        {
+            DayOfWeeks.Add(DayOfWeek.Tuesday);
+        }
+
+        private void WednesdayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        {
+            DayOfWeeks.Add(DayOfWeek.Wednesday);
+        }
+
+        private void ThursdayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        {
+            DayOfWeeks.Add(DayOfWeek.Thursday);
+        }
+
+        private void FridayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        {
+            DayOfWeeks.Add(DayOfWeek.Friday);
         }
 
         private void RefreshDoctrineComboBox()
@@ -150,7 +216,16 @@ namespace Sahab_Desktop
                 }
                 else
                 {
-                    valid = false;
+                    EffectiveControllsOnEndDate_Changed(sender, e);
+                    task.EndDate = EndDate.Value;
+                }
+                if (specialDaysListBox.Items.Count != 0)
+                {
+                    task.SpecialDates = string.Join(",", specialDaysListBox.Items);
+                }
+                if (WeeklyRadioButton.Checked)
+                {
+                    task.DaysOfWeek = string.Join(",", DayOfWeeks);
                 }
             }
 
@@ -192,6 +267,10 @@ namespace Sahab_Desktop
             {
                 RepeatMethod = RepeatMethod.Daily;
                 EffectiveControllsOnEndDate_Changed(sender, e);
+                ContinuousTimesNumeric.Enabled = true;
+                weekDaysGroupBox.Visible = false;
+                specialDaysGroupBox.Height += specialDaysGroupBox.Top - 35;
+                specialDaysGroupBox.Top = 35;
             }
         }
 
@@ -202,6 +281,9 @@ namespace Sahab_Desktop
                 RepeatMethod = RepeatMethod.Weekly;
                 EffectiveControllsOnEndDate_Changed(sender, e);
                 ContinuousTimesNumeric.Enabled = false;
+                weekDaysGroupBox.Visible = true;
+                specialDaysGroupBox.Top += 61;
+                specialDaysGroupBox.Height -= 61;
             }
         }
 
@@ -212,6 +294,9 @@ namespace Sahab_Desktop
                 RepeatMethod = RepeatMethod.Monthly;
                 EffectiveControllsOnEndDate_Changed(sender, e);
                 ContinuousTimesNumeric.Enabled = false;
+                weekDaysGroupBox.Visible = false;
+                specialDaysGroupBox.Height += specialDaysGroupBox.Top - 35;
+                specialDaysGroupBox.Top = 35;
             }
         }
 
@@ -260,9 +345,16 @@ namespace Sahab_Desktop
             }
             else if (UpToDateRadioButton.Checked)
             {
-                if (string.IsNullOrEmpty(UpToDateTextBox.Text))
+                if (!string.IsNullOrEmpty(UpToDateTextBox.Text))
                 {
-                    EndDate = Utils.Utils.ParsePersianDateString(UpToDateTextBox.Text);
+                    try
+                    {
+                        EndDate = Utils.Utils.ParsePersianDateString(UpToDateTextBox.Text);
+                    }
+                    catch (Exception)
+                    {
+                        //ignore
+                    }
                 }
             }
         }
@@ -310,6 +402,25 @@ namespace Sahab_Desktop
             TaskPriorityScore = TaskPriorityEffectCalculator.CalculatePeriorityScore(Doctrines, Frames, TaskPriority);
             PriorityScoreLable.Text = TaskPriorityScore.ToString();
             PriorityScoreLable.ForeColor = Color.Red;
+        }
+
+        private void AdvancedCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as CheckBox).Checked)
+            {
+                advancedGroupBox.Enabled = true;
+            }
+            else
+            {
+                advancedGroupBox.Enabled = false;
+            }
+        }
+
+        private void AddSpecialDayButton_Click(object sender, EventArgs e)
+        {
+            var specialDate = Utils.Utils.ParsePersianDateString(specialDateTextBox.Text);
+            specialDateTextBox.Text = "";
+            specialDaysListBox.Items.Add(specialDate.ToString("yyyy/MM/dd", new CultureInfo("fa-IR")));
         }
     }
 }
