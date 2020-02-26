@@ -15,7 +15,13 @@ namespace Sahab_Desktop.Controls
     {
         public event DateSelectEventHandler DateSelect;
         public delegate void DateSelectEventHandler(DateTime date);
+
+        public event WeekSelectEventHandler WeekSelect;
+        public delegate void WeekSelectEventHandler(Week week);
+
+        public CalendarMode Mode { get; set; } = CalendarMode.DaySelect;
         public DateTime SelectedDate { get; set; } = DateTime.Now;
+        public Week SelectedWeek { get; set; } = Week.SelectByDateBetween(DateTime.Now);
         private int FirstDayOfMonthLableNumber { get; set; }
         private DateTime FirstDate { get; set; }
         private DateTime FirstDateOfMonth { get; set; }
@@ -38,8 +44,58 @@ namespace Sahab_Desktop.Controls
 
         private void Label_Click(object sender, EventArgs e)
         {
-            SelectDate(sender as Label);
-            SelectSelectedDateLabel();
+            SelectedLabel = sender as Label;
+            if (Mode == CalendarMode.DaySelect)
+            {
+                SelectDate(sender as Label);
+                SelectSelectedDateLabel();
+            }
+            else if (Mode == CalendarMode.WeekSelect)
+            {
+                SelectWeek(sender as Label);
+                SelectSelectedWeekLabels();
+            }
+        }
+
+        private void SelectSelectedWeekLabels()
+        {
+            if (SelectedLabel == null)
+            {
+                Label label = GetSelectedLableBySelectedDate();
+                SelectedLabel = label;
+            }
+            DeSelectLabels();
+            DeSelectWeek();
+            var weekSelector = new Label
+            {
+                Name = "weekSelector",
+                Width = Width - 10,
+                Left = 5,
+                Height = SelectedLabel.Height + 4,
+                Top = SelectedLabel.Top - 2,
+                BackColor = Color.LightGreen,
+                BorderStyle = BorderStyle.FixedSingle,
+            };
+            Controls.Add(weekSelector);
+        }
+
+        private void DeSelectWeek()
+        {
+            foreach (Control control in Controls)
+            {
+                if (control.Name == "weekSelector")
+                {
+                    Controls.Remove(control);
+                }
+            }
+        }
+
+        private void SelectWeek(Label label)
+        {
+            var dateString = $"{yearTextBox.Text}/{monthTextBox.Text}/{label.Text}";
+            SelectedDate = Utils.Utils.ParsePersianDateString(dateString);
+            SelectedWeek = Week.SelectByDateBetween(SelectedDate);
+            WeekSelect?.Invoke(SelectedWeek);
         }
 
         private void SelectDate(Label label)
@@ -51,12 +107,21 @@ namespace Sahab_Desktop.Controls
 
         private void SelectSelectedDateLabel()
         {
+            DeSelectLabels();
+            if (SelectedLabel == null)
+            {
+                Label label = GetSelectedLableBySelectedDate();
+                SelectedLabel = label;
+            }
+            SelectedLabel.BorderStyle = BorderStyle.FixedSingle;
+            SelectedLabel.BackColor = Color.LightGreen;
+        }
+
+        private Label GetSelectedLableBySelectedDate()
+        {
             string labelName = $"label{FirstDayOfMonthLableNumber - 1 + int.Parse(SelectedDate.ToString("dd", new CultureInfo("fa-IR")))}";
             var label = (Label)Controls.Find(labelName, false)[0];
-            DeSelectLabels();
-            label.BorderStyle = BorderStyle.FixedSingle;
-            label.BackColor = Color.LightGreen;
-            SelectedLabel = label;
+            return label;
         }
 
         private void DeSelectLabels()
@@ -120,7 +185,14 @@ namespace Sahab_Desktop.Controls
                 }
                 label.Text = dayString;
             }
-            SelectSelectedDateLabel();
+            if (Mode == CalendarMode.DaySelect)
+            {
+                SelectSelectedDateLabel();
+            }
+            else
+            {
+                DeSelectLabels();
+            }
         }
 
         private void RefreshSize()
@@ -237,6 +309,33 @@ namespace Sahab_Desktop.Controls
                 month = 1;
             }
             monthTextBox.Text = month.ToString();
+        }
+    }
+
+    public enum CalendarMode
+    {
+        DaySelect,
+        WeekSelect,
+        MonthSelect,
+    }
+
+    public struct Week
+    {
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        public static Week SelectByDateBetween(DateTime date)
+        {
+            while (date.DayOfWeek != DayOfWeek.Friday)
+            {
+                date = date.AddDays(1);
+            }
+            var week = new Week()
+            {
+                EndDate = date,
+                StartDate = date.AddDays(-7)
+            };
+            return week;
         }
     }
 }
