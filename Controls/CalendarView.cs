@@ -27,11 +27,9 @@ namespace Sahab_Desktop.Controls
             RefreshSize();
             yearTextBox.Text = SelectedDate.ToString("yyyy", new CultureInfo("fa-IR"));
             monthTextBox.Text = SelectedDate.ToString("MM", new CultureInfo("fa-IR"));
-            FirstDateOfMonth = Utils.Utils.ParsePersianDateString($"{SelectedDate.ToString("yyyy/MM", new CultureInfo("fa-IR"))}/01");
             RefreshDates();
-            SelectSelectedDateLabel();
 
-            for (int i = 1; i <= 35; i++)
+            for (int i = 1; i <= 42; i++)
             {
                 var label = Controls.Find($"label{i}", false)[0];
                 label.Click += Label_Click;
@@ -75,6 +73,7 @@ namespace Sahab_Desktop.Controls
 
         private void RefreshDates()
         {
+            FirstDateOfMonth = Utils.Utils.ParsePersianDateString($"{SelectedDate.ToString("yyyy/MM", new CultureInfo("fa-IR"))}/01");
             var firstDayOfMonthDayOfTheWeek = FirstDateOfMonth.DayOfWeek;
             switch (firstDayOfMonthDayOfTheWeek)
             {
@@ -107,16 +106,21 @@ namespace Sahab_Desktop.Controls
                     FirstDate = FirstDateOfMonth.AddDays(0);
                     break;
             }
-            for (int i = 1; i <= 35; i++)
+            for (int i = 1; i <= 42; i++)
             {
                 var label = Controls.Find($"label{i}", false)[0];
                 var dayString = FirstDate.AddDays(i - 1).ToString("dd", new CultureInfo("fa-IR"));
-                if ((i <= 7 && int.Parse(dayString) > 7) || (i > 28 && int.Parse(dayString) < 8))
+                if ((i <= 7 && int.Parse(dayString) > 7) || (i > 28 && int.Parse(dayString) < 23))
                 {
                     label.Enabled = false;
                 }
+                else
+                {
+                    label.Enabled = true;
+                }
                 label.Text = dayString;
             }
+            SelectSelectedDateLabel();
         }
 
         private void RefreshSize()
@@ -129,6 +133,7 @@ namespace Sahab_Desktop.Controls
             label21.Left = distance - (label21.Width / 2);
             label28.Left = distance - (label28.Width / 2);
             label35.Left = distance - (label35.Width / 2);
+            label42.Left = distance - (label42.Width / 2);
             distance += one;
             thursdayLable.Left = distance - (thursdayLable.Width / 2);
             label6.Left = distance - (label6.Width / 2);
@@ -136,6 +141,7 @@ namespace Sahab_Desktop.Controls
             label20.Left = distance - (label20.Width / 2);
             label27.Left = distance - (label27.Width / 2);
             label34.Left = distance - (label34.Width / 2);
+            label41.Left = distance - (label41.Width / 2);
             distance += one;
             wednesdayLable.Left = distance - (wednesdayLable.Width / 2);
             label5.Left = distance - (label5.Width / 2);
@@ -143,6 +149,7 @@ namespace Sahab_Desktop.Controls
             label19.Left = distance - (label19.Width / 2);
             label26.Left = distance - (label26.Width / 2);
             label33.Left = distance - (label33.Width / 2);
+            label40.Left = distance - (label40.Width / 2);
             distance += one;
             tuesdayLable.Left = distance - (tuesdayLable.Width / 2);
             label4.Left = distance - (label4.Width / 2);
@@ -150,6 +157,7 @@ namespace Sahab_Desktop.Controls
             label18.Left = distance - (label18.Width / 2);
             label25.Left = distance - (label25.Width / 2);
             label32.Left = distance - (label32.Width / 2);
+            label39.Left = distance - (label39.Width / 2);
             distance += one;
             mondayLable.Left = distance - (mondayLable.Width / 2);
             label3.Left = distance - (label3.Width / 2);
@@ -157,6 +165,7 @@ namespace Sahab_Desktop.Controls
             label17.Left = distance - (label17.Width / 2);
             label24.Left = distance - (label24.Width / 2);
             label31.Left = distance - (label31.Width / 2);
+            label38.Left = distance - (label38.Width / 2);
             distance += one;
             sundayLable.Left = distance - (sundayLable.Width / 2);
             label2.Left = distance - (label2.Width / 2);
@@ -164,6 +173,7 @@ namespace Sahab_Desktop.Controls
             label16.Left = distance - (label16.Width / 2);
             label23.Left = distance - (label23.Width / 2);
             label30.Left = distance - (label30.Width / 2);
+            label37.Left = distance - (label37.Width / 2);
             distance += one;
             saturdayLable.Left = distance - (saturdayLable.Width / 2);
             label1.Left = distance - (label1.Width / 2);
@@ -171,6 +181,7 @@ namespace Sahab_Desktop.Controls
             label15.Left = distance - (label15.Width / 2);
             label22.Left = distance - (label22.Width / 2);
             label29.Left = distance - (label29.Width / 2);
+            label36.Left = distance - (label36.Width / 2);
         }
 
         private void CalendarView_Resize(object sender, EventArgs e)
@@ -183,6 +194,7 @@ namespace Sahab_Desktop.Controls
             if (!string.IsNullOrEmpty(monthTextBox.Text) && SelectedLabel != null)
             {
                 SelectDate(SelectedLabel);
+                RefreshDates();
             }
         }
 
@@ -191,6 +203,7 @@ namespace Sahab_Desktop.Controls
             if (!string.IsNullOrEmpty(yearTextBox.Text) && SelectedLabel != null)
             {
                 SelectDate(SelectedLabel);
+                RefreshDates();
             }
         }
 

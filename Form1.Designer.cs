@@ -36,10 +36,10 @@
             this.StartDateLable = new System.Windows.Forms.Label();
             this.StartDateTextBox = new System.Windows.Forms.TextBox();
             this.panel = new System.Windows.Forms.Panel();
-            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
             this.Show = new System.Windows.Forms.Button();
             this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
             this.calendarView = new Sahab_Desktop.Controls.CalendarView();
+            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -116,13 +116,6 @@
             this.panel.Size = new System.Drawing.Size(753, 330);
             this.panel.TabIndex = 3;
             // 
-            // dailyTaskViewer
-            // 
-            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
-            this.dailyTaskViewer.Name = "dailyTaskViewer";
-            this.dailyTaskViewer.Size = new System.Drawing.Size(753, 1436);
-            this.dailyTaskViewer.TabIndex = 0;
-            // 
             // Show
             // 
             this.Show.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -151,8 +144,15 @@
             this.calendarView.Location = new System.Drawing.Point(12, 27);
             this.calendarView.Name = "calendarView";
             this.calendarView.SelectedDate = new System.DateTime(2020, 2, 23, 22, 33, 10, 994);
-            this.calendarView.Size = new System.Drawing.Size(459, 309);
+            this.calendarView.Size = new System.Drawing.Size(459, 338);
             this.calendarView.TabIndex = 6;
+            // 
+            // dailyTaskViewer
+            // 
+            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
+            this.dailyTaskViewer.Name = "dailyTaskViewer";
+            this.dailyTaskViewer.Size = new System.Drawing.Size(753, 1436);
+            this.dailyTaskViewer.TabIndex = 0;
             // 
             // MainForm
             // 

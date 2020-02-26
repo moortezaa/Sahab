@@ -76,6 +76,13 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // yearTextBox
@@ -520,6 +527,69 @@
             this.label35.Text = "11";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label36
+            // 
+            this.label36.Location = new System.Drawing.Point(482, 297);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(30, 30);
+            this.label36.TabIndex = 4;
+            this.label36.Text = "11";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label37
+            // 
+            this.label37.Location = new System.Drawing.Point(434, 297);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(30, 30);
+            this.label37.TabIndex = 4;
+            this.label37.Text = "11";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label38
+            // 
+            this.label38.Location = new System.Drawing.Point(398, 297);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(30, 30);
+            this.label38.TabIndex = 4;
+            this.label38.Text = "11";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label39
+            // 
+            this.label39.Location = new System.Drawing.Point(352, 297);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(30, 30);
+            this.label39.TabIndex = 4;
+            this.label39.Text = "11";
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label40
+            // 
+            this.label40.Location = new System.Drawing.Point(296, 297);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(30, 30);
+            this.label40.TabIndex = 4;
+            this.label40.Text = "11";
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label41
+            // 
+            this.label41.Location = new System.Drawing.Point(238, 297);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(30, 30);
+            this.label41.TabIndex = 4;
+            this.label41.Text = "11";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label42
+            // 
+            this.label42.Location = new System.Drawing.Point(189, 297);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(30, 30);
+            this.label42.TabIndex = 4;
+            this.label42.Text = "11";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CalendarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -530,6 +600,13 @@
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.label30);
+            this.Controls.Add(this.label42);
+            this.Controls.Add(this.label41);
+            this.Controls.Add(this.label40);
+            this.Controls.Add(this.label39);
+            this.Controls.Add(this.label38);
+            this.Controls.Add(this.label37);
+            this.Controls.Add(this.label36);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
@@ -573,7 +650,7 @@
             this.Controls.Add(this.monthTextBox);
             this.Controls.Add(this.yearTextBox);
             this.Name = "CalendarView";
-            this.Size = new System.Drawing.Size(520, 309);
+            this.Size = new System.Drawing.Size(520, 336);
             this.Resize += new System.EventHandler(this.CalendarView_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -630,5 +707,12 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
     }
 }
