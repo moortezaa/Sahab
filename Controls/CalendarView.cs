@@ -19,7 +19,21 @@ namespace Sahab_Desktop.Controls
         public event WeekSelectEventHandler WeekSelect;
         public delegate void WeekSelectEventHandler(Week week);
 
-        public CalendarMode Mode { get; set; } = CalendarMode.DaySelect;
+        private event ModeChange ModeChanged;
+        private delegate void ModeChange(CalendarMode mode);
+        private CalendarMode mode { get; set; } = CalendarMode.DaySelect;
+        public CalendarMode Mode
+        {
+            get
+            {
+                return mode;
+            }
+            set
+            {
+                mode = value;
+                ModeChanged?.Invoke(value);
+            }
+        }
         public DateTime SelectedDate { get; set; } = DateTime.Now;
         public Week SelectedWeek { get; set; } = Week.SelectByDateBetween(DateTime.Now);
         private int FirstDayOfMonthLableNumber { get; set; }
@@ -30,6 +44,7 @@ namespace Sahab_Desktop.Controls
         public CalendarView()
         {
             InitializeComponent();
+            ModeChanged += CalendarView_ModeChanged;
             RefreshSize();
             yearTextBox.Text = SelectedDate.ToString("yyyy", new CultureInfo("fa-IR"));
             monthTextBox.Text = SelectedDate.ToString("MM", new CultureInfo("fa-IR"));
@@ -42,15 +57,20 @@ namespace Sahab_Desktop.Controls
             }
         }
 
+        private void CalendarView_ModeChanged(CalendarMode mode)
+        {
+            Label_Click(SelectedLabel, new EventArgs());
+        }
+
         private void Label_Click(object sender, EventArgs e)
         {
             SelectedLabel = sender as Label;
-            if (Mode == CalendarMode.DaySelect)
+            if (mode == CalendarMode.DaySelect)
             {
                 SelectDate(sender as Label);
                 SelectSelectedDateLabel();
             }
-            else if (Mode == CalendarMode.WeekSelect)
+            else if (mode == CalendarMode.WeekSelect)
             {
                 SelectWeek(sender as Label);
                 SelectSelectedWeekLabels();
@@ -107,6 +127,7 @@ namespace Sahab_Desktop.Controls
 
         private void SelectSelectedDateLabel()
         {
+            DeSelectWeek();
             DeSelectLabels();
             if (SelectedLabel == null)
             {
@@ -185,7 +206,7 @@ namespace Sahab_Desktop.Controls
                 }
                 label.Text = dayString;
             }
-            if (Mode == CalendarMode.DaySelect)
+            if (mode == CalendarMode.DaySelect)
             {
                 SelectSelectedDateLabel();
             }
@@ -333,7 +354,7 @@ namespace Sahab_Desktop.Controls
             var week = new Week()
             {
                 EndDate = date,
-                StartDate = date.AddDays(-7)
+                StartDate = date.AddDays(-6)
             };
             return week;
         }

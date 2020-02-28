@@ -1,6 +1,6 @@
 ﻿namespace Sahab_Desktop.Controls
 {
-    partial class SingleTaskView
+    partial class SingleDailyTaskView
     {
         /// <summary> 
         /// Required designer variable.

@@ -14,7 +14,7 @@ namespace Sahab_Desktop.Controls
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Models.Task> Tasks { get; set; } = new List<Models.Task>();
-        public DateTime CurrentDate { get; internal set; }
+        public DateTime Date { get; internal set; }
 
         private const int TimeLabelWidth = 30;
 
@@ -81,7 +81,7 @@ namespace Sahab_Desktop.Controls
 
         private void AddSingleTaskView(Models.Task task)
         {
-            var taskView = new SingleTaskView(CurrentDate)
+            var taskView = new SingleDailyTaskView(Date)
             {
                 Height = (int)task.EndTime.Subtract(task.StartTime).TotalMinutes,
                 Width = this.Width - TimeLabelWidth,
@@ -96,9 +96,9 @@ namespace Sahab_Desktop.Controls
         {
             foreach (var control in Controls)
             {
-                if (control.GetType() == typeof(SingleTaskView))
+                if (control.GetType() == typeof(SingleDailyTaskView))
                 {
-                    (control as SingleTaskView).Width = Width - TimeLabelWidth;
+                    (control as SingleDailyTaskView).Width = Width - TimeLabelWidth;
                 }
                 else if (control.GetType() == typeof(Label))
                 {
@@ -120,13 +120,13 @@ namespace Sahab_Desktop.Controls
             var colorindex = 0;
             foreach (var control in Controls)
             {
-                if (control.GetType() == typeof(SingleTaskView))
+                if (control.GetType() == typeof(SingleDailyTaskView))
                 {
                     var color = them[colorindex % them.Count];
-                    (control as SingleTaskView).BackColor = color;
+                    (control as SingleDailyTaskView).BackColor = color;
                     if (color.GetBrightness() < 0.5)
                     {
-                        (control as SingleTaskView).ForeColor = Color.White;
+                        (control as SingleDailyTaskView).ForeColor = Color.White;
                     }
                     colorindex += 1;
                 }
