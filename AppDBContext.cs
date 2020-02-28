@@ -11,6 +11,7 @@ namespace Sahab_Desktop
         public AppDBContext()
             :base("SahabConnectionString")
         {
+            Database.SetInitializer(new AppDBInitializer());
         }
 
         public DbSet<Task> Tasks { get; set; }
@@ -18,5 +19,7 @@ namespace Sahab_Desktop
         public DbSet<DoctrineRelation> DoctrineRelations { get; set; }
         public DbSet<Frame> Frames { get; set; }
         public DbSet<FrameRelation> FrameRelations { get; set; }
+        public DbSet<Them> Thems { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,30 @@ namespace Sahab_Desktop.Utils
 {
     class Utils
     {
+        public static List<Color> GetThem()
+        {
+            Models.Them them;
+            using (var context = new AppDBContext())
+            {
+                Models.User user = GetUser();
+                them = context.Thems.Where(t => t.Name == user.ThemName).FirstOrDefault();
+                if (them is null)
+                {
+                    them = context.Thems.Where(t => t.Name == "Default").FirstOrDefault();
+                }
+            }
+            var colors = them.Colors.Split(',').Select(s => ColorTranslator.FromHtml(s)).ToList();
+            return colors;
+        }
+
+        public static Models.User GetUser()
+        {
+            using (var context = new AppDBContext())
+            {
+                return context.Users.First();
+            }
+        }
+
         public static DateTime ParsePersianDateString(string persianDate)
         {
             try

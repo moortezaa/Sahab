@@ -98,14 +98,7 @@ namespace Sahab_Desktop.Controls
 
         private void ReColor()
         {
-            var them = new List<Color>()
-            {
-                Color.FromArgb(237,85,59),
-                Color.FromArgb(246,213,92),
-                Color.FromArgb(60,174,163),
-                Color.FromArgb(32,99,155),
-                Color.FromArgb(23,63,95),
-            };
+            var them = Utils.Utils.GetThem();
             var colorindex = 0;
             foreach (Control control in tasksPanel.Controls)
             {
@@ -154,6 +147,14 @@ namespace Sahab_Desktop.Controls
             {
                 task = context.Tasks.Single(t => t.Id.ToString() == id);
             }
+        }
+
+        private void ویرایشToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var label = ((sender as ToolStripMenuItem).Owner as ContextMenuStrip).SourceControl as Label;
+            GetTaskAndDateFromLabel(label, out var date, out var task);
+
+            TaskManager.DoTaskEditOperation(FindForm(),task, date);
         }
     }
 }

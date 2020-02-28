@@ -33,12 +33,14 @@
             this.اضافهکردنبرنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.نمایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.روزToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel = new System.Windows.Forms.Panel();
-            this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
             this.هفتهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calendarView = new Sahab_Desktop.Controls.CalendarView();
-            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.پوستهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel = new System.Windows.Forms.Panel();
             this.weeklyTaskViewer = new Sahab_Desktop.Controls.WeeklyTaskViewer();
+            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
+            this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
+            this.calendarView = new Sahab_Desktop.Controls.CalendarView();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +75,9 @@
             // 
             this.نمایشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.روزToolStripMenuItem,
-            this.هفتهToolStripMenuItem});
+            this.هفتهToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.پوستهToolStripMenuItem});
             this.نمایشToolStripMenuItem.Name = "نمایشToolStripMenuItem";
             this.نمایشToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.نمایشToolStripMenuItem.Text = "نمایش";
@@ -81,9 +85,30 @@
             // روزToolStripMenuItem
             // 
             this.روزToolStripMenuItem.Name = "روزToolStripMenuItem";
-            this.روزToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.روزToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.روزToolStripMenuItem.Text = "روز";
             this.روزToolStripMenuItem.Click += new System.EventHandler(this.روزToolStripMenuItem_Click);
+            // 
+            // هفتهToolStripMenuItem
+            // 
+            this.هفتهToolStripMenuItem.Name = "هفتهToolStripMenuItem";
+            this.هفتهToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.هفتهToolStripMenuItem.Text = "هفته";
+            this.هفتهToolStripMenuItem.Click += new System.EventHandler(this.هفتهToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Enabled = false;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "____________________";
+            this.toolStripMenuItem2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // پوستهToolStripMenuItem
+            // 
+            this.پوستهToolStripMenuItem.Name = "پوستهToolStripMenuItem";
+            this.پوستهToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.پوستهToolStripMenuItem.Text = "پوسته";
             // 
             // panel
             // 
@@ -98,6 +123,28 @@
             this.panel.Size = new System.Drawing.Size(753, 330);
             this.panel.TabIndex = 3;
             // 
+            // weeklyTaskViewer
+            // 
+            this.weeklyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.weeklyTaskViewer.BackColor = System.Drawing.Color.Gray;
+            this.weeklyTaskViewer.DPM = 2;
+            this.weeklyTaskViewer.Location = new System.Drawing.Point(0, 0);
+            this.weeklyTaskViewer.Name = "weeklyTaskViewer";
+            this.weeklyTaskViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.weeklyTaskViewer.Size = new System.Drawing.Size(753, 513);
+            this.weeklyTaskViewer.TabIndex = 1;
+            this.weeklyTaskViewer.Visible = false;
+            // 
+            // dailyTaskViewer
+            // 
+            this.dailyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
+            this.dailyTaskViewer.Name = "dailyTaskViewer";
+            this.dailyTaskViewer.Size = new System.Drawing.Size(753, 1436);
+            this.dailyTaskViewer.TabIndex = 0;
+            // 
             // dailyTaskViewVScrollBar
             // 
             this.dailyTaskViewVScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -107,13 +154,6 @@
             this.dailyTaskViewVScrollBar.Size = new System.Drawing.Size(23, 330);
             this.dailyTaskViewVScrollBar.TabIndex = 5;
             this.dailyTaskViewVScrollBar.ValueChanged += new System.EventHandler(this.DailyTaskViewVScrollBar_ValueChanged);
-            // 
-            // هفتهToolStripMenuItem
-            // 
-            this.هفتهToolStripMenuItem.Name = "هفتهToolStripMenuItem";
-            this.هفتهToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.هفتهToolStripMenuItem.Text = "هفته";
-            this.هفتهToolStripMenuItem.Click += new System.EventHandler(this.هفتهToolStripMenuItem_Click);
             // 
             // calendarView
             // 
@@ -125,27 +165,6 @@
             this.calendarView.SelectedDate = new System.DateTime(2020, 2, 23, 22, 33, 10, 994);
             this.calendarView.Size = new System.Drawing.Size(459, 338);
             this.calendarView.TabIndex = 6;
-            // 
-            // dailyTaskViewer
-            // 
-            this.dailyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
-            this.dailyTaskViewer.Name = "dailyTaskViewer";
-            this.dailyTaskViewer.Size = new System.Drawing.Size(753, 1436);
-            this.dailyTaskViewer.TabIndex = 0;
-            // 
-            // weeklyTaskViewer
-            // 
-            this.weeklyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.weeklyTaskViewer.BackColor = System.Drawing.Color.Gray;
-            this.weeklyTaskViewer.Location = new System.Drawing.Point(0, 0);
-            this.weeklyTaskViewer.Name = "weeklyTaskViewer";
-            this.weeklyTaskViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.weeklyTaskViewer.Size = new System.Drawing.Size(753, 513);
-            this.weeklyTaskViewer.TabIndex = 1;
-            this.weeklyTaskViewer.Visible = false;
             // 
             // MainForm
             // 
@@ -181,6 +200,8 @@
         private Controls.CalendarView calendarView;
         private System.Windows.Forms.ToolStripMenuItem هفتهToolStripMenuItem;
         private Controls.WeeklyTaskViewer weeklyTaskViewer;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem پوستهToolStripMenuItem;
     }
 }
 

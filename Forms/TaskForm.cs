@@ -21,6 +21,8 @@ namespace Sahab_Desktop
 
         public delegate void TaskSubmitEventHandler(Models.Task task);
 
+        public Models.Task Task { get; set; } = new Models.Task();
+
         AppDBContext _context;
         public List<Doctrine> Doctrines = new List<Doctrine>();
         public List<Frame> Frames = new List<Frame>();
@@ -29,9 +31,46 @@ namespace Sahab_Desktop
         public TaskPriority TaskPriority { get; set; }
         public ulong TaskPriorityScore { get; set; }
         public List<DayOfWeek> DayOfWeeks = new List<DayOfWeek>();
+        private bool IsEditMode { set; get; } = false;
         public TaskForm()
         {
             InitializeComponent();
+            SetWeeklyImageCheckBoxesImage();
+
+            _context = new AppDBContext();
+
+            StartDateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
+
+            RefreshDoctrineComboBox();
+
+            RefreshFrameComboBox();
+
+            PeriodComboBox.Items.AddRange(new object[]
+            {
+                "لطفا انتخاب کنید",
+                "روز",
+                "هفته",
+                "ماه",
+                "سال",
+            });
+            TaskPriorityComboBox.Items.AddRange(new object[]
+            {
+                "لطفا انتخاب کنید",
+                "ضروری ضروری",
+                "ضروری عادی",
+                "ضروری روزمره",
+                "عادی ضروری",
+                "عادی عادی",
+                "عادی روزمره",
+                "متغییر ضروری",
+                "متغییر عادی",
+                "متغییر روزمره",
+            });
+            HideWeeklyGroup();
+        }
+
+        private void SetWeeklyImageCheckBoxesImage()
+        {
             fridayImageCheckBox.UnCheckedImage = Properties.Resources.friday_unchecked;
             fridayImageCheckBox.CheckedImage = Properties.Resources.friday_checked;
             fridayImageCheckBox.RefreshImages();
@@ -60,37 +99,6 @@ namespace Sahab_Desktop
             saturdayImageCheckBox.CheckedImage = Properties.Resources.saturday_checked;
             saturdayImageCheckBox.RefreshImages();
             saturdayImageCheckBox.CheckedChange += SaturdayImageCheckBox_CheckedChange;
-
-            _context = new AppDBContext();
-
-            StartDateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
-
-            RefreshDoctrineComboBox();
-
-            RefreshFramComboBox();
-
-            PeriodComboBox.Items.AddRange(new object[]
-                {
-                    "لطفا انتخاب کنید",
-                    "روز",
-                    "هفته",
-                    "ماه",
-                    "سال",
-                });
-            TaskPriorityComboBox.Items.AddRange(new object[]
-            {
-                "لطفا انتخاب کنید",
-                "ضروری ضروری",
-                "ضروری عادی",
-                "ضروری روزمره",
-                "عادی ضروری",
-                "عادی عادی",
-                "عادی روزمره",
-                "متغییر ضروری",
-                "متغییر عادی",
-                "متغییر روزمره",
-            });
-            HideWeeklyGroup();
         }
 
         private void SaturdayImageCheckBox_CheckedChange(object sender, EventArgs e)
@@ -136,7 +144,7 @@ namespace Sahab_Desktop
             DoctrinesComboBox.ValueMember = nameof(Doctrine.Id);
         }
 
-        private void RefreshFramComboBox()
+        private void RefreshFrameComboBox()
         {
             FramesComboBox.Items.Clear();
             FramesComboBox.Items.AddRange(_context.Frames.ToArray());
@@ -152,7 +160,7 @@ namespace Sahab_Desktop
                 var frameForm = new FrameForm();
                 if (frameForm.ShowDialog() == DialogResult.OK)
                 {
-                    RefreshFramComboBox();
+                    RefreshFrameComboBox();
                 }
             }
         }
@@ -172,26 +180,26 @@ namespace Sahab_Desktop
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             bool valid = true;
-            var task = new Models.Task()
-            {
-                Title = TitleTextBox.Text,
-                Location = LocationTextBox.Text,
-                Peoples = PeaoplesTextBox.Text,
-                Description = DescriptionTextBox.Text,
-                StartTime = Utils.Utils.ParsePersianTimeString(StartTimeTextBox.Text),
-                StartDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text),
-                EndTime = Utils.Utils.ParsePersianTimeString(EndTimeTextBox.Text),
-                EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text),
-                TaskPriority = TaskPriority,
-                TaskPriorityScore = TaskPriorityScore
-            };
+
+            Task.Title = TitleTextBox.Text;
+            Task.Location = LocationTextBox.Text;
+            Task.Peoples = PeoplesTextBox.Text;
+            Task.Description = DescriptionTextBox.Text;
+            Task.StartTime = Utils.Utils.ParsePersianTimeString(StartTimeTextBox.Text);
+            Task.StartDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text);
+            Task.EndTime = Utils.Utils.ParsePersianTimeString(EndTimeTextBox.Text);
+            Task.EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text);
+            Task.TaskPriority = TaskPriority;
+            Task.TaskPriorityScore = TaskPriorityScore;
+
+
             foreach (var frame in Frames)
             {
                 _context.Frames.Attach(frame);
                 var relation = new FrameRelation()
                 {
                     Frame = frame,
-                    Task = task
+                    Task = Task
                 };
                 _context.FrameRelations.Add(relation);
             }
@@ -201,38 +209,57 @@ namespace Sahab_Desktop
                 var relation = new DoctrineRelation()
                 {
                     Doctrine = doctrine,
-                    Task = task
+                    Task = Task
                 };
                 _context.DoctrineRelations.Add(relation);
             }
 
             if (RepeatCheckBox.Checked)
             {
-                task.RepeatMethod = RepeatMethod;
-                task.ContinuousTimes = (int)ContinuousTimesNumeric.Value;
-                task.DiscreteTimes = (int)DiscreteTimesNumeric.Value;
+                Task.RepeatMethod = RepeatMethod;
+                Task.ContinuousTimes = (int)ContinuousTimesNumeric.Value;
+                Task.DiscreteTimes = (int)DiscreteTimesNumeric.Value;
                 if (EndDate != null)
                 {
-                    task.EndDate = EndDate.Value;
+                    Task.EndDate = EndDate.Value;
                 }
                 else
                 {
                     EffectiveControllsOnEndDate_Changed(sender, e);
-                    task.EndDate = EndDate.Value;
+                    Task.EndDate = EndDate.Value;
                 }
                 if (specialDaysListBox.Items.Count != 0)
                 {
-                    task.SpecialDates = string.Join(",", specialDaysListBox.Items);
+                    Task.SpecialDates = string.Join(",", specialDaysListBox.Items);
+                    foreach (string dateString in specialDaysListBox.Items)
+                    {
+                        DateTime date = Utils.Utils.ParsePersianDateString(dateString);
+                        if (Task.EndDate.CompareTo(date) < 0)
+                        {
+                            Task.EndDate = date;
+                        }
+                        if (Task.StartDate.CompareTo(date) > 0)
+                        {
+                            Task.StartDate = date;
+                        }
+                    }
+                }
+                else if (Task.StartDate.CompareTo(Task.EndDate)==0)
+                {
+                    Task.RepeatMethod = 0;
                 }
                 if (WeeklyRadioButton.Checked)
                 {
-                    task.DaysOfWeek = string.Join(",", DayOfWeeks);
+                    Task.DaysOfWeek = string.Join(",", DayOfWeeks);
                 }
             }
-
-            _context.Tasks.Add(task);
+            if (!IsEditMode)
+            {
+                _context.Tasks.Add(Task);
+            }
             _context.SaveChanges();
-            OnTaskSubmited?.Invoke(task);
+            OnTaskSubmited?.Invoke(Task);
+            DialogResult = DialogResult.OK;
             Close();
         }
 
@@ -430,6 +457,90 @@ namespace Sahab_Desktop
             var specialDate = Utils.Utils.ParsePersianDateString(specialDateTextBox.Text);
             specialDateTextBox.Text = "";
             specialDaysListBox.Items.Add(specialDate.ToString("yyyy/MM/dd", new CultureInfo("fa-IR")));
+        }
+
+        private void TaskForm_Load(object sender, EventArgs e)
+        {
+            var task = _context.Tasks.SingleOrDefault(t => t.Id == Task.Id);
+            if (task != null)
+            {
+                IsEditMode = true;
+            }
+
+            if (!string.IsNullOrEmpty(Task.Title))
+            {
+                TitleTextBox.Text = Task.Title;
+                LocationTextBox.Text = Task.Location;
+                PeoplesTextBox.Text = Task.Peoples;
+                DescriptionTextBox.Text = Task.Description;
+                StartTimeTextBox.Text = Task.StartTime.ToString("HH:mm", new CultureInfo("fa-IR"));
+                EndTimeTextBox.Text = Task.EndTime.ToString("HH:mm", new CultureInfo("fa-IR"));
+                StartDateTextBox.Text = Task.StartDate.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
+                if (Task.RepeatMethod != 0)
+                {
+                    switch (Task.RepeatMethod)
+                    {
+                        case RepeatMethod.Daily:
+                            RepeatCheckBox.Checked = true;
+                            DailyRadioButton.Checked = true;
+                            break;
+                        case RepeatMethod.Weekly:
+                            RepeatCheckBox.Checked = true;
+                            WeeklyRadioButton.Checked = true;
+                            var daysOfWeeks = Task.DaysOfWeek.Split(',');
+                            foreach (var dayOfWeekString in daysOfWeeks)
+                            {
+                                var dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayOfWeekString);
+                                switch (dayOfWeek)
+                                {
+                                    case DayOfWeek.Sunday:
+                                        sundayImageCheckBox.Checked = true;
+                                        break;
+                                    case DayOfWeek.Monday:
+                                        mondayImageCheckBox.Checked = true;
+                                        break;
+                                    case DayOfWeek.Tuesday:
+                                        tuesdayImageCheckBox.Checked = true;
+                                        break;
+                                    case DayOfWeek.Wednesday:
+                                        wednesdayImageCheckBox.Checked = true;
+                                        break;
+                                    case DayOfWeek.Thursday:
+                                        ThursdayImageCheckBox.Checked = true;
+                                        break;
+                                    case DayOfWeek.Friday:
+                                        fridayImageCheckBox.Checked = true;
+                                        break;
+                                    case DayOfWeek.Saturday:
+                                        saturdayImageCheckBox.Checked = true;
+                                        break;
+                                }
+                            }
+                            break;
+                        case RepeatMethod.Monthly:
+                            RepeatCheckBox.Checked = true;
+                            MonthlyRadioButton.Checked = true;
+                            break;
+                    }
+                    if (Task.SpecialDates != null)
+                    {
+                        specialDaysListBox.Items.AddRange(Task.SpecialDates.Split(','));
+                    }
+                    ContinuousTimesNumeric.Value = Task.ContinuousTimes;
+                    DiscreteTimesNumeric.Value = Task.DiscreteTimes;
+                    UpToDateRadioButton.Checked = true;
+                    UpToDateTextBox.Text = Task.EndDate.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
+                }
+            }
+
+            if (IsEditMode)
+            {
+                Task = task;
+            }
+            else
+            {
+                Task = new Models.Task();
+            }
         }
     }
 }

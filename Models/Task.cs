@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,28 @@ namespace Sahab_Desktop.Models
 
         public ulong TaskPriorityScore { get; set; }
 
+        private string ColorHex { get; set; }
+
+        [NotMapped]
+        public Color? Color
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(ColorHex))
+                {
+                    return null;
+                }
+                return ColorTranslator.FromHtml(ColorHex);
+            }
+            set
+            {
+                if (value.HasValue)
+                {
+                    ColorHex = ColorTranslator.ToHtml(value.Value);
+                }
+            }
+        }
+
         [NotMapped]
         public List<DateTime> Dates
         {
@@ -71,8 +94,8 @@ namespace Sahab_Desktop.Models
                         dates.Add(StartDate);
                         break;
                     case RepeatMethod.Weekly:
-                        var daysOfWeek = DaysOfWeek.Split(',');
-                        foreach (var dayOfWeekString in daysOfWeek)
+                        var daysOfWeeks = DaysOfWeek.Split(',');
+                        foreach (var dayOfWeekString in daysOfWeeks)
                         {
                             var dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayOfWeekString);
                             date = StartDate;

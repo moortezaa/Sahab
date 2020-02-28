@@ -41,6 +41,7 @@
             this.tasksPanel = new System.Windows.Forms.Panel();
             this.tasksMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.حذفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scrollPanel.SuspendLayout();
             this.tasksMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -164,10 +165,11 @@
             // tasksMenuStrip
             // 
             this.tasksMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.حذفToolStripMenuItem});
+            this.حذفToolStripMenuItem,
+            this.ویرایشToolStripMenuItem});
             this.tasksMenuStrip.Name = "tasksMenuStrip";
             this.tasksMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tasksMenuStrip.Size = new System.Drawing.Size(181, 48);
+            this.tasksMenuStrip.Size = new System.Drawing.Size(181, 70);
             // 
             // حذفToolStripMenuItem
             // 
@@ -175,6 +177,13 @@
             this.حذفToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.حذفToolStripMenuItem.Text = "حذف";
             this.حذفToolStripMenuItem.Click += new System.EventHandler(this.حذفToolStripMenuItem_Click);
+            // 
+            // ویرایشToolStripMenuItem
+            // 
+            this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایشToolStripMenuItem.Text = "ویرایش";
+            this.ویرایشToolStripMenuItem.Click += new System.EventHandler(this.ویرایشToolStripMenuItem_Click);
             // 
             // WeeklyTaskViewer
             // 
@@ -214,5 +223,6 @@
         private System.Windows.Forms.Panel tasksPanel;
         private System.Windows.Forms.ContextMenuStrip tasksMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem حذفToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ویرایشToolStripMenuItem;
     }
 }

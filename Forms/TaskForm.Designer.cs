@@ -39,7 +39,7 @@
             this.StartTimeTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.LocationTextBox = new System.Windows.Forms.TextBox();
-            this.PeaoplesTextBox = new System.Windows.Forms.TextBox();
+            this.PeoplesTextBox = new System.Windows.Forms.TextBox();
             this.EndTimeTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.StartDateTextBox = new System.Windows.Forms.TextBox();
@@ -58,6 +58,13 @@
             this.addSpecialDayButton = new System.Windows.Forms.Button();
             this.specialDaysListBox = new System.Windows.Forms.ListBox();
             this.weekDaysGroupBox = new System.Windows.Forms.GroupBox();
+            this.saturdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.sundayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.mondayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.tuesdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.wednesdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.ThursdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
+            this.fridayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
             this.advancedCheckBox = new System.Windows.Forms.CheckBox();
             this.advancedGroupBox = new System.Windows.Forms.GroupBox();
             this.DiscreteTimesNumeric = new System.Windows.Forms.NumericUpDown();
@@ -80,13 +87,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.TaskPriorityComboBox = new System.Windows.Forms.ComboBox();
             this.SubmitButton = new System.Windows.Forms.Button();
-            this.saturdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
-            this.sundayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
-            this.mondayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
-            this.tuesdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
-            this.wednesdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
-            this.ThursdayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
-            this.fridayImageCheckBox = new Sahab_Desktop.Controls.ImageCheckBox();
             this.RepeatGroupBox.SuspendLayout();
             this.specialDaysGroupBox.SuspendLayout();
             this.weekDaysGroupBox.SuspendLayout();
@@ -219,13 +219,13 @@
             this.LocationTextBox.Size = new System.Drawing.Size(112, 20);
             this.LocationTextBox.TabIndex = 2;
             // 
-            // PeaoplesTextBox
+            // PeoplesTextBox
             // 
-            this.PeaoplesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PeaoplesTextBox.Location = new System.Drawing.Point(322, 12);
-            this.PeaoplesTextBox.Name = "PeaoplesTextBox";
-            this.PeaoplesTextBox.Size = new System.Drawing.Size(112, 20);
-            this.PeaoplesTextBox.TabIndex = 3;
+            this.PeoplesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PeoplesTextBox.Location = new System.Drawing.Point(322, 12);
+            this.PeoplesTextBox.Name = "PeoplesTextBox";
+            this.PeoplesTextBox.Size = new System.Drawing.Size(112, 20);
+            this.PeoplesTextBox.TabIndex = 3;
             // 
             // EndTimeTextBox
             // 
@@ -428,6 +428,76 @@
             this.weekDaysGroupBox.Size = new System.Drawing.Size(292, 55);
             this.weekDaysGroupBox.TabIndex = 20;
             this.weekDaysGroupBox.TabStop = false;
+            // 
+            // saturdayImageCheckBox
+            // 
+            this.saturdayImageCheckBox.Checked = false;
+            this.saturdayImageCheckBox.CheckedImage = null;
+            this.saturdayImageCheckBox.Location = new System.Drawing.Point(255, 15);
+            this.saturdayImageCheckBox.Name = "saturdayImageCheckBox";
+            this.saturdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.saturdayImageCheckBox.TabIndex = 0;
+            this.saturdayImageCheckBox.UnCheckedImage = null;
+            // 
+            // sundayImageCheckBox
+            // 
+            this.sundayImageCheckBox.Checked = false;
+            this.sundayImageCheckBox.CheckedImage = null;
+            this.sundayImageCheckBox.Location = new System.Drawing.Point(214, 15);
+            this.sundayImageCheckBox.Name = "sundayImageCheckBox";
+            this.sundayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.sundayImageCheckBox.TabIndex = 0;
+            this.sundayImageCheckBox.UnCheckedImage = null;
+            // 
+            // mondayImageCheckBox
+            // 
+            this.mondayImageCheckBox.Checked = false;
+            this.mondayImageCheckBox.CheckedImage = null;
+            this.mondayImageCheckBox.Location = new System.Drawing.Point(173, 15);
+            this.mondayImageCheckBox.Name = "mondayImageCheckBox";
+            this.mondayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.mondayImageCheckBox.TabIndex = 0;
+            this.mondayImageCheckBox.UnCheckedImage = null;
+            // 
+            // tuesdayImageCheckBox
+            // 
+            this.tuesdayImageCheckBox.Checked = false;
+            this.tuesdayImageCheckBox.CheckedImage = null;
+            this.tuesdayImageCheckBox.Location = new System.Drawing.Point(132, 15);
+            this.tuesdayImageCheckBox.Name = "tuesdayImageCheckBox";
+            this.tuesdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.tuesdayImageCheckBox.TabIndex = 0;
+            this.tuesdayImageCheckBox.UnCheckedImage = null;
+            // 
+            // wednesdayImageCheckBox
+            // 
+            this.wednesdayImageCheckBox.Checked = false;
+            this.wednesdayImageCheckBox.CheckedImage = null;
+            this.wednesdayImageCheckBox.Location = new System.Drawing.Point(91, 15);
+            this.wednesdayImageCheckBox.Name = "wednesdayImageCheckBox";
+            this.wednesdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.wednesdayImageCheckBox.TabIndex = 0;
+            this.wednesdayImageCheckBox.UnCheckedImage = null;
+            // 
+            // ThursdayImageCheckBox
+            // 
+            this.ThursdayImageCheckBox.Checked = false;
+            this.ThursdayImageCheckBox.CheckedImage = null;
+            this.ThursdayImageCheckBox.Location = new System.Drawing.Point(50, 15);
+            this.ThursdayImageCheckBox.Name = "ThursdayImageCheckBox";
+            this.ThursdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.ThursdayImageCheckBox.TabIndex = 0;
+            this.ThursdayImageCheckBox.UnCheckedImage = null;
+            // 
+            // fridayImageCheckBox
+            // 
+            this.fridayImageCheckBox.Checked = false;
+            this.fridayImageCheckBox.CheckedImage = null;
+            this.fridayImageCheckBox.Location = new System.Drawing.Point(9, 15);
+            this.fridayImageCheckBox.Name = "fridayImageCheckBox";
+            this.fridayImageCheckBox.Size = new System.Drawing.Size(30, 30);
+            this.fridayImageCheckBox.TabIndex = 0;
+            this.fridayImageCheckBox.UnCheckedImage = null;
             // 
             // advancedCheckBox
             // 
@@ -690,69 +760,6 @@
             this.SubmitButton.UseVisualStyleBackColor = false;
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
-            // saturdayImageCheckBox
-            // 
-            this.saturdayImageCheckBox.CheckedImage = null;
-            this.saturdayImageCheckBox.Location = new System.Drawing.Point(255, 15);
-            this.saturdayImageCheckBox.Name = "saturdayImageCheckBox";
-            this.saturdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
-            this.saturdayImageCheckBox.TabIndex = 0;
-            this.saturdayImageCheckBox.UnCheckedImage = null;
-            // 
-            // sundayImageCheckBox
-            // 
-            this.sundayImageCheckBox.CheckedImage = null;
-            this.sundayImageCheckBox.Location = new System.Drawing.Point(214, 15);
-            this.sundayImageCheckBox.Name = "sundayImageCheckBox";
-            this.sundayImageCheckBox.Size = new System.Drawing.Size(30, 30);
-            this.sundayImageCheckBox.TabIndex = 0;
-            this.sundayImageCheckBox.UnCheckedImage = null;
-            // 
-            // mondayImageCheckBox
-            // 
-            this.mondayImageCheckBox.CheckedImage = null;
-            this.mondayImageCheckBox.Location = new System.Drawing.Point(173, 15);
-            this.mondayImageCheckBox.Name = "mondayImageCheckBox";
-            this.mondayImageCheckBox.Size = new System.Drawing.Size(30, 30);
-            this.mondayImageCheckBox.TabIndex = 0;
-            this.mondayImageCheckBox.UnCheckedImage = null;
-            // 
-            // tusdayImageCheckBox
-            // 
-            this.tuesdayImageCheckBox.CheckedImage = null;
-            this.tuesdayImageCheckBox.Location = new System.Drawing.Point(132, 15);
-            this.tuesdayImageCheckBox.Name = "tusdayImageCheckBox";
-            this.tuesdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
-            this.tuesdayImageCheckBox.TabIndex = 0;
-            this.tuesdayImageCheckBox.UnCheckedImage = null;
-            // 
-            // wednesdayImageCheckBox
-            // 
-            this.wednesdayImageCheckBox.CheckedImage = null;
-            this.wednesdayImageCheckBox.Location = new System.Drawing.Point(91, 15);
-            this.wednesdayImageCheckBox.Name = "wednesdayImageCheckBox";
-            this.wednesdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
-            this.wednesdayImageCheckBox.TabIndex = 0;
-            this.wednesdayImageCheckBox.UnCheckedImage = null;
-            // 
-            // ThursdayImageCheckBox
-            // 
-            this.ThursdayImageCheckBox.CheckedImage = null;
-            this.ThursdayImageCheckBox.Location = new System.Drawing.Point(50, 15);
-            this.ThursdayImageCheckBox.Name = "ThursdayImageCheckBox";
-            this.ThursdayImageCheckBox.Size = new System.Drawing.Size(30, 30);
-            this.ThursdayImageCheckBox.TabIndex = 0;
-            this.ThursdayImageCheckBox.UnCheckedImage = null;
-            // 
-            // fridayImageCheckBox
-            // 
-            this.fridayImageCheckBox.CheckedImage = null;
-            this.fridayImageCheckBox.Location = new System.Drawing.Point(9, 15);
-            this.fridayImageCheckBox.Name = "fridayImageCheckBox";
-            this.fridayImageCheckBox.Size = new System.Drawing.Size(30, 30);
-            this.fridayImageCheckBox.TabIndex = 0;
-            this.fridayImageCheckBox.UnCheckedImage = null;
-            // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -771,7 +778,7 @@
             this.Controls.Add(this.FramesListBox);
             this.Controls.Add(this.DoctrinesListBox);
             this.Controls.Add(this.DescriptionTextBox);
-            this.Controls.Add(this.PeaoplesTextBox);
+            this.Controls.Add(this.PeoplesTextBox);
             this.Controls.Add(this.LocationTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.EndTimeTextBox);
@@ -791,6 +798,7 @@
             this.Name = "TaskForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "برنامه";
+            this.Load += new System.EventHandler(this.TaskForm_Load);
             this.RepeatGroupBox.ResumeLayout(false);
             this.RepeatGroupBox.PerformLayout();
             this.specialDaysGroupBox.ResumeLayout(false);
@@ -823,7 +831,7 @@
         private System.Windows.Forms.TextBox StartTimeTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox LocationTextBox;
-        private System.Windows.Forms.TextBox PeaoplesTextBox;
+        private System.Windows.Forms.TextBox PeoplesTextBox;
         private System.Windows.Forms.TextBox EndTimeTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox StartDateTextBox;

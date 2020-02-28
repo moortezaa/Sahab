@@ -19,6 +19,10 @@ namespace Sahab_Desktop.Controls
             {
                 return checkBox.Checked;
             }
+            set
+            {
+                checkBox.Checked = value;
+            }
         }
         public Image UnCheckedImage { get; set; }
         public Image CheckedImage { get; set; }

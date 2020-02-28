@@ -32,6 +32,27 @@ namespace Sahab_Desktop
 
             weeklyTaskViewer.Week = CurrentWeek;
             dailyTaskViewer.Date = CurrentDate;
+
+            using (var context = new AppDBContext())
+            {
+                var thems = context.Thems;
+                foreach (var them in thems)
+                {
+                    var menuItem = new ToolStripMenuItem(them.Name);
+                    menuItem.Click += MenuItem_Click;
+                    var colors = them.Colors.Split(',').Select(s => ColorTranslator.FromHtml(s));
+                    foreach (var color in colors)
+                    {
+                        var dropItem = new ToolStripMenuItem()
+                        {
+                            BackColor = color,
+                            Enabled = false
+                        };
+                        menuItem.DropDownItems.Add(dropItem);
+                    }
+                    پوستهToolStripMenuItem.DropDownItems.Add(menuItem);
+                }
+            }
         }
 
         private void CalendarView_WeekSelect(Week week)
@@ -67,13 +88,11 @@ namespace Sahab_Desktop
         private void اضافهکردنبرنامهToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TaskForm taskForm = new TaskForm();
-            taskForm.OnTaskSubmited += TaskForm_OnTaskSubmited;
             taskForm.Show(this);
         }
 
         private void TaskForm_OnTaskSubmited(Models.Task task)
         {
-            dailyTaskViewer.AddTask(task);
         }
 
         private void RefreshTaskView()
@@ -81,38 +100,44 @@ namespace Sahab_Desktop
             switch (ShowingMode)
             {
                 case ShowingMode.Daily:
-                    var tasks = _context.Tasks.Where(t => t.StartDate.CompareTo(CurrentDate.Date) <= 0 && t.EndDate.CompareTo(CurrentDate.Date) >= 0);
-                    List<Models.Task> currentDateTasks = new List<Models.Task>();
-                    foreach (var task in tasks)
+                    using (var context = new AppDBContext())
                     {
-                        if (task.Dates != null)
+                        var tasks = context.Tasks.Where(t => t.StartDate.CompareTo(CurrentDate.Date) <= 0 && t.EndDate.CompareTo(CurrentDate.Date) >= 0);
+                        List<Models.Task> currentDateTasks = new List<Models.Task>();
+                        foreach (var task in tasks)
                         {
-                            if (task.Dates.Contains(CurrentDate.Date))
+                            if (task.Dates != null)
                             {
-                                currentDateTasks.Add(task);
+                                if (task.Dates.Contains(CurrentDate.Date))
+                                {
+                                    currentDateTasks.Add(task);
+                                }
                             }
                         }
+                        dailyTaskViewer.Date = CurrentDate.Date;
+                        dailyTaskViewer.Tasks = currentDateTasks;
+                        dailyTaskViewer.Refresh();
                     }
-                    dailyTaskViewer.Date = CurrentDate.Date;
-                    dailyTaskViewer.Tasks = currentDateTasks;
-                    dailyTaskViewer.Refresh();
                     break;
                 case ShowingMode.Weekly:
-                    tasks = _context.Tasks.Where(t => t.StartDate.CompareTo(CurrentWeek.EndDate.Date) <= 0 && t.EndDate.CompareTo(CurrentWeek.StartDate.Date) >= 0);
-                    List<Models.Task> currentWeekTasks = new List<Models.Task>();
-                    foreach (var task in tasks)
+                    using (var context = new AppDBContext())
                     {
-                        if (task.Dates != null)
+                        var tasks = context.Tasks.Where(t => t.StartDate.CompareTo(CurrentWeek.EndDate.Date) <= 0 && t.EndDate.CompareTo(CurrentWeek.StartDate.Date) >= 0);
+                        List<Models.Task> currentWeekTasks = new List<Models.Task>();
+                        foreach (var task in tasks)
                         {
-                            if (task.Dates.Where(d=>d.Date.CompareTo(CurrentWeek.StartDate)>=0&&d.Date.CompareTo(CurrentWeek.EndDate)<=0).Any())
+                            if (task.Dates != null)
                             {
-                                currentWeekTasks.Add(task);
+                                if (task.Dates.Where(d => d.Date.CompareTo(CurrentWeek.StartDate) >= 0 && d.Date.CompareTo(CurrentWeek.EndDate) <= 0).Any())
+                                {
+                                    currentWeekTasks.Add(task);
+                                }
                             }
                         }
+                        weeklyTaskViewer.Week = CurrentWeek;
+                        weeklyTaskViewer.Tasks = currentWeekTasks;
+                        weeklyTaskViewer.Refresh();
                     }
-                    weeklyTaskViewer.Week = CurrentWeek;
-                    weeklyTaskViewer.Tasks = currentWeekTasks;
-                    weeklyTaskViewer.Refresh();
                     break;
                 case ShowingMode.Monthly:
                     break;
@@ -151,6 +176,17 @@ namespace Sahab_Desktop
             weeklyTaskViewer.Visible = true;
             ShowingMode = ShowingMode.Weekly;
             calendarView.Mode = CalendarMode.WeekSelect;
+        }
+
+        private void MenuItem_Click(object sender, EventArgs e)
+        {
+            using (var context = new AppDBContext())
+            {
+                var user = context.Users.First();
+                user.ThemName = (sender as ToolStripMenuItem).Text;
+                context.SaveChanges();
+            }
+            نمایشToolStripMenuItem.HideDropDown();
         }
     }
 

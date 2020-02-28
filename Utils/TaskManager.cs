@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Sahab_Desktop.Utils
 {
     public class TaskManager
     {
 
-        public static void DoTaskRemovalOperation(Task task,DateTime showingInDate)
+        public static void DoTaskRemovalOperation(Task task, DateTime showingInDate)
         {
             using (var context = new AppDBContext())
             {
@@ -79,6 +80,113 @@ namespace Sahab_Desktop.Utils
                     context.SaveChanges();
                 }
             }
+        }
+
+        public static void DoTaskEditOperation(Form owner, Task task, DateTime showingInDate)
+        {
+            using (var context = new AppDBContext())
+            {
+                if (task.RepeatMethod != 0)
+                {
+                    var dialog = new CancelOr2OptionsDialog("این برنامه دارای تکرار است. آیا می خواهید از اینجا به بعد را پاک کنید یا فقط این مورد را پاک کنید؟",
+                        "از اینجا به بعد",
+                        "فقط همین");
+                    if (dialog.Show() == CancelOr2OptionsDialogResult.Option1)
+                    {
+                        if (showingInDate.CompareTo(task.StartDate) == 0)
+                        {
+                            TaskForm taskForm = new TaskForm();
+                            taskForm.Task = task;
+                            taskForm.Show(owner);
+                        }
+                        else
+                        {
+                            TaskForm taskForm = new TaskForm();
+                            taskForm.Task = CopyTask(task);
+                            taskForm.Task.StartDate = showingInDate;
+
+                            if (taskForm.ShowDialog() == DialogResult.OK)
+                            {
+                                context.Tasks.Attach(task);
+                                task.EndDate = task.Dates.Where(d => d.CompareTo(showingInDate) < 0).OrderByDescending(d => d).First();
+                                context.SaveChanges();
+                            }
+                        }
+                    }
+                    else if (dialog.CancelOr2OptionsDialogResult == CancelOr2OptionsDialogResult.Option2)
+                    {
+                        if (showingInDate.CompareTo(task.StartDate) == 0)
+                        {
+                            TaskForm taskForm = new TaskForm();
+                            taskForm.Task = CopyTask(task);
+                            taskForm.Task.StartDate = showingInDate;
+                            taskForm.Task.EndDate = showingInDate;
+                            if (taskForm.ShowDialog() == DialogResult.OK)
+                            {
+                                context.Tasks.Attach(task);
+                                task.StartDate = task.Dates.Where(d => d.CompareTo(task.StartDate) > 0).OrderBy(d => d).First();
+                            }
+                        }
+                        else if (showingInDate.CompareTo(task.EndDate) == 0)
+                        {
+                            TaskForm taskForm = new TaskForm();
+                            taskForm.Task = CopyTask(task);
+                            taskForm.Task.StartDate = showingInDate;
+                            taskForm.Task.EndDate = showingInDate;
+                            if (taskForm.ShowDialog() == DialogResult.OK)
+                            {
+                                context.Tasks.Attach(task);
+                                task.EndDate = task.Dates.Where(d => d.CompareTo(task.EndDate) < 0).OrderByDescending(d => d).First();
+                            }
+                        }
+                        else
+                        {
+                            TaskForm taskForm = new TaskForm();
+                            taskForm.Task = CopyTask(task);
+                            taskForm.Task.StartDate = showingInDate;
+                            taskForm.Task.EndDate = showingInDate;
+                            if (taskForm.ShowDialog() == DialogResult.OK)
+                            {
+                                var newTask = CopyTask(task);
+                                newTask.StartDate = task.Dates.Where(d => d.CompareTo(showingInDate) > 0).OrderBy(d => d).First();
+                                context.Tasks.Add(newTask);
+
+                                context.Tasks.Attach(task);
+                                task.EndDate = task.Dates.Where(d => d.CompareTo(showingInDate) < 0).OrderByDescending(d => d).First();
+                            }
+                        }
+                        context.SaveChanges();
+                    }
+                }
+                else
+                {
+                    TaskForm taskForm = new TaskForm();
+                    taskForm.Task = task;
+                    taskForm.Show(owner);
+                }
+            }
+        }
+
+        private static Task CopyTask(Task task)
+        {
+            return new Task()
+            {
+                DaysOfWeek = task.DaysOfWeek,
+                SpecialDates = task.SpecialDates,
+                ContinuousTimes = task.ContinuousTimes,
+                Description = task.Description,
+                DiscreteTimes = task.DiscreteTimes,
+                EndDate = task.EndDate,
+                EndTime = task.EndTime,
+                Location = task.Location,
+                Peoples = task.Peoples,
+                RepeatMethod = task.RepeatMethod,
+                StartTime = task.StartTime,
+                TaskPriority = task.TaskPriority,
+                TaskPriorityScore = task.TaskPriorityScore,
+                Title = task.Title,
+                StartDate = task.StartDate
+            };
         }
     }
 }

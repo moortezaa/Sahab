@@ -30,10 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.locationLabel = new System.Windows.Forms.Label();
-            this.personsLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.حذفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locationLabel = new System.Windows.Forms.Label();
+            this.personsLabel = new System.Windows.Forms.Label();
+            this.ویرایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +51,21 @@
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Title";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.حذفToolStripMenuItem,
+            this.ویرایشToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 70);
+            // 
+            // حذفToolStripMenuItem
+            // 
+            this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
+            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.حذفToolStripMenuItem.Text = "حذف";
+            this.حذفToolStripMenuItem.Click += new System.EventHandler(this.حذفToolStripMenuItem_Click);
             // 
             // locationLabel
             // 
@@ -79,21 +95,14 @@
             this.personsLabel.Text = "Persons, Persons";
             this.personsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // contextMenuStrip
+            // ویرایشToolStripMenuItem
             // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.حذفToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip1";
-            this.contextMenuStrip.Size = new System.Drawing.Size(100, 26);
+            this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایشToolStripMenuItem.Text = "ویرایش";
+            this.ویرایشToolStripMenuItem.Click += new System.EventHandler(this.ویرایشToolStripMenuItem_Click);
             // 
-            // حذفToolStripMenuItem
-            // 
-            this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
-            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.حذفToolStripMenuItem.Text = "حذف";
-            this.حذفToolStripMenuItem.Click += new System.EventHandler(this.حذفToolStripMenuItem_Click);
-            // 
-            // SingleTaskView
+            // SingleDailyTaskView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,7 +111,7 @@
             this.Controls.Add(this.personsLabel);
             this.Controls.Add(this.locationLabel);
             this.Controls.Add(this.titleLabel);
-            this.Name = "SingleTaskView";
+            this.Name = "SingleDailyTaskView";
             this.Size = new System.Drawing.Size(148, 148);
             this.Load += new System.EventHandler(this.SingleTaskView_Load);
             this.Resize += new System.EventHandler(this.SingleTaskView_Resize);
@@ -118,5 +127,6 @@
         private System.Windows.Forms.Label personsLabel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem حذفToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ویرایشToolStripMenuItem;
     }
 }

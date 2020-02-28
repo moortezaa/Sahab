@@ -109,14 +109,7 @@ namespace Sahab_Desktop.Controls
 
         private void ReColor()
         {
-            var them = new List<Color>()
-            {
-                Color.FromArgb(237,85,59),
-                Color.FromArgb(246,213,92),
-                Color.FromArgb(60,174,163),
-                Color.FromArgb(32,99,155),
-                Color.FromArgb(23,63,95),
-            };
+            List<Color> them = Utils.Utils.GetThem();
             var colorindex = 0;
             foreach (var control in Controls)
             {

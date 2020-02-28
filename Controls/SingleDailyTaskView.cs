@@ -51,7 +51,12 @@ namespace Sahab_Desktop.Controls
 
         private void حذفToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TaskManager.DoTaskRemovalOperation(Task,ShowingInDate);
+            TaskManager.DoTaskRemovalOperation(Task, ShowingInDate);
+        }
+
+        private void ویرایشToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TaskManager.DoTaskEditOperation(FindForm(), Task, ShowingInDate);
         }
     }
 }
