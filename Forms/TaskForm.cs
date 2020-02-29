@@ -531,6 +531,25 @@ namespace Sahab_Desktop
                     UpToDateRadioButton.Checked = true;
                     UpToDateTextBox.Text = Task.EndDate.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
                 }
+
+                var frames = _context.FrameRelations.Where(r => r.TaskId == Task.Id).Select(r => r.Frame);
+                if (frames.Any())
+                {
+                    FramesListBox.Items.AddRange(frames.Select(f => f.Name).ToArray());
+                    Frames.AddRange(frames);
+                }
+
+                var doctrines = _context.DoctrineRelations.Where(r => r.TaskId == Task.Id).Select(r => r.Doctrine);
+                if (doctrines.Any())
+                {
+                    DoctrinesListBox.Items.AddRange(doctrines.Select(d => d.Name).ToArray());
+                    Doctrines.AddRange(doctrines);
+                }
+                TaskPriorityComboBox.SelectedIndex = (int)Task.TaskPriority;
+                if (frames.Any() || doctrines.Any())
+                {
+                    TaskPriorityComboBox_SelectedIndexChanged(sender, e);
+                }
             }
 
             if (IsEditMode)
