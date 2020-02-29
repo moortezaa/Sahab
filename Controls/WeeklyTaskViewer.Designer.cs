@@ -42,6 +42,7 @@
             this.tasksMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.حذفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.scrollPanel.SuspendLayout();
             this.tasksMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -169,21 +170,27 @@
             this.ویرایشToolStripMenuItem});
             this.tasksMenuStrip.Name = "tasksMenuStrip";
             this.tasksMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tasksMenuStrip.Size = new System.Drawing.Size(181, 70);
+            this.tasksMenuStrip.Size = new System.Drawing.Size(111, 48);
             // 
             // حذفToolStripMenuItem
             // 
             this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
-            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.حذفToolStripMenuItem.Text = "حذف";
             this.حذفToolStripMenuItem.Click += new System.EventHandler(this.حذفToolStripMenuItem_Click);
             // 
             // ویرایشToolStripMenuItem
             // 
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
             this.ویرایشToolStripMenuItem.Click += new System.EventHandler(this.ویرایشToolStripMenuItem_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 60000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // WeeklyTaskViewer
             // 
@@ -224,5 +231,6 @@
         private System.Windows.Forms.ContextMenuStrip tasksMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem حذفToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایشToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
     }
 }

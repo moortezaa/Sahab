@@ -16,13 +16,19 @@ namespace Sahab_Desktop.Controls
         public List<Models.Task> Tasks { get; set; } = new List<Models.Task>();
         public DateTime Date { get; internal set; }
 
+        private Label NowIndicatorLabel { get; set; }
         private const int TimeLabelWidth = 30;
 
         public DailyTaskViewer()
         {
             InitializeComponent();
+            NowIndicatorLabel = nowIndicatorLabel;
             Height = 24 * 60;
             AddTimeLabels();
+            NowIndicatorLabel.Left = 0;
+            NowIndicatorLabel.Width = Width - TimeLabelWidth + 3;
+
+            NowIndicatorLabel.Top = (int)DateTime.Now.Subtract(DateTime.Now.Date).TotalMinutes;
         }
 
         private void AddTimeLabels()
@@ -68,6 +74,7 @@ namespace Sahab_Desktop.Controls
         public override void Refresh()
         {
             Controls.Clear();
+            Controls.Add(NowIndicatorLabel);
             AddTimeLabels();
 
             DailyTaskViewer_Load(this, new EventArgs());
@@ -90,6 +97,7 @@ namespace Sahab_Desktop.Controls
             };
             Controls.Add(taskView);
             ReColor();
+            NowIndicatorLabel.BringToFront();
         }
 
         private void DailyTaskViewer_Resize(object sender, EventArgs e)
@@ -105,6 +113,10 @@ namespace Sahab_Desktop.Controls
                     (control as Label).Left = this.Width - TimeLabelWidth;
                 }
             }
+
+            NowIndicatorLabel.Width = Width - TimeLabelWidth + 3;
+            NowIndicatorLabel.Left = 0;
+            NowIndicatorLabel.BringToFront();
         }
 
         private void ReColor()
@@ -124,6 +136,12 @@ namespace Sahab_Desktop.Controls
                     colorindex += 1;
                 }
             }
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            NowIndicatorLabel.Top = (int)DateTime.Now.Subtract(DateTime.Now.Date).TotalMinutes;
+            NowIndicatorLabel.BringToFront();
         }
     }
 }

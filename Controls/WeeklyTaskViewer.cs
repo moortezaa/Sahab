@@ -17,9 +17,20 @@ namespace Sahab_Desktop.Controls
         public List<Models.Task> Tasks { get; set; } = new List<Models.Task>();
         public Week Week { get; set; }
         public int DPM { get; set; } = 2;
+        private Label nowIndicatorLabel;
         public WeeklyTaskViewer()
         {
             InitializeComponent();
+            nowIndicatorLabel = new Label()
+            {
+                Name = "Time",
+                Width = 3,
+                Height = label1.Height * 7 + 3,
+                Top = label1.Top - theScroll.Height - 3,
+                Left = (int)DateTime.Now.Subtract(DateTime.Now.Date).TotalMinutes * DPM,
+                BackColor = Color.Red
+            };
+            tasksPanel.Controls.Add(nowIndicatorLabel);
             tasksPanel.Width = 24 * 60 * DPM;
             theScroll.Maximum = tasksPanel.Width;
             AddTimeTags();
@@ -68,6 +79,7 @@ namespace Sahab_Desktop.Controls
         private void RefreshTasks()
         {
             tasksPanel.Controls.Clear();
+            tasksPanel.Controls.Add(nowIndicatorLabel);
             AddTimeTags();
 
             var date = Week.StartDate.AddDays(-1);
@@ -94,6 +106,7 @@ namespace Sahab_Desktop.Controls
                     tasksPanel.Controls.Add(label);
                 }
             } while (date != Week.EndDate);
+            nowIndicatorLabel.BringToFront();
         }
 
         private void ReColor()
@@ -154,7 +167,12 @@ namespace Sahab_Desktop.Controls
             var label = ((sender as ToolStripMenuItem).Owner as ContextMenuStrip).SourceControl as Label;
             GetTaskAndDateFromLabel(label, out var date, out var task);
 
-            TaskManager.DoTaskEditOperation(FindForm(),task, date);
+            TaskManager.DoTaskEditOperation(FindForm(), task, date);
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            nowIndicatorLabel.Left = (int)DateTime.Now.Subtract(DateTime.Now.Date).TotalMinutes * DPM;
         }
     }
 }
