@@ -123,7 +123,7 @@ namespace Sahab_Desktop
                 case ShowingMode.Weekly:
                     using (var context = new AppDBContext())
                     {
-                        var tasks = context.Tasks.Where(t => t.StartDate.CompareTo(CurrentWeek.EndDate.Date) <= 0 && t.EndDate.CompareTo(CurrentWeek.StartDate.Date) >= 0);
+                        var tasks = context.Tasks.Where(t => t.StartDate.CompareTo(CurrentWeek.EndDate.Date) <= 0 && t.EndDate.CompareTo(CurrentWeek.StartDate.Value.Date) >= 0);
                         List<Models.Task> currentWeekTasks = new List<Models.Task>();
                         foreach (var task in tasks)
                         {

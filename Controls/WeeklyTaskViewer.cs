@@ -82,50 +82,57 @@ namespace Sahab_Desktop.Controls
             tasksPanel.Controls.Add(nowIndicatorLabel);
             AddTimeTags();
 
-            var date = Week.StartDate.AddDays(-1);
-            var row = 0;
-            do
+            if (Week!=null && Week.StartDate.HasValue)
             {
-                date = date.AddDays(1);
-                row += 1;
-                var dateTasks = Tasks.Where(t => t.Dates.Contains(date));
-                var rowLabel = (Label)Controls.Find($"label{row}", false)[0];
-                foreach (var dateTask in dateTasks)
+                var date = Week.StartDate.Value.AddDays(-1);
+                var row = 0;
+                do
                 {
-                    var label = new Label()
+                    date = date.AddDays(1);
+                    row += 1;
+                    var dateTasks = Tasks.Where(t => t.Dates.Contains(date));
+                    var rowLabel = (Label)Controls.Find($"label{row}", false)[0];
+                    foreach (var dateTask in dateTasks)
                     {
-                        Name = dateTask.Id.ToString() + "," + date.ToString(),
-                        Text = dateTask.Title,
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        Top = rowLabel.Top - theScroll.Height,
-                        Left = (int)dateTask.StartTime.Subtract(new DateTime(dateTask.StartTime.Year, dateTask.StartTime.Month, dateTask.StartTime.Day, 0, 0, 0)).TotalMinutes * DPM,
-                        Height = rowLabel.Height,
-                        Width = (int)dateTask.EndTime.Subtract(dateTask.StartTime).TotalMinutes * DPM,
-                        ContextMenuStrip = tasksMenuStrip,
-                    };
-                    tasksPanel.Controls.Add(label);
-                }
-            } while (date != Week.EndDate);
+                        var label = new Label()
+                        {
+                            Name = dateTask.Id.ToString() + "," + date.ToString(),
+                            Text = dateTask.Title,
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            Top = rowLabel.Top - theScroll.Height,
+                            Left = (int)dateTask.StartTime.Subtract(new DateTime(dateTask.StartTime.Year, dateTask.StartTime.Month, dateTask.StartTime.Day, 0, 0, 0)).TotalMinutes * DPM,
+                            Height = rowLabel.Height,
+                            Width = (int)dateTask.EndTime.Subtract(dateTask.StartTime).TotalMinutes * DPM,
+                            ContextMenuStrip = tasksMenuStrip,
+                        };
+                        tasksPanel.Controls.Add(label);
+                    }
+                } while (date != Week.EndDate); 
+            }
             nowIndicatorLabel.BringToFront();
         }
 
         private void ReColor()
         {
-            var them = Utils.Utils.GetThem();
-            var colorindex = 0;
-            foreach (Control control in tasksPanel.Controls)
+            try
             {
-                if (control.Name != "Time")
+                var them = Utils.Utils.GetThem();
+                var colorindex = 0;
+                foreach (Control control in tasksPanel.Controls)
                 {
-                    var color = them[colorindex % them.Count];
-                    (control as Label).BackColor = color;
-                    if (color.GetBrightness() < 0.5)
+                    if (control.Name != "Time")
                     {
-                        (control as Label).ForeColor = Color.White;
+                        var color = them[colorindex % them.Count];
+                        (control as Label).BackColor = color;
+                        if (color.GetBrightness() < 0.5)
+                        {
+                            (control as Label).ForeColor = Color.White;
+                        }
+                        colorindex += 1;
                     }
-                    colorindex += 1;
                 }
             }
+            catch (Exception){}
         }
 
         private void WeeklyTaskViewer_Load(object sender, EventArgs e)

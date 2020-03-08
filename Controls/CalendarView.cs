@@ -340,9 +340,9 @@ namespace Sahab_Desktop.Controls
         MonthSelect,
     }
 
-    public struct Week
+    public class Week
     {
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; } = null;
         public DateTime EndDate { get; set; }
 
         public static Week SelectByDateBetween(DateTime date)

@@ -42,19 +42,21 @@
             // nowIndicatorLabel
             // 
             this.nowIndicatorLabel.BackColor = System.Drawing.Color.Red;
-            this.nowIndicatorLabel.Location = new System.Drawing.Point(3, 83);
+            this.nowIndicatorLabel.Location = new System.Drawing.Point(4, 102);
+            this.nowIndicatorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nowIndicatorLabel.Name = "nowIndicatorLabel";
-            this.nowIndicatorLabel.Size = new System.Drawing.Size(139, 3);
+            this.nowIndicatorLabel.Size = new System.Drawing.Size(185, 4);
             this.nowIndicatorLabel.TabIndex = 0;
             // 
             // DailyTaskViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.nowIndicatorLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DailyTaskViewer";
+            this.Size = new System.Drawing.Size(200, 185);
             this.Load += new System.EventHandler(this.DailyTaskViewer_Load);
-            this.Resize += new System.EventHandler(this.DailyTaskViewer_Resize);
             this.ResumeLayout(false);
 
         }

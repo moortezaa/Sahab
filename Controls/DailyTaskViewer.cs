@@ -65,6 +65,7 @@ namespace Sahab_Desktop.Controls
 
         private void DailyTaskViewer_Load(object sender, EventArgs e)
         {
+            Resize += DailyTaskViewer_Resize;
             foreach (var task in Tasks)
             {
                 AddSingleTaskView(task);
