@@ -1,4 +1,5 @@
 ﻿using Sahab_Desktop.Controls;
+using Sahab_Desktop.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -187,6 +188,12 @@ namespace Sahab_Desktop
                 context.SaveChanges();
             }
             نمایشToolStripMenuItem.HideDropDown();
+        }
+
+        private void اصولوچهارچوبهاToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var doctrineAndFrameManagerForm = new DoctrineAndFrameManager();
+            doctrineAndFrameManagerForm.Show(this);
         }
     }
 

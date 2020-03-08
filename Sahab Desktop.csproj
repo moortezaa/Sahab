@@ -16,7 +16,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>E:\morteza\projects\sahab\publish\</PublishUrl>
+    <PublishUrl>C:\Users\moort\source\repos\sahab\publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -128,6 +128,12 @@
     <Compile Include="Forms\CancelOr2OptionsDialog.Designer.cs">
       <DependentUpon>CancelOr2OptionsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DoctrineAndFrameManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DoctrineAndFrameManager.Designer.cs">
+      <DependentUpon>DoctrineAndFrameManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DoctrineForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CancelOr2OptionsDialog.resx">
       <DependentUpon>CancelOr2OptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DoctrineAndFrameManager.resx">
+      <DependentUpon>DoctrineAndFrameManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DoctrineForm.resx">
       <DependentUpon>DoctrineForm.cs</DependentUpon>

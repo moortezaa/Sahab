@@ -44,7 +44,6 @@
             this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "نام:";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // NameTextBox
             // 
@@ -52,7 +51,6 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(120, 20);
             this.NameTextBox.TabIndex = 1;
-            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // label2
             // 
@@ -63,7 +61,6 @@
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "امتیاز:";
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // ScoreTextBox
             // 
@@ -71,7 +68,6 @@
             this.ScoreTextBox.Name = "ScoreTextBox";
             this.ScoreTextBox.Size = new System.Drawing.Size(120, 20);
             this.ScoreTextBox.TabIndex = 2;
-            this.ScoreTextBox.TextChanged += new System.EventHandler(this.ScoreTextBox_TextChanged);
             // 
             // button1
             // 

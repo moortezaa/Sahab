@@ -41,6 +41,7 @@
             this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
             this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
             this.calendarView = new Sahab_Desktop.Controls.CalendarView();
+            this.اصولوچهارچوبهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,8 @@
             // برنامهToolStripMenuItem
             // 
             this.برنامهToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.اضافهکردنبرنامهToolStripMenuItem});
+            this.اضافهکردنبرنامهToolStripMenuItem,
+            this.اصولوچهارچوبهاToolStripMenuItem});
             this.برنامهToolStripMenuItem.Name = "برنامهToolStripMenuItem";
             this.برنامهToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.برنامهToolStripMenuItem.Text = "برنامه";
@@ -67,7 +69,7 @@
             // اضافهکردنبرنامهToolStripMenuItem
             // 
             this.اضافهکردنبرنامهToolStripMenuItem.Name = "اضافهکردنبرنامهToolStripMenuItem";
-            this.اضافهکردنبرنامهToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.اضافهکردنبرنامهToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.اضافهکردنبرنامهToolStripMenuItem.Text = "اضافه کردن برنامه";
             this.اضافهکردنبرنامهToolStripMenuItem.Click += new System.EventHandler(this.اضافهکردنبرنامهToolStripMenuItem_Click);
             // 
@@ -85,14 +87,14 @@
             // روزToolStripMenuItem
             // 
             this.روزToolStripMenuItem.Name = "روزToolStripMenuItem";
-            this.روزToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.روزToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.روزToolStripMenuItem.Text = "روز";
             this.روزToolStripMenuItem.Click += new System.EventHandler(this.روزToolStripMenuItem_Click);
             // 
             // هفتهToolStripMenuItem
             // 
             this.هفتهToolStripMenuItem.Name = "هفتهToolStripMenuItem";
-            this.هفتهToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.هفتهToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.هفتهToolStripMenuItem.Text = "هفته";
             this.هفتهToolStripMenuItem.Click += new System.EventHandler(this.هفتهToolStripMenuItem_Click);
             // 
@@ -100,14 +102,14 @@
             // 
             this.toolStripMenuItem2.Enabled = false;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(174, 22);
             this.toolStripMenuItem2.Text = "____________________";
             this.toolStripMenuItem2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // پوستهToolStripMenuItem
             // 
             this.پوستهToolStripMenuItem.Name = "پوستهToolStripMenuItem";
-            this.پوستهToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.پوستهToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.پوستهToolStripMenuItem.Text = "پوسته";
             // 
             // panel
@@ -166,6 +168,13 @@
             this.calendarView.Size = new System.Drawing.Size(459, 338);
             this.calendarView.TabIndex = 6;
             // 
+            // اصولوچهارچوبهاToolStripMenuItem
+            // 
+            this.اصولوچهارچوبهاToolStripMenuItem.Name = "اصولوچهارچوبهاToolStripMenuItem";
+            this.اصولوچهارچوبهاToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.اصولوچهارچوبهاToolStripMenuItem.Text = "اصول و چهارچوب ها";
+            this.اصولوچهارچوبهاToolStripMenuItem.Click += new System.EventHandler(this.اصولوچهارچوبهاToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +211,7 @@
         private Controls.WeeklyTaskViewer weeklyTaskViewer;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem پوستهToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem اصولوچهارچوبهاToolStripMenuItem;
     }
 }
 
