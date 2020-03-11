@@ -123,7 +123,7 @@ namespace Sahab_Desktop
                 case ShowingMode.Weekly:
                     using (var context = new AppDBContext())
                     {
-                        var tasks = context.Tasks.Where(t => t.StartDate.CompareTo(CurrentWeek.EndDate.Date) <= 0 && t.EndDate.CompareTo(CurrentWeek.StartDate.Value.Date) >= 0);
+                        var tasks = context.Tasks.Where(t => t.StartDate.CompareTo(CurrentWeek.EndDate) <= 0 && t.EndDate.CompareTo(CurrentWeek.StartDate.Value) >= 0);
                         List<Models.Task> currentWeekTasks = new List<Models.Task>();
                         foreach (var task in tasks)
                         {
@@ -194,6 +194,12 @@ namespace Sahab_Desktop
         {
             var doctrineAndFrameManagerForm = new DoctrineAndFrameManager();
             doctrineAndFrameManagerForm.Show(this);
+        }
+
+        private void همگامسازیاینترنتیToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var webSyncForm = new WebSyncForm();
+            webSyncForm.Show();
         }
     }
 

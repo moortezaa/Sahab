@@ -21,6 +21,8 @@ namespace Sahab_Desktop.Controls
         public WeeklyTaskViewer()
         {
             InitializeComponent();
+            Height = theScroll.Height + scrollPanel.Height + scrollPanel.Margin.Top;
+            MinimumSize = new Size(Width, Height);
             nowIndicatorLabel = new Label()
             {
                 Name = "Time",

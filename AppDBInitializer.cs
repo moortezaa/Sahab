@@ -48,7 +48,8 @@ namespace Sahab_Desktop
             });
             context.Users.Add(new Models.User()
             {
-                ThemName = "Default"
+                ThemName = "Default",
+                UserName = "default",
             });
             base.Seed(context);
         }

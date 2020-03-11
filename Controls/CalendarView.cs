@@ -342,8 +342,37 @@ namespace Sahab_Desktop.Controls
 
     public class Week
     {
-        public DateTime? StartDate { get; set; } = null;
-        public DateTime EndDate { get; set; }
+        private DateTime? startDate;
+        public DateTime? StartDate
+        {
+            get
+            {
+                return startDate;
+            }
+            set
+            {
+                if (value.HasValue)
+                {
+                    startDate = value.Value.Date;
+                }
+                else
+                {
+                    startDate = value;
+                }
+            }
+        }
+        private DateTime endDate;
+        public DateTime EndDate
+        {
+            get
+            {
+                return endDate;
+            }
+            set
+            {
+                endDate = value.Date;
+            }
+        }
 
         public static Week SelectByDateBetween(DateTime date)
         {

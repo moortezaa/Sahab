@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusLabel.AutoEllipsis = true;
+            this.statusLabel.Location = new System.Drawing.Point(12, 9);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.statusLabel.Size = new System.Drawing.Size(326, 23);
+            this.statusLabel.TabIndex = 0;
+            this.statusLabel.Text = "وضعیت";
             // 
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(12, 38);
+            this.progressBar.Location = new System.Drawing.Point(12, 29);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(358, 23);
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 0;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(299, 18);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.statusLabel.Size = new System.Drawing.Size(74, 17);
-            this.statusLabel.TabIndex = 1;
-            this.statusLabel.Text = "درحال محاسبه";
+            this.progressBar.Size = new System.Drawing.Size(326, 23);
+            this.progressBar.TabIndex = 1;
             // 
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(294, 68);
+            this.cancelButton.Location = new System.Drawing.Point(263, 59);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 26);
             this.cancelButton.TabIndex = 2;
@@ -69,23 +69,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 106);
+            this.ClientSize = new System.Drawing.Size(350, 91);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.progressBar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Controls.Add(this.statusLabel);
             this.Name = "WebSyncForm";
-            this.Text = "همگام سازی با سرور";
-            this.Shown += new System.EventHandler(this.WebSyncForm_Shown);
+            this.RightToLeftLayout = true;
+            this.Text = "همگام سازی اینترنتی";
+            this.Load += new System.EventHandler(this.WebSyncForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button cancelButton;
     }
 }

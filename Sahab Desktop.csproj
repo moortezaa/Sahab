@@ -26,7 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -69,6 +69,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -146,6 +149,12 @@
     <Compile Include="Forms\FrameForm.Designer.cs">
       <DependentUpon>FrameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WebSyncForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WebSyncForm.Designer.cs">
+      <DependentUpon>WebSyncForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202002161917465_AddModels.cs" />
     <Compile Include="Migrations\202002161917465_AddModels.designer.cs">
       <DependentUpon>202002161917465_AddModels.cs</DependentUpon>
@@ -161,6 +170,10 @@
     <Compile Include="Migrations\202002281643480_AddUserAndThem.cs" />
     <Compile Include="Migrations\202002281643480_AddUserAndThem.designer.cs">
       <DependentUpon>202002281643480_AddUserAndThem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003082245031_AddUserName.cs" />
+    <Compile Include="Migrations\202003082245031_AddUserName.designer.cs">
+      <DependentUpon>202003082245031_AddUserName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Doctrine.cs" />
@@ -212,6 +225,9 @@
     <EmbeddedResource Include="Forms\FrameForm.resx">
       <DependentUpon>FrameForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WebSyncForm.resx">
+      <DependentUpon>WebSyncForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002161917465_AddModels.resx">
       <DependentUpon>202002161917465_AddModels.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002281643480_AddUserAndThem.resx">
       <DependentUpon>202002281643480_AddUserAndThem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003082245031_AddUserName.resx">
+      <DependentUpon>202003082245031_AddUserName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

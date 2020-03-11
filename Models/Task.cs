@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -42,8 +43,10 @@ namespace Sahab_Desktop.Models
         public int ContinuousTimes { get; set; }
         public int DiscreteTimes { get; set; }
 
+        [JsonIgnore]
         private readonly ObservableListSource<DoctrineRelation> doctrineRelations = new ObservableListSource<DoctrineRelation>();
 
+        [JsonIgnore]
         private readonly ObservableListSource<FrameRelation> frameRelations = new ObservableListSource<FrameRelation>();
 
         public TaskPriority TaskPriority { get; set; }
@@ -52,6 +55,7 @@ namespace Sahab_Desktop.Models
 
         private string ColorHex { get; set; }
 
+        [JsonIgnore]
         [NotMapped]
         public Color? Color
         {
@@ -72,6 +76,7 @@ namespace Sahab_Desktop.Models
             }
         }
 
+        [JsonIgnore]
         [NotMapped]
         public List<DateTime> Dates
         {
