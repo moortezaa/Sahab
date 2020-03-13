@@ -201,6 +201,11 @@ namespace Sahab_Desktop
             var webSyncForm = new WebSyncForm();
             webSyncForm.Show();
         }
+
+        private void اتصالبهحسابToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     internal enum ShowingMode

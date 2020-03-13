@@ -83,24 +83,30 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // yearTextBox
             // 
-            this.yearTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.yearTextBox.Location = new System.Drawing.Point(33, 6);
+            this.yearTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yearTextBox.Location = new System.Drawing.Point(31, 0);
+            this.yearTextBox.Margin = new System.Windows.Forms.Padding(4, 10, 4, 4);
             this.yearTextBox.Name = "yearTextBox";
-            this.yearTextBox.Size = new System.Drawing.Size(456, 20);
+            this.yearTextBox.Size = new System.Drawing.Size(633, 22);
             this.yearTextBox.TabIndex = 0;
             this.yearTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.yearTextBox.TextChanged += new System.EventHandler(this.YearTextBox_TextChanged);
             // 
             // decreaseYearButton
             // 
-            this.decreaseYearButton.Location = new System.Drawing.Point(4, 4);
+            this.decreaseYearButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.decreaseYearButton.Location = new System.Drawing.Point(0, 0);
+            this.decreaseYearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.decreaseYearButton.Name = "decreaseYearButton";
-            this.decreaseYearButton.Size = new System.Drawing.Size(23, 23);
+            this.decreaseYearButton.Size = new System.Drawing.Size(31, 24);
             this.decreaseYearButton.TabIndex = 1;
             this.decreaseYearButton.Text = "<";
             this.decreaseYearButton.UseVisualStyleBackColor = true;
@@ -108,10 +114,11 @@
             // 
             // increaseYearButton
             // 
-            this.increaseYearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.increaseYearButton.Location = new System.Drawing.Point(495, 4);
+            this.increaseYearButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.increaseYearButton.Location = new System.Drawing.Point(664, 0);
+            this.increaseYearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.increaseYearButton.Name = "increaseYearButton";
-            this.increaseYearButton.Size = new System.Drawing.Size(22, 23);
+            this.increaseYearButton.Size = new System.Drawing.Size(29, 24);
             this.increaseYearButton.TabIndex = 2;
             this.increaseYearButton.Text = ">";
             this.increaseYearButton.UseVisualStyleBackColor = true;
@@ -119,20 +126,22 @@
             // 
             // monthTextBox
             // 
-            this.monthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.monthTextBox.Location = new System.Drawing.Point(33, 32);
+            this.monthTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.monthTextBox.Location = new System.Drawing.Point(31, 0);
+            this.monthTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.monthTextBox.Name = "monthTextBox";
-            this.monthTextBox.Size = new System.Drawing.Size(456, 20);
+            this.monthTextBox.Size = new System.Drawing.Size(633, 22);
             this.monthTextBox.TabIndex = 0;
             this.monthTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.monthTextBox.TextChanged += new System.EventHandler(this.MonthTextBox_TextChanged);
             // 
             // decreaseMonthButton
             // 
-            this.decreaseMonthButton.Location = new System.Drawing.Point(4, 30);
+            this.decreaseMonthButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.decreaseMonthButton.Location = new System.Drawing.Point(0, 0);
+            this.decreaseMonthButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.decreaseMonthButton.Name = "decreaseMonthButton";
-            this.decreaseMonthButton.Size = new System.Drawing.Size(23, 23);
+            this.decreaseMonthButton.Size = new System.Drawing.Size(31, 24);
             this.decreaseMonthButton.TabIndex = 1;
             this.decreaseMonthButton.Text = "<";
             this.decreaseMonthButton.UseVisualStyleBackColor = true;
@@ -140,10 +149,11 @@
             // 
             // increaseMonthButton
             // 
-            this.increaseMonthButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.increaseMonthButton.Location = new System.Drawing.Point(495, 30);
+            this.increaseMonthButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.increaseMonthButton.Location = new System.Drawing.Point(664, 0);
+            this.increaseMonthButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.increaseMonthButton.Name = "increaseMonthButton";
-            this.increaseMonthButton.Size = new System.Drawing.Size(22, 23);
+            this.increaseMonthButton.Size = new System.Drawing.Size(29, 24);
             this.increaseMonthButton.TabIndex = 2;
             this.increaseMonthButton.Text = ">";
             this.increaseMonthButton.UseVisualStyleBackColor = true;
@@ -152,448 +162,521 @@
             // saturdayLable
             // 
             this.saturdayLable.AutoSize = true;
-            this.saturdayLable.Location = new System.Drawing.Point(483, 63);
+            this.saturdayLable.Location = new System.Drawing.Point(644, 78);
+            this.saturdayLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.saturdayLable.Name = "saturdayLable";
-            this.saturdayLable.Size = new System.Drawing.Size(29, 13);
+            this.saturdayLable.Size = new System.Drawing.Size(27, 17);
             this.saturdayLable.TabIndex = 3;
             this.saturdayLable.Text = "شنبه";
             // 
             // sundayLable
             // 
             this.sundayLable.AutoSize = true;
-            this.sundayLable.Location = new System.Drawing.Point(434, 63);
+            this.sundayLable.Location = new System.Drawing.Point(579, 78);
+            this.sundayLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sundayLable.Name = "sundayLable";
-            this.sundayLable.Size = new System.Drawing.Size(43, 13);
+            this.sundayLable.Size = new System.Drawing.Size(42, 17);
             this.sundayLable.TabIndex = 3;
             this.sundayLable.Text = "یک شنبه";
             // 
             // mondayLable
             // 
             this.mondayLable.AutoSize = true;
-            this.mondayLable.Location = new System.Drawing.Point(385, 63);
+            this.mondayLable.Location = new System.Drawing.Point(513, 78);
+            this.mondayLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.mondayLable.Name = "mondayLable";
-            this.mondayLable.Size = new System.Drawing.Size(43, 13);
+            this.mondayLable.Size = new System.Drawing.Size(42, 17);
             this.mondayLable.TabIndex = 3;
             this.mondayLable.Text = "دو شنبه";
             // 
             // tuesdayLable
             // 
             this.tuesdayLable.AutoSize = true;
-            this.tuesdayLable.Location = new System.Drawing.Point(336, 63);
+            this.tuesdayLable.Location = new System.Drawing.Point(448, 78);
+            this.tuesdayLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tuesdayLable.Name = "tuesdayLable";
-            this.tuesdayLable.Size = new System.Drawing.Size(46, 13);
+            this.tuesdayLable.Size = new System.Drawing.Size(44, 17);
             this.tuesdayLable.TabIndex = 3;
             this.tuesdayLable.Text = "سه شنبه";
             // 
             // wednesdayLable
             // 
             this.wednesdayLable.AutoSize = true;
-            this.wednesdayLable.Location = new System.Drawing.Point(287, 63);
+            this.wednesdayLable.Location = new System.Drawing.Point(383, 78);
+            this.wednesdayLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.wednesdayLable.Name = "wednesdayLable";
-            this.wednesdayLable.Size = new System.Drawing.Size(54, 13);
+            this.wednesdayLable.Size = new System.Drawing.Size(54, 17);
             this.wednesdayLable.TabIndex = 3;
             this.wednesdayLable.Text = "چهار شنبه";
             // 
             // thursdayLable
             // 
             this.thursdayLable.AutoSize = true;
-            this.thursdayLable.Location = new System.Drawing.Point(238, 63);
+            this.thursdayLable.Location = new System.Drawing.Point(317, 78);
+            this.thursdayLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.thursdayLable.Name = "thursdayLable";
-            this.thursdayLable.Size = new System.Drawing.Size(48, 13);
+            this.thursdayLable.Size = new System.Drawing.Size(45, 17);
             this.thursdayLable.TabIndex = 3;
             this.thursdayLable.Text = "پنج شنبه";
             // 
             // fridayLabel
             // 
             this.fridayLabel.AutoSize = true;
-            this.fridayLabel.Location = new System.Drawing.Point(189, 63);
+            this.fridayLabel.Location = new System.Drawing.Point(252, 78);
+            this.fridayLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fridayLabel.Name = "fridayLabel";
-            this.fridayLabel.Size = new System.Drawing.Size(30, 13);
+            this.fridayLabel.Size = new System.Drawing.Size(31, 17);
             this.fridayLabel.TabIndex = 3;
             this.fridayLabel.Text = "جمعه";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(189, 93);
+            this.label1.Location = new System.Drawing.Point(252, 114);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 30);
+            this.label1.Size = new System.Drawing.Size(40, 37);
             this.label1.TabIndex = 4;
             this.label1.Text = "11";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(238, 93);
+            this.label2.Location = new System.Drawing.Point(317, 114);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 30);
+            this.label2.Size = new System.Drawing.Size(40, 37);
             this.label2.TabIndex = 4;
             this.label2.Text = "11";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(296, 93);
+            this.label3.Location = new System.Drawing.Point(395, 114);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 30);
+            this.label3.Size = new System.Drawing.Size(40, 37);
             this.label3.TabIndex = 4;
             this.label3.Text = "11";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(352, 93);
+            this.label4.Location = new System.Drawing.Point(469, 114);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 30);
+            this.label4.Size = new System.Drawing.Size(40, 37);
             this.label4.TabIndex = 4;
             this.label4.Text = "11";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(398, 93);
+            this.label5.Location = new System.Drawing.Point(531, 114);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 30);
+            this.label5.Size = new System.Drawing.Size(40, 37);
             this.label5.TabIndex = 4;
             this.label5.Text = "11";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(434, 93);
+            this.label6.Location = new System.Drawing.Point(579, 114);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 30);
+            this.label6.Size = new System.Drawing.Size(40, 37);
             this.label6.TabIndex = 4;
             this.label6.Text = "11";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(482, 93);
+            this.label7.Location = new System.Drawing.Point(643, 114);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 30);
+            this.label7.Size = new System.Drawing.Size(40, 37);
             this.label7.TabIndex = 4;
             this.label7.Text = "11";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(189, 136);
+            this.label8.Location = new System.Drawing.Point(252, 167);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 30);
+            this.label8.Size = new System.Drawing.Size(40, 37);
             this.label8.TabIndex = 4;
             this.label8.Text = "11";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(238, 136);
+            this.label9.Location = new System.Drawing.Point(317, 167);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 30);
+            this.label9.Size = new System.Drawing.Size(40, 37);
             this.label9.TabIndex = 4;
             this.label9.Text = "11";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(296, 136);
+            this.label10.Location = new System.Drawing.Point(395, 167);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 30);
+            this.label10.Size = new System.Drawing.Size(40, 37);
             this.label10.TabIndex = 4;
             this.label10.Text = "11";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(352, 136);
+            this.label11.Location = new System.Drawing.Point(469, 167);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(30, 30);
+            this.label11.Size = new System.Drawing.Size(40, 37);
             this.label11.TabIndex = 4;
             this.label11.Text = "11";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(398, 136);
+            this.label12.Location = new System.Drawing.Point(531, 167);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(30, 30);
+            this.label12.Size = new System.Drawing.Size(40, 37);
             this.label12.TabIndex = 4;
             this.label12.Text = "11";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(434, 136);
+            this.label13.Location = new System.Drawing.Point(579, 167);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(30, 30);
+            this.label13.Size = new System.Drawing.Size(40, 37);
             this.label13.TabIndex = 4;
             this.label13.Text = "11";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(482, 136);
+            this.label14.Location = new System.Drawing.Point(643, 167);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(30, 30);
+            this.label14.Size = new System.Drawing.Size(40, 37);
             this.label14.TabIndex = 4;
             this.label14.Text = "11";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(189, 175);
+            this.label15.Location = new System.Drawing.Point(252, 215);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(30, 30);
+            this.label15.Size = new System.Drawing.Size(40, 37);
             this.label15.TabIndex = 4;
             this.label15.Text = "11";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label16
             // 
-            this.label16.Location = new System.Drawing.Point(238, 175);
+            this.label16.Location = new System.Drawing.Point(317, 215);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(30, 30);
+            this.label16.Size = new System.Drawing.Size(40, 37);
             this.label16.TabIndex = 4;
             this.label16.Text = "11";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label17
             // 
-            this.label17.Location = new System.Drawing.Point(287, 175);
+            this.label17.Location = new System.Drawing.Point(383, 215);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(30, 30);
+            this.label17.Size = new System.Drawing.Size(40, 37);
             this.label17.TabIndex = 4;
             this.label17.Text = "11";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label18
             // 
-            this.label18.Location = new System.Drawing.Point(352, 175);
+            this.label18.Location = new System.Drawing.Point(469, 215);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(30, 30);
+            this.label18.Size = new System.Drawing.Size(40, 37);
             this.label18.TabIndex = 4;
             this.label18.Text = "11";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label19
             // 
-            this.label19.Location = new System.Drawing.Point(398, 175);
+            this.label19.Location = new System.Drawing.Point(531, 215);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(30, 30);
+            this.label19.Size = new System.Drawing.Size(40, 37);
             this.label19.TabIndex = 4;
             this.label19.Text = "11";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label20
             // 
-            this.label20.Location = new System.Drawing.Point(434, 175);
+            this.label20.Location = new System.Drawing.Point(579, 215);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(30, 30);
+            this.label20.Size = new System.Drawing.Size(40, 37);
             this.label20.TabIndex = 4;
             this.label20.Text = "11";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label21
             // 
-            this.label21.Location = new System.Drawing.Point(482, 175);
+            this.label21.Location = new System.Drawing.Point(643, 215);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(30, 30);
+            this.label21.Size = new System.Drawing.Size(40, 37);
             this.label21.TabIndex = 4;
             this.label21.Text = "11";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label22
             // 
-            this.label22.Location = new System.Drawing.Point(189, 215);
+            this.label22.Location = new System.Drawing.Point(252, 265);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(30, 30);
+            this.label22.Size = new System.Drawing.Size(40, 37);
             this.label22.TabIndex = 4;
             this.label22.Text = "11";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label23
             // 
-            this.label23.Location = new System.Drawing.Point(238, 215);
+            this.label23.Location = new System.Drawing.Point(317, 265);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(30, 30);
+            this.label23.Size = new System.Drawing.Size(40, 37);
             this.label23.TabIndex = 4;
             this.label23.Text = "11";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label24
             // 
-            this.label24.Location = new System.Drawing.Point(287, 215);
+            this.label24.Location = new System.Drawing.Point(383, 265);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(30, 30);
+            this.label24.Size = new System.Drawing.Size(40, 37);
             this.label24.TabIndex = 4;
             this.label24.Text = "11";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label25
             // 
-            this.label25.Location = new System.Drawing.Point(352, 215);
+            this.label25.Location = new System.Drawing.Point(469, 265);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(30, 30);
+            this.label25.Size = new System.Drawing.Size(40, 37);
             this.label25.TabIndex = 4;
             this.label25.Text = "11";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label26
             // 
-            this.label26.Location = new System.Drawing.Point(398, 215);
+            this.label26.Location = new System.Drawing.Point(531, 265);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(30, 30);
+            this.label26.Size = new System.Drawing.Size(40, 37);
             this.label26.TabIndex = 4;
             this.label26.Text = "11";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label27
             // 
-            this.label27.Location = new System.Drawing.Point(434, 215);
+            this.label27.Location = new System.Drawing.Point(579, 265);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(30, 30);
+            this.label27.Size = new System.Drawing.Size(40, 37);
             this.label27.TabIndex = 4;
             this.label27.Text = "11";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label28
             // 
-            this.label28.Location = new System.Drawing.Point(482, 215);
+            this.label28.Location = new System.Drawing.Point(643, 265);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(30, 30);
+            this.label28.Size = new System.Drawing.Size(40, 37);
             this.label28.TabIndex = 4;
             this.label28.Text = "11";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label29
             // 
-            this.label29.Location = new System.Drawing.Point(189, 257);
+            this.label29.Location = new System.Drawing.Point(252, 316);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(30, 30);
+            this.label29.Size = new System.Drawing.Size(40, 37);
             this.label29.TabIndex = 4;
             this.label29.Text = "11";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label30
             // 
-            this.label30.Location = new System.Drawing.Point(238, 257);
+            this.label30.Location = new System.Drawing.Point(317, 316);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(30, 30);
+            this.label30.Size = new System.Drawing.Size(40, 37);
             this.label30.TabIndex = 4;
             this.label30.Text = "11";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label31
             // 
-            this.label31.Location = new System.Drawing.Point(287, 257);
+            this.label31.Location = new System.Drawing.Point(383, 316);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(30, 30);
+            this.label31.Size = new System.Drawing.Size(40, 37);
             this.label31.TabIndex = 4;
             this.label31.Text = "11";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label32
             // 
-            this.label32.Location = new System.Drawing.Point(352, 257);
+            this.label32.Location = new System.Drawing.Point(469, 316);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(30, 30);
+            this.label32.Size = new System.Drawing.Size(40, 37);
             this.label32.TabIndex = 4;
             this.label32.Text = "11";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label33
             // 
-            this.label33.Location = new System.Drawing.Point(398, 257);
+            this.label33.Location = new System.Drawing.Point(531, 316);
+            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(30, 30);
+            this.label33.Size = new System.Drawing.Size(40, 37);
             this.label33.TabIndex = 4;
             this.label33.Text = "11";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label34
             // 
-            this.label34.Location = new System.Drawing.Point(434, 257);
+            this.label34.Location = new System.Drawing.Point(579, 316);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(30, 30);
+            this.label34.Size = new System.Drawing.Size(40, 37);
             this.label34.TabIndex = 4;
             this.label34.Text = "11";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label35
             // 
-            this.label35.Location = new System.Drawing.Point(482, 257);
+            this.label35.Location = new System.Drawing.Point(643, 316);
+            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(30, 30);
+            this.label35.Size = new System.Drawing.Size(40, 37);
             this.label35.TabIndex = 4;
             this.label35.Text = "11";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label36
             // 
-            this.label36.Location = new System.Drawing.Point(482, 297);
+            this.label36.Location = new System.Drawing.Point(643, 366);
+            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(30, 30);
+            this.label36.Size = new System.Drawing.Size(40, 37);
             this.label36.TabIndex = 4;
             this.label36.Text = "11";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label37
             // 
-            this.label37.Location = new System.Drawing.Point(434, 297);
+            this.label37.Location = new System.Drawing.Point(579, 366);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(30, 30);
+            this.label37.Size = new System.Drawing.Size(40, 37);
             this.label37.TabIndex = 4;
             this.label37.Text = "11";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label38
             // 
-            this.label38.Location = new System.Drawing.Point(398, 297);
+            this.label38.Location = new System.Drawing.Point(531, 366);
+            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(30, 30);
+            this.label38.Size = new System.Drawing.Size(40, 37);
             this.label38.TabIndex = 4;
             this.label38.Text = "11";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label39
             // 
-            this.label39.Location = new System.Drawing.Point(352, 297);
+            this.label39.Location = new System.Drawing.Point(469, 366);
+            this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(30, 30);
+            this.label39.Size = new System.Drawing.Size(40, 37);
             this.label39.TabIndex = 4;
             this.label39.Text = "11";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label40
             // 
-            this.label40.Location = new System.Drawing.Point(296, 297);
+            this.label40.Location = new System.Drawing.Point(395, 366);
+            this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(30, 30);
+            this.label40.Size = new System.Drawing.Size(40, 37);
             this.label40.TabIndex = 4;
             this.label40.Text = "11";
             this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label41
             // 
-            this.label41.Location = new System.Drawing.Point(238, 297);
+            this.label41.Location = new System.Drawing.Point(317, 366);
+            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(30, 30);
+            this.label41.Size = new System.Drawing.Size(40, 37);
             this.label41.TabIndex = 4;
             this.label41.Text = "11";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label42
             // 
-            this.label42.Location = new System.Drawing.Point(189, 297);
+            this.label42.Location = new System.Drawing.Point(252, 366);
+            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(30, 30);
+            this.label42.Size = new System.Drawing.Size(40, 37);
             this.label42.TabIndex = 4;
             this.label42.Text = "11";
             this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.yearTextBox);
+            this.panel1.Controls.Add(this.decreaseYearButton);
+            this.panel1.Controls.Add(this.increaseYearButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(693, 24);
+            this.panel1.TabIndex = 5;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.monthTextBox);
+            this.panel2.Controls.Add(this.decreaseMonthButton);
+            this.panel2.Controls.Add(this.increaseMonthButton);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 24);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(693, 24);
+            this.panel2.TabIndex = 6;
+            // 
             // CalendarView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.label33);
@@ -643,15 +726,14 @@
             this.Controls.Add(this.mondayLable);
             this.Controls.Add(this.sundayLable);
             this.Controls.Add(this.saturdayLable);
-            this.Controls.Add(this.increaseMonthButton);
-            this.Controls.Add(this.increaseYearButton);
-            this.Controls.Add(this.decreaseMonthButton);
-            this.Controls.Add(this.decreaseYearButton);
-            this.Controls.Add(this.monthTextBox);
-            this.Controls.Add(this.yearTextBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CalendarView";
-            this.Size = new System.Drawing.Size(520, 336);
+            this.Size = new System.Drawing.Size(693, 414);
             this.Resize += new System.EventHandler(this.CalendarView_Resize);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -714,5 +796,7 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
