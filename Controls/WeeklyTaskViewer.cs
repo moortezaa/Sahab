@@ -21,7 +21,6 @@ namespace Sahab_Desktop.Controls
         public WeeklyTaskViewer()
         {
             InitializeComponent();
-            Height = theScroll.Height + scrollPanel.Height + scrollPanel.Margin.Top;
             MinimumSize = new Size(Width, Height);
             nowIndicatorLabel = new Label()
             {
@@ -93,7 +92,7 @@ namespace Sahab_Desktop.Controls
                     date = date.AddDays(1);
                     row += 1;
                     var dateTasks = Tasks.Where(t => t.Dates.Contains(date));
-                    var rowLabel = (Label)Controls.Find($"label{row}", false)[0];
+                    var rowLabel = (Label)panel1.Controls.Find($"label{row}", false)[0];
                     foreach (var dateTask in dateTasks)
                     {
                         var label = new Label()

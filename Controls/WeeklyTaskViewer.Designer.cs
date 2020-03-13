@@ -43,18 +43,21 @@
             this.حذفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.scrollPanel.SuspendLayout();
             this.tasksMenuStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // theScroll
             // 
-            this.theScroll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.theScroll.Location = new System.Drawing.Point(95, 0);
+            this.theScroll.Dock = System.Windows.Forms.DockStyle.Top;
+            this.theScroll.Location = new System.Drawing.Point(0, 0);
             this.theScroll.Name = "theScroll";
             this.theScroll.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.theScroll.Size = new System.Drawing.Size(1376, 24);
+            this.theScroll.Size = new System.Drawing.Size(928, 24);
             this.theScroll.TabIndex = 0;
             this.theScroll.ValueChanged += new System.EventHandler(this.TheScroll_ValueChanged);
             // 
@@ -144,15 +147,13 @@
             // 
             // scrollPanel
             // 
-            this.scrollPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.scrollPanel.BackColor = System.Drawing.Color.White;
             this.scrollPanel.Controls.Add(this.tasksPanel);
-            this.scrollPanel.Location = new System.Drawing.Point(95, 30);
-            this.scrollPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scrollPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scrollPanel.Location = new System.Drawing.Point(0, 24);
+            this.scrollPanel.Margin = new System.Windows.Forms.Padding(4);
             this.scrollPanel.Name = "scrollPanel";
-            this.scrollPanel.Size = new System.Drawing.Size(1376, 602);
+            this.scrollPanel.Size = new System.Drawing.Size(928, 607);
             this.scrollPanel.TabIndex = 2;
             // 
             // tasksPanel
@@ -194,27 +195,47 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(93, 631);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.scrollPanel);
+            this.panel2.Controls.Add(this.theScroll);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(93, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(928, 631);
+            this.panel2.TabIndex = 4;
+            // 
             // WeeklyTaskViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.Controls.Add(this.scrollPanel);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.theScroll);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WeeklyTaskViewer";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Size = new System.Drawing.Size(1471, 631);
+            this.Size = new System.Drawing.Size(1021, 631);
             this.Load += new System.EventHandler(this.WeeklyTaskViewer_Load);
             this.scrollPanel.ResumeLayout(false);
             this.tasksMenuStrip.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -235,5 +256,7 @@
         private System.Windows.Forms.ToolStripMenuItem حذفToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایشToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

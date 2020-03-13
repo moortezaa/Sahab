@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Sahab_Desktop.Controls.Week week2 = new Sahab_Desktop.Controls.Week();
+            Sahab_Desktop.Controls.Week week4 = new Sahab_Desktop.Controls.Week();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.برنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.اضافهکردنبرنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,11 +42,11 @@
             this.همگامسازیاینترنتیToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
             this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
-            this.calendarView = new Sahab_Desktop.Controls.CalendarView();
-            this.weeklyTaskViewer = new Sahab_Desktop.Controls.WeeklyTaskViewer();
-            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.weeklyTaskViewer = new Sahab_Desktop.Controls.WeeklyTaskViewer();
+            this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
+            this.calendarView = new Sahab_Desktop.Controls.CalendarView();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -164,44 +164,6 @@
             this.dailyTaskViewVScrollBar.TabIndex = 5;
             this.dailyTaskViewVScrollBar.ValueChanged += new System.EventHandler(this.DailyTaskViewVScrollBar_ValueChanged);
             // 
-            // calendarView
-            // 
-            this.calendarView.BackColor = System.Drawing.Color.LightYellow;
-            this.calendarView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calendarView.Location = new System.Drawing.Point(0, 0);
-            this.calendarView.Margin = new System.Windows.Forms.Padding(5);
-            this.calendarView.Mode = Sahab_Desktop.Controls.CalendarMode.DaySelect;
-            this.calendarView.Name = "calendarView";
-            this.calendarView.SelectedDate = new System.DateTime(2020, 2, 23, 22, 33, 10, 994);
-            week2.EndDate = new System.DateTime(2020, 3, 13, 0, 0, 0, 0);
-            week2.StartDate = new System.DateTime(2020, 3, 7, 0, 0, 0, 0);
-            this.calendarView.SelectedWeek = week2;
-            this.calendarView.Size = new System.Drawing.Size(611, 415);
-            this.calendarView.TabIndex = 6;
-            // 
-            // weeklyTaskViewer
-            // 
-            this.weeklyTaskViewer.BackColor = System.Drawing.Color.Gray;
-            this.weeklyTaskViewer.DPM = 2;
-            this.weeklyTaskViewer.Location = new System.Drawing.Point(0, 0);
-            this.weeklyTaskViewer.Margin = new System.Windows.Forms.Padding(5);
-            this.weeklyTaskViewer.Name = "weeklyTaskViewer";
-            this.weeklyTaskViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.weeklyTaskViewer.Size = new System.Drawing.Size(1103, 421);
-            this.weeklyTaskViewer.TabIndex = 1;
-            this.weeklyTaskViewer.Visible = false;
-            this.weeklyTaskViewer.Week = null;
-            // 
-            // dailyTaskViewer
-            // 
-            this.dailyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
-            this.dailyTaskViewer.Margin = new System.Windows.Forms.Padding(5);
-            this.dailyTaskViewer.Name = "dailyTaskViewer";
-            this.dailyTaskViewer.Size = new System.Drawing.Size(1103, 1767);
-            this.dailyTaskViewer.TabIndex = 0;
-            // 
             // panel1
             // 
             this.panel1.AutoSize = true;
@@ -221,6 +183,44 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1127, 447);
             this.panel2.TabIndex = 8;
+            // 
+            // weeklyTaskViewer
+            // 
+            this.weeklyTaskViewer.BackColor = System.Drawing.Color.Gray;
+            this.weeklyTaskViewer.DPM = 2;
+            this.weeklyTaskViewer.Location = new System.Drawing.Point(0, 0);
+            this.weeklyTaskViewer.Margin = new System.Windows.Forms.Padding(5);
+            this.weeklyTaskViewer.Name = "weeklyTaskViewer";
+            this.weeklyTaskViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.weeklyTaskViewer.Size = new System.Drawing.Size(1103, 630);
+            this.weeklyTaskViewer.TabIndex = 1;
+            this.weeklyTaskViewer.Visible = false;
+            this.weeklyTaskViewer.Week = null;
+            // 
+            // dailyTaskViewer
+            // 
+            this.dailyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
+            this.dailyTaskViewer.Margin = new System.Windows.Forms.Padding(5);
+            this.dailyTaskViewer.Name = "dailyTaskViewer";
+            this.dailyTaskViewer.Size = new System.Drawing.Size(1103, 1767);
+            this.dailyTaskViewer.TabIndex = 0;
+            // 
+            // calendarView
+            // 
+            this.calendarView.BackColor = System.Drawing.Color.LightYellow;
+            this.calendarView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calendarView.Location = new System.Drawing.Point(0, 0);
+            this.calendarView.Margin = new System.Windows.Forms.Padding(5);
+            this.calendarView.Mode = Sahab_Desktop.Controls.CalendarMode.DaySelect;
+            this.calendarView.Name = "calendarView";
+            this.calendarView.SelectedDate = new System.DateTime(2020, 2, 23, 22, 33, 10, 994);
+            week4.EndDate = new System.DateTime(2020, 3, 13, 0, 0, 0, 0);
+            week4.StartDate = new System.DateTime(2020, 3, 7, 0, 0, 0, 0);
+            this.calendarView.SelectedWeek = week4;
+            this.calendarView.Size = new System.Drawing.Size(611, 415);
+            this.calendarView.TabIndex = 6;
             // 
             // MainForm
             // 
