@@ -198,13 +198,26 @@ namespace Sahab_Desktop
 
         private void همگامسازیاینترنتیToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var webSyncForm = new WebSyncForm();
-            webSyncForm.Show();
+            using (var context = new AppDBContext())
+            {
+                var user = context.Users.First();
+                if (user.UserName == "default")
+                {
+                    var linkAccountForm = new LinkAccountForm();
+                    linkAccountForm.Show();
+                }
+                else
+                {
+                    var webSyncForm = new WebSyncForm();
+                    webSyncForm.Show();
+                }
+            }
         }
 
         private void اتصالبهحسابToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var linkAccountForm = new LinkAccountForm();
+            linkAccountForm.Show();
         }
     }
 

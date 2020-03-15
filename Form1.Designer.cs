@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Sahab_Desktop.Controls.Week week5 = new Sahab_Desktop.Controls.Week();
+            Sahab_Desktop.Controls.Week week1 = new Sahab_Desktop.Controls.Week();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.برنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.اضافهکردنبرنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,14 +40,14 @@
             this.پوستهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.خدماتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.همگامسازیاینترنتیToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.اتصالبهحسابToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
-            this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.weeklyTaskViewer = new Sahab_Desktop.Controls.WeeklyTaskViewer();
             this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
+            this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.calendarView = new Sahab_Desktop.Controls.CalendarView();
-            this.اتصالبهحسابToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -63,7 +63,7 @@
             this.خدماتToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1127, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1127, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -135,7 +135,7 @@
             this.همگامسازیاینترنتیToolStripMenuItem,
             this.اتصالبهحسابToolStripMenuItem});
             this.خدماتToolStripMenuItem.Name = "خدماتToolStripMenuItem";
-            this.خدماتToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.خدماتToolStripMenuItem.Size = new System.Drawing.Size(67, 26);
             this.خدماتToolStripMenuItem.Text = "خدمات";
             // 
             // همگامسازیاینترنتیToolStripMenuItem
@@ -145,56 +145,35 @@
             this.همگامسازیاینترنتیToolStripMenuItem.Text = "همگام سازی اینترنتی";
             this.همگامسازیاینترنتیToolStripMenuItem.Click += new System.EventHandler(this.همگامسازیاینترنتیToolStripMenuItem_Click);
             // 
+            // اتصالبهحسابToolStripMenuItem
+            // 
+            this.اتصالبهحسابToolStripMenuItem.Name = "اتصالبهحسابToolStripMenuItem";
+            this.اتصالبهحسابToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.اتصالبهحسابToolStripMenuItem.Text = "اتصال به حساب";
+            this.اتصالبهحسابToolStripMenuItem.Click += new System.EventHandler(this.اتصالبهحسابToolStripMenuItem_Click);
+            // 
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.White;
             this.panel.Controls.Add(this.weeklyTaskViewer);
             this.panel.Controls.Add(this.dailyTaskViewer);
-            this.panel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Margin = new System.Windows.Forms.Padding(4);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1103, 449);
+            this.panel.Size = new System.Drawing.Size(1103, 447);
             this.panel.TabIndex = 3;
-            // 
-            // dailyTaskViewVScrollBar
-            // 
-            this.dailyTaskViewVScrollBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyTaskViewVScrollBar.Location = new System.Drawing.Point(1103, 0);
-            this.dailyTaskViewVScrollBar.Name = "dailyTaskViewVScrollBar";
-            this.dailyTaskViewVScrollBar.Size = new System.Drawing.Size(24, 449);
-            this.dailyTaskViewVScrollBar.TabIndex = 5;
-            this.dailyTaskViewVScrollBar.ValueChanged += new System.EventHandler(this.DailyTaskViewVScrollBar_ValueChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.calendarView);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 28);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1127, 420);
-            this.panel1.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dailyTaskViewVScrollBar);
-            this.panel2.Controls.Add(this.panel);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 448);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1127, 449);
-            this.panel2.TabIndex = 8;
             // 
             // weeklyTaskViewer
             // 
             this.weeklyTaskViewer.BackColor = System.Drawing.Color.Gray;
             this.weeklyTaskViewer.DPM = 2;
             this.weeklyTaskViewer.Location = new System.Drawing.Point(0, 0);
-            this.weeklyTaskViewer.Margin = new System.Windows.Forms.Padding(5);
+            this.weeklyTaskViewer.Margin = new System.Windows.Forms.Padding(0);
+            this.weeklyTaskViewer.MinimumSize = new System.Drawing.Size(1021, 631);
             this.weeklyTaskViewer.Name = "weeklyTaskViewer";
             this.weeklyTaskViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.weeklyTaskViewer.Size = new System.Drawing.Size(1103, 630);
+            this.weeklyTaskViewer.Size = new System.Drawing.Size(1103, 631);
             this.weeklyTaskViewer.TabIndex = 1;
             this.weeklyTaskViewer.Visible = false;
             this.weeklyTaskViewer.Week = null;
@@ -204,10 +183,29 @@
             this.dailyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dailyTaskViewer.Location = new System.Drawing.Point(0, 0);
-            this.dailyTaskViewer.Margin = new System.Windows.Forms.Padding(5);
+            this.dailyTaskViewer.Margin = new System.Windows.Forms.Padding(0);
             this.dailyTaskViewer.Name = "dailyTaskViewer";
             this.dailyTaskViewer.Size = new System.Drawing.Size(1103, 1767);
             this.dailyTaskViewer.TabIndex = 0;
+            // 
+            // dailyTaskViewVScrollBar
+            // 
+            this.dailyTaskViewVScrollBar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dailyTaskViewVScrollBar.Location = new System.Drawing.Point(1103, 0);
+            this.dailyTaskViewVScrollBar.Name = "dailyTaskViewVScrollBar";
+            this.dailyTaskViewVScrollBar.Size = new System.Drawing.Size(24, 447);
+            this.dailyTaskViewVScrollBar.TabIndex = 5;
+            this.dailyTaskViewVScrollBar.ValueChanged += new System.EventHandler(this.DailyTaskViewVScrollBar_ValueChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.calendarView);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1127, 420);
+            this.panel1.TabIndex = 7;
             // 
             // calendarView
             // 
@@ -218,18 +216,21 @@
             this.calendarView.Mode = Sahab_Desktop.Controls.CalendarMode.DaySelect;
             this.calendarView.Name = "calendarView";
             this.calendarView.SelectedDate = new System.DateTime(2020, 2, 23, 22, 33, 10, 994);
-            week5.EndDate = new System.DateTime(2020, 3, 13, 0, 0, 0, 0);
-            week5.StartDate = new System.DateTime(2020, 3, 7, 0, 0, 0, 0);
-            this.calendarView.SelectedWeek = week5;
+            week1.EndDate = new System.DateTime(2020, 3, 13, 0, 0, 0, 0);
+            week1.StartDate = new System.DateTime(2020, 3, 7, 0, 0, 0, 0);
+            this.calendarView.SelectedWeek = week1;
             this.calendarView.Size = new System.Drawing.Size(611, 415);
             this.calendarView.TabIndex = 6;
             // 
-            // اتصالبهحسابToolStripMenuItem
+            // panel2
             // 
-            this.اتصالبهحسابToolStripMenuItem.Name = "اتصالبهحسابToolStripMenuItem";
-            this.اتصالبهحسابToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.اتصالبهحسابToolStripMenuItem.Text = "اتصال به حساب";
-            this.اتصالبهحسابToolStripMenuItem.Click += new System.EventHandler(this.اتصالبهحسابToolStripMenuItem_Click);
+            this.panel2.Controls.Add(this.panel);
+            this.panel2.Controls.Add(this.dailyTaskViewVScrollBar);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 450);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1127, 447);
+            this.panel2.TabIndex = 8;
             // 
             // MainForm
             // 

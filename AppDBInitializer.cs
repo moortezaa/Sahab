@@ -51,6 +51,7 @@ namespace Sahab_Desktop
                 ThemName = "Default",
                 UserName = "default",
             });
+            context.SaveChanges();
             base.Seed(context);
         }
     }
