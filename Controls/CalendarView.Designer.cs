@@ -104,7 +104,7 @@
             // 
             this.decreaseYearButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.decreaseYearButton.Location = new System.Drawing.Point(0, 0);
-            this.decreaseYearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.decreaseYearButton.Margin = new System.Windows.Forms.Padding(4);
             this.decreaseYearButton.Name = "decreaseYearButton";
             this.decreaseYearButton.Size = new System.Drawing.Size(31, 24);
             this.decreaseYearButton.TabIndex = 1;
@@ -116,7 +116,7 @@
             // 
             this.increaseYearButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.increaseYearButton.Location = new System.Drawing.Point(664, 0);
-            this.increaseYearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.increaseYearButton.Margin = new System.Windows.Forms.Padding(4);
             this.increaseYearButton.Name = "increaseYearButton";
             this.increaseYearButton.Size = new System.Drawing.Size(29, 24);
             this.increaseYearButton.TabIndex = 2;
@@ -128,7 +128,7 @@
             // 
             this.monthTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.monthTextBox.Location = new System.Drawing.Point(31, 0);
-            this.monthTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.monthTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.monthTextBox.Name = "monthTextBox";
             this.monthTextBox.Size = new System.Drawing.Size(633, 22);
             this.monthTextBox.TabIndex = 0;
@@ -139,7 +139,7 @@
             // 
             this.decreaseMonthButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.decreaseMonthButton.Location = new System.Drawing.Point(0, 0);
-            this.decreaseMonthButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.decreaseMonthButton.Margin = new System.Windows.Forms.Padding(4);
             this.decreaseMonthButton.Name = "decreaseMonthButton";
             this.decreaseMonthButton.Size = new System.Drawing.Size(31, 24);
             this.decreaseMonthButton.TabIndex = 1;
@@ -151,7 +151,7 @@
             // 
             this.increaseMonthButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.increaseMonthButton.Location = new System.Drawing.Point(664, 0);
-            this.increaseMonthButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.increaseMonthButton.Margin = new System.Windows.Forms.Padding(4);
             this.increaseMonthButton.Name = "increaseMonthButton";
             this.increaseMonthButton.Size = new System.Drawing.Size(29, 24);
             this.increaseMonthButton.TabIndex = 2;
@@ -726,7 +726,7 @@
             this.Controls.Add(this.mondayLable);
             this.Controls.Add(this.sundayLable);
             this.Controls.Add(this.saturdayLable);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CalendarView";
             this.Size = new System.Drawing.Size(693, 414);
             this.Resize += new System.EventHandler(this.CalendarView_Resize);

@@ -316,7 +316,10 @@ namespace Sahab_Desktop.Controls
             month += 1;
             if (month > 12)
             {
-                month = 12;
+                month = 1;
+                int year = int.Parse(yearTextBox.Text);
+                year += 1;
+                yearTextBox.Text = year.ToString();
             }
             monthTextBox.Text = month.ToString();
         }
@@ -327,7 +330,10 @@ namespace Sahab_Desktop.Controls
             month -= 1;
             if (month < 1)
             {
-                month = 1;
+                month = 12;
+                int year = int.Parse(yearTextBox.Text);
+                year -= 1;
+                yearTextBox.Text = year.ToString();
             }
             monthTextBox.Text = month.ToString();
         }
