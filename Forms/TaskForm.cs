@@ -41,10 +41,6 @@ namespace Sahab_Desktop
 
             StartDateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"));
 
-            RefreshDoctrineComboBox();
-
-            RefreshFrameComboBox();
-
             PeriodComboBox.Items.AddRange(new object[]
             {
                 "لطفا انتخاب کنید",
@@ -208,7 +204,9 @@ namespace Sahab_Desktop
 
         private void RefreshDoctrineComboBox()
         {
-            DoctrinesComboBox.Items.AddRange(_context.Doctrines.ToArray());
+            DoctrinesComboBox.Items.Clear();
+            DoctrinesComboBox.Text = "";
+            DoctrinesComboBox.Items.AddRange(_context.Doctrines.ToArray().Where(d => !Doctrines.Contains(d)).ToArray());
             DoctrinesComboBox.Items.Add(new Doctrine() { Id = -1, Name = "اضافه کردن اصل جدید" });
             DoctrinesComboBox.DisplayMember = nameof(Doctrine.Name);
             DoctrinesComboBox.ValueMember = nameof(Doctrine.Id);
@@ -217,7 +215,8 @@ namespace Sahab_Desktop
         private void RefreshFrameComboBox()
         {
             FramesComboBox.Items.Clear();
-            FramesComboBox.Items.AddRange(_context.Frames.ToArray());
+            FramesComboBox.Text = "";
+            FramesComboBox.Items.AddRange(_context.Frames.ToArray().Where(f => !Frames.Contains(f)).ToArray());
             FramesComboBox.Items.Add(new Frame() { Id = -1, Name = "اضافه کردن چهرچوب جدید" });
             FramesComboBox.DisplayMember = nameof(Frame.Name);
             FramesComboBox.ValueMember = nameof(Frame.Id);
@@ -344,6 +343,7 @@ namespace Sahab_Desktop
             FramesListBox.Items.Add(((Frame)FramesComboBox.SelectedItem).Name);
             Frames.Add((Frame)FramesComboBox.SelectedItem);
             TaskPriorityComboBox_SelectedIndexChanged(sender, e);
+            RefreshFrameComboBox();
         }
 
         private void DoctrineButton_Click(object sender, EventArgs e)
@@ -351,6 +351,7 @@ namespace Sahab_Desktop
             DoctrinesListBox.Items.Add(((Doctrine)DoctrinesComboBox.SelectedItem).Name);
             Doctrines.Add((Doctrine)DoctrinesComboBox.SelectedItem);
             TaskPriorityComboBox_SelectedIndexChanged(sender, e);
+            RefreshDoctrineComboBox();
         }
 
         private void RepeatCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -621,6 +622,7 @@ namespace Sahab_Desktop
                     DoctrinesListBox.Items.AddRange(doctrines.Select(d => d.Name).ToArray());
                     Doctrines.AddRange(doctrines);
                 }
+
                 TaskPriorityComboBox.SelectedIndex = (int)Task.TaskPriority;
                 if (frames.Any() || doctrines.Any())
                 {
@@ -636,6 +638,11 @@ namespace Sahab_Desktop
             {
                 Task = new Models.Task();
             }
+
+
+            RefreshDoctrineComboBox();
+
+            RefreshFrameComboBox();
         }
     }
 }
