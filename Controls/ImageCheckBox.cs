@@ -12,7 +12,8 @@ namespace Sahab_Desktop.Controls
 {
     public partial class ImageCheckBox : UserControl
     {
-        public event EventHandler CheckedChange;
+        public event ImageCheckBoxCheckedChange CheckedChange;
+        public delegate void ImageCheckBoxCheckedChange(bool isChecked);
         public bool Checked
         {
             get
@@ -22,6 +23,8 @@ namespace Sahab_Desktop.Controls
             set
             {
                 checkBox.Checked = value;
+                PictureBox_Click(this, new EventArgs());
+                PictureBox_Click(this, new EventArgs());
             }
         }
         public Image UnCheckedImage { get; set; }
@@ -35,12 +38,12 @@ namespace Sahab_Desktop.Controls
         {
             if (checkBox.Checked)
             {
-                checkBox.CheckState = CheckState.Unchecked;
+                checkBox.Checked = false;
                 pictureBox.Image = UnCheckedImage;
             }
             else
             {
-                checkBox.CheckState = CheckState.Checked;
+                checkBox.Checked = true;
                 pictureBox.Image = CheckedImage;
             }
         }
@@ -59,7 +62,7 @@ namespace Sahab_Desktop.Controls
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            CheckedChange?.Invoke(sender, e);
+            CheckedChange?.Invoke(checkBox.Checked);
         }
     }
 }

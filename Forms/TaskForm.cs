@@ -101,39 +101,109 @@ namespace Sahab_Desktop
             saturdayImageCheckBox.CheckedChange += SaturdayImageCheckBox_CheckedChange;
         }
 
-        private void SaturdayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        private void SaturdayImageCheckBox_CheckedChange(bool isChecked)
         {
-            DayOfWeeks.Add(DayOfWeek.Saturday);
+            if (isChecked)
+            {
+                DayOfWeeks.Add(DayOfWeek.Saturday);
+            }
+            else
+            {
+                if (DayOfWeeks.Contains(DayOfWeek.Saturday))
+                {
+                    DayOfWeeks.RemoveAll(d => d == DayOfWeek.Saturday);
+                }
+            }
         }
 
-        private void SundayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        private void SundayImageCheckBox_CheckedChange(bool isChecked)
         {
-            DayOfWeeks.Add(DayOfWeek.Sunday);
+            if (isChecked)
+            {
+                DayOfWeeks.Add(DayOfWeek.Sunday);
+            }
+            else
+            {
+                if (DayOfWeeks.Contains(DayOfWeek.Sunday))
+                {
+                    DayOfWeeks.RemoveAll(d => d == DayOfWeek.Sunday);
+                }
+            }
         }
 
-        private void MondayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        private void MondayImageCheckBox_CheckedChange(bool isChecked)
         {
-            DayOfWeeks.Add(DayOfWeek.Monday);
+            if (isChecked)
+            {
+                DayOfWeeks.Add(DayOfWeek.Monday);
+            }
+            else
+            {
+                if (DayOfWeeks.Contains(DayOfWeek.Monday))
+                {
+                    DayOfWeeks.RemoveAll(d => d == DayOfWeek.Monday);
+                }
+            }
         }
 
-        private void TuesdayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        private void TuesdayImageCheckBox_CheckedChange(bool isChecked)
         {
-            DayOfWeeks.Add(DayOfWeek.Tuesday);
+            if (isChecked)
+            {
+                DayOfWeeks.Add(DayOfWeek.Tuesday);
+            }
+            else
+            {
+                if (DayOfWeeks.Contains(DayOfWeek.Tuesday))
+                {
+                    DayOfWeeks.RemoveAll(d => d == DayOfWeek.Tuesday);
+                }
+            }
         }
 
-        private void WednesdayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        private void WednesdayImageCheckBox_CheckedChange(bool isChecked)
         {
-            DayOfWeeks.Add(DayOfWeek.Wednesday);
+            if (isChecked)
+            {
+                DayOfWeeks.Add(DayOfWeek.Wednesday);
+            }
+            else
+            {
+                if (DayOfWeeks.Contains(DayOfWeek.Wednesday))
+                {
+                    DayOfWeeks.RemoveAll(d => d == DayOfWeek.Wednesday);
+                }
+            }
         }
 
-        private void ThursdayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        private void ThursdayImageCheckBox_CheckedChange(bool isChecked)
         {
-            DayOfWeeks.Add(DayOfWeek.Thursday);
+            if (isChecked)
+            {
+                DayOfWeeks.Add(DayOfWeek.Thursday);
+            }
+            else
+            {
+                if (DayOfWeeks.Contains(DayOfWeek.Thursday))
+                {
+                    DayOfWeeks.RemoveAll(d => d == DayOfWeek.Thursday);
+                }
+            }
         }
 
-        private void FridayImageCheckBox_CheckedChange(object sender, EventArgs e)
+        private void FridayImageCheckBox_CheckedChange(bool isChecked)
         {
-            DayOfWeeks.Add(DayOfWeek.Friday);
+            if (isChecked)
+            {
+                DayOfWeeks.Add(DayOfWeek.Friday);
+            }
+            else
+            {
+                if (DayOfWeeks.Contains(DayOfWeek.Friday))
+                {
+                    DayOfWeeks.RemoveAll(d => d == DayOfWeek.Friday);
+                }
+            }
         }
 
         private void RefreshDoctrineComboBox()
@@ -195,23 +265,29 @@ namespace Sahab_Desktop
 
             foreach (var frame in Frames)
             {
-                _context.Frames.Attach(frame);
-                var relation = new FrameRelation()
+                if (!_context.FrameRelations.Where(fr => fr.FrameId == frame.Id && fr.TaskId == Task.Id).Any())
                 {
-                    Frame = frame,
-                    Task = Task
-                };
-                _context.FrameRelations.Add(relation);
+                    _context.Frames.Attach(frame);
+                    var relation = new FrameRelation()
+                    {
+                        Frame = frame,
+                        Task = Task
+                    };
+                    _context.FrameRelations.Add(relation);
+                }
             }
             foreach (var doctrine in Doctrines)
             {
-                _context.Doctrines.Attach(doctrine);
-                var relation = new DoctrineRelation()
+                if (!_context.DoctrineRelations.Where(dr => dr.DoctrineId == doctrine.Id && dr.TaskId == Task.Id).Any())
                 {
-                    Doctrine = doctrine,
-                    Task = Task
-                };
-                _context.DoctrineRelations.Add(relation);
+                    _context.Doctrines.Attach(doctrine);
+                    var relation = new DoctrineRelation()
+                    {
+                        Doctrine = doctrine,
+                        Task = Task
+                    };
+                    _context.DoctrineRelations.Add(relation); 
+                }
             }
 
             if (RepeatCheckBox.Checked)
@@ -244,7 +320,7 @@ namespace Sahab_Desktop
                         }
                     }
                 }
-                else if (Task.StartDate.CompareTo(Task.EndDate)==0)
+                else if (Task.StartDate.CompareTo(Task.EndDate) == 0)
                 {
                     Task.RepeatMethod = 0;
                 }
