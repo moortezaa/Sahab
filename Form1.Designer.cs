@@ -63,7 +63,7 @@
             this.خدماتToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1127, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1127, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,7 +73,7 @@
             this.اضافهکردنبرنامهToolStripMenuItem,
             this.اصولوچهارچوبهاToolStripMenuItem});
             this.برنامهToolStripMenuItem.Name = "برنامهToolStripMenuItem";
-            this.برنامهToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
+            this.برنامهToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.برنامهToolStripMenuItem.Text = "برنامه";
             // 
             // اضافهکردنبرنامهToolStripMenuItem
@@ -98,7 +98,7 @@
             this.toolStripMenuItem2,
             this.پوستهToolStripMenuItem});
             this.نمایشToolStripMenuItem.Name = "نمایشToolStripMenuItem";
-            this.نمایشToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.نمایشToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.نمایشToolStripMenuItem.Text = "نمایش";
             // 
             // روزToolStripMenuItem
@@ -135,7 +135,7 @@
             this.همگامسازیاینترنتیToolStripMenuItem,
             this.اتصالبهحسابToolStripMenuItem});
             this.خدماتToolStripMenuItem.Name = "خدماتToolStripMenuItem";
-            this.خدماتToolStripMenuItem.Size = new System.Drawing.Size(67, 26);
+            this.خدماتToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.خدماتToolStripMenuItem.Text = "خدمات";
             // 
             // همگامسازیاینترنتیToolStripMenuItem
@@ -161,11 +161,13 @@
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Margin = new System.Windows.Forms.Padding(4);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1103, 447);
+            this.panel.Size = new System.Drawing.Size(1103, 449);
             this.panel.TabIndex = 3;
             // 
             // weeklyTaskViewer
             // 
+            this.weeklyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.weeklyTaskViewer.BackColor = System.Drawing.Color.Gray;
             this.weeklyTaskViewer.DPM = 2;
             this.weeklyTaskViewer.Location = new System.Drawing.Point(0, 0);
@@ -193,7 +195,7 @@
             this.dailyTaskViewVScrollBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.dailyTaskViewVScrollBar.Location = new System.Drawing.Point(1103, 0);
             this.dailyTaskViewVScrollBar.Name = "dailyTaskViewVScrollBar";
-            this.dailyTaskViewVScrollBar.Size = new System.Drawing.Size(24, 447);
+            this.dailyTaskViewVScrollBar.Size = new System.Drawing.Size(24, 449);
             this.dailyTaskViewVScrollBar.TabIndex = 5;
             this.dailyTaskViewVScrollBar.ValueChanged += new System.EventHandler(this.DailyTaskViewVScrollBar_ValueChanged);
             // 
@@ -202,7 +204,7 @@
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.calendarView);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1127, 420);
             this.panel1.TabIndex = 7;
@@ -227,9 +229,9 @@
             this.panel2.Controls.Add(this.panel);
             this.panel2.Controls.Add(this.dailyTaskViewVScrollBar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 450);
+            this.panel2.Location = new System.Drawing.Point(0, 448);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1127, 447);
+            this.panel2.Size = new System.Drawing.Size(1127, 449);
             this.panel2.TabIndex = 8;
             // 
             // MainForm

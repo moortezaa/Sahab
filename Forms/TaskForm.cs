@@ -285,7 +285,7 @@ namespace Sahab_Desktop
                         Doctrine = doctrine,
                         Task = Task
                     };
-                    _context.DoctrineRelations.Add(relation); 
+                    _context.DoctrineRelations.Add(relation);
                 }
             }
 
@@ -340,18 +340,24 @@ namespace Sahab_Desktop
 
         private void FrameButton_Click(object sender, EventArgs e)
         {
-            FramesListBox.Items.Add(((Frame)FramesComboBox.SelectedItem).Name);
-            Frames.Add((Frame)FramesComboBox.SelectedItem);
-            TaskPriorityComboBox_SelectedIndexChanged(sender, e);
-            RefreshFrameComboBox();
+            if (FramesComboBox.SelectedItem != null)
+            {
+                FramesListBox.Items.Add(((Frame)FramesComboBox.SelectedItem).Name);
+                Frames.Add((Frame)FramesComboBox.SelectedItem);
+                TaskPriorityComboBox_SelectedIndexChanged(sender, e);
+                RefreshFrameComboBox();
+            }
         }
 
         private void DoctrineButton_Click(object sender, EventArgs e)
         {
-            DoctrinesListBox.Items.Add(((Doctrine)DoctrinesComboBox.SelectedItem).Name);
-            Doctrines.Add((Doctrine)DoctrinesComboBox.SelectedItem);
-            TaskPriorityComboBox_SelectedIndexChanged(sender, e);
-            RefreshDoctrineComboBox();
+            if (DoctrinesComboBox.SelectedItem != null)
+            {
+                DoctrinesListBox.Items.Add(((Doctrine)DoctrinesComboBox.SelectedItem).Name);
+                Doctrines.Add((Doctrine)DoctrinesComboBox.SelectedItem);
+                TaskPriorityComboBox_SelectedIndexChanged(sender, e);
+                RefreshDoctrineComboBox();
+            }
         }
 
         private void RepeatCheckBox_CheckedChanged(object sender, EventArgs e)
