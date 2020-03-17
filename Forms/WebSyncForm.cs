@@ -21,6 +21,7 @@ namespace Sahab_Desktop.Forms
         BackgroundWorker bgWorker;
         public static int progress = 0;
         public static string message;
+        public static bool ErrorAcured = false;
         public WebSyncForm()
         {
             InitializeComponent();
@@ -44,6 +45,15 @@ namespace Sahab_Desktop.Forms
 
         private void BgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            if (ErrorAcured)
+            {
+                var errorForm = new ErrorForm();
+                errorForm.Message = message;
+
+                errorForm.Show();
+                message = "خطایی در اتصال رخ داده است. لطفا بعدا امتحان کنید";
+                statusLabel.BackColor = Color.Red;
+            }
             progressBar.Value = progress;
             statusLabel.Text = message;
         }
@@ -55,52 +65,69 @@ namespace Sahab_Desktop.Forms
 
         private void Bg_DoWork(object sender, DoWorkEventArgs e)
         {
-            message = "آماده سازی برای همگام سازی";
-            var context = new AppDBContext();
-            var user = context.Users.First();
-            var tasks = context.Tasks.AsQueryable();
-
-            var values = new { user = user, tasks = tasks };
-            var content = JsonConvert.SerializeObject(values);
-
-            var finalbyte = Encoding.UTF8.GetByteCount(content);
-            var webRequest = WebRequest.Create("http://hadi-dev.ir/services/AddSahabTasks") as HttpWebRequest;
-            webRequest.Method = "POST";
-            webRequest.KeepAlive = true;
-            webRequest.ContentLength = finalbyte;
-            webRequest.ContentType = "application/json";
-
-            var stream = webRequest.GetRequestStream();
-
-            int bytesRead = 0;
-            long bytesSoFar = 0;
-            byte[] buffer = Encoding.UTF8.GetBytes(content);
-            while (bytesRead != finalbyte)
+            try
             {
-                bytesSoFar += bytesRead;
-                stream.Write(buffer, bytesRead, (finalbyte - bytesRead) > buffer.Length ? buffer.Length : finalbyte - bytesRead);
-                bytesRead = (finalbyte - bytesRead) > buffer.Length ? buffer.Length : finalbyte - bytesRead;
-                progress = (int)((bytesSoFar * 100.0f) / (long)finalbyte);
-                message = "ارسال تسک ها "+ progress + "%";
+                message = "آماده سازی برای همگام سازی";
+                var context = new AppDBContext();
+                var user = context.Users.First();
+                var tasks = context.Tasks.AsQueryable();
+
+                var values = new { user = user, tasks = tasks };
+                var content = JsonConvert.SerializeObject(values);
+
+                var finalbyte = Encoding.UTF8.GetByteCount(content);
+                var webRequest = WebRequest.Create("http://hadi-dev.ir/services/AddSahabTasks") as HttpWebRequest;
+                webRequest.Method = "POST";
+                webRequest.KeepAlive = true;
+                webRequest.ContentType = "application/json";
+
+                var stream = webRequest.GetRequestStream();
+
+                int bytesRead = 0;
+                int bytesSoFar = 0;
+                byte[] buffer = Encoding.UTF8.GetBytes(content);
+                while (bytesSoFar != finalbyte)
+                {
+                    bytesRead = (finalbyte - bytesSoFar) > 1024 ? 1024 : finalbyte - bytesSoFar;
+                    stream.Write(buffer, bytesSoFar, bytesRead);
+                    bytesSoFar += bytesRead;
+                    progress = (int)(((long)bytesSoFar * 100.0f) / (long)finalbyte);
+                    message = "ارسال تسک ها " + progress + "%";
+                    bgWorker.ReportProgress(progress);
+                }
+                stream.Close();
+
+
+                GetResponseDel d = new GetResponseDel(GetResponse);
+                ResponseData data = new ResponseData { del = d };
+                d.BeginInvoke(webRequest, EndGetResponse, data);
+                progress = progressBar.Maximum;
+                while (!webRequest.HaveResponse)
+                {
+                    message = "نهایی سازی";
+                    Thread.Sleep(150);
+                }
+
+                webRequest = null;
+                JObject responceQuery = JObject.Parse(data.responseString);
+                message = responceQuery["text"].Value<string>();
                 bgWorker.ReportProgress(progress);
             }
-            stream.Close();
-
-
-            GetResponseDel d = new GetResponseDel(GetResponse);
-            ResponseData data = new ResponseData { del = d };
-            d.BeginInvoke(webRequest, EndGetResponse, data);
-            progress = progressBar.Maximum;
-            while (!webRequest.HaveResponse)
+            catch (Exception ex)
             {
-                message = "نهایی سازی";
-                Thread.Sleep(150);
+                var text = "";
+                do
+                {
+                    text += $"{ex.Message}\n{ex.StackTrace}\n";
+                    if (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
+                } while (ex.InnerException != null);
+                message = text;
+                ErrorAcured = true;
+                bgWorker.ReportProgress(progress);
             }
-
-            webRequest = null;
-            JObject responceQuery = JObject.Parse(data.responseString);
-            message = responceQuery["text"].Value<string>();
-            bgWorker.ReportProgress(progress);
         }
 
         delegate WebResponse GetResponseDel(HttpWebRequest webRequest);
