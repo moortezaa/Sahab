@@ -425,18 +425,7 @@ namespace Sahab_Desktop
             {
                 if (StartDateTextBox.Text != null)
                 {
-                    switch (RepeatMethod)
-                    {
-                        case RepeatMethod.Daily:
-                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddDays((double)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)));
-                            break;
-                        case RepeatMethod.Weekly:
-                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddDays((double)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)) * 7);
-                            break;
-                        case RepeatMethod.Monthly:
-                            EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddMonths((int)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)));
-                            break;
-                    }
+                    EndDate = Utils.Utils.ParsePersianDateString(StartDateTextBox.Text).AddDays((double)(RepeatTimesNumeric.Value * (ContinuousTimesNumeric.Value + DiscreteTimesNumeric.Value)));
                 }
             }
             else if (PeriodRadioButton.Checked)

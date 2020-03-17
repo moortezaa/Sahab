@@ -19,6 +19,7 @@ namespace Sahab_Desktop
         private Week CurrentWeek { get; set; } = Week.SelectByDateBetween(DateTime.Now);
         private AppDBContext _context = new AppDBContext();
         private ShowingMode ShowingMode { get; set; } = ShowingMode.Daily;
+        private bool CTRIsDown { get; set; } = false;
         public MainForm()
         {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace Sahab_Desktop
             RefreshTaskView();
 
             MouseWheel += MainForm_MouseWheel;
+            KeyDown += MainForm_KeyDown;
+            KeyUp += MainForm_KeyUp;
             dailyTaskViewVScrollBar.Maximum = dailyTaskViewer.Height;
 
             calendarView.DateSelect += CalendarView_DateSelect;
@@ -56,6 +59,22 @@ namespace Sahab_Desktop
             }
         }
 
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.ControlKey)
+            {
+                CTRIsDown = false;
+            }
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.ControlKey)
+            {
+                CTRIsDown = true;
+            }
+        }
+
         private void CalendarView_WeekSelect(Week week)
         {
             CurrentWeek = week;
@@ -70,19 +89,26 @@ namespace Sahab_Desktop
 
         private void MainForm_MouseWheel(object sender, MouseEventArgs e)
         {
-            int scrolval = dailyTaskViewVScrollBar.Value;
-            scrolval -= e.Delta;
-            if (scrolval > dailyTaskViewVScrollBar.Maximum)
+            if (CTRIsDown)
             {
-                dailyTaskViewVScrollBar.Value = dailyTaskViewVScrollBar.Maximum;
-            }
-            else if (scrolval < dailyTaskViewVScrollBar.Minimum)
-            {
-                dailyTaskViewVScrollBar.Value = dailyTaskViewVScrollBar.Minimum;
+                weeklyTaskViewer.ScrollHorizontaly(e.Delta);
             }
             else
             {
-                dailyTaskViewVScrollBar.Value = scrolval;
+                int scrolval = dailyTaskViewVScrollBar.Value;
+                scrolval -= e.Delta;
+                if (scrolval > dailyTaskViewVScrollBar.Maximum)
+                {
+                    dailyTaskViewVScrollBar.Value = dailyTaskViewVScrollBar.Maximum;
+                }
+                else if (scrolval < dailyTaskViewVScrollBar.Minimum)
+                {
+                    dailyTaskViewVScrollBar.Value = dailyTaskViewVScrollBar.Minimum;
+                }
+                else
+                {
+                    dailyTaskViewVScrollBar.Value = scrolval;
+                }
             }
         }
 

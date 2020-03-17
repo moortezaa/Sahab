@@ -242,6 +242,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";

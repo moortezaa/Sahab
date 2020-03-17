@@ -37,6 +37,24 @@ namespace Sahab_Desktop.Controls
             AddTimeTags();
         }
 
+        public void ScrollHorizontaly(int delta)
+        {
+            int scrolval = theScroll.Value;
+            scrolval -= delta;
+            if (scrolval > theScroll.Maximum)
+            {
+                theScroll.Value = theScroll.Maximum;
+            }
+            else if (scrolval < theScroll.Minimum)
+            {
+                theScroll.Value = theScroll.Minimum;
+            }
+            else
+            {
+                theScroll.Value = scrolval;
+            }
+        }
+
         private void AddTimeTags()
         {
             for (int i = 0; i < 24 * 4; i++)
