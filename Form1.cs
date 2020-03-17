@@ -245,6 +245,46 @@ namespace Sahab_Desktop
             var linkAccountForm = new LinkAccountForm();
             linkAccountForm.Show();
         }
+
+        private void اولویتبندیشدهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (اولویتبندیشدهToolStripMenuItem.Checked)
+            {
+                dailyTaskViewer.Prioritized = true;
+                weeklyTaskViewer.Prioritized = true;
+                switch (ShowingMode)
+                {
+                    case ShowingMode.Daily:
+                        dailyTaskViewer.Refresh();
+                        break;
+                    case ShowingMode.Weekly:
+                        weeklyTaskViewer.Refresh();
+                        break;
+                    case ShowingMode.Monthly:
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                dailyTaskViewer.Prioritized = false;
+                weeklyTaskViewer.Prioritized = true;
+                switch (ShowingMode)
+                {
+                    case ShowingMode.Daily:
+                        dailyTaskViewer.Refresh();
+                        break;
+                    case ShowingMode.Weekly:
+                        weeklyTaskViewer.Refresh();
+                        break;
+                    case ShowingMode.Monthly:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 
     internal enum ShowingMode

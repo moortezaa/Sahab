@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Sahab_Desktop.Controls.Week week1 = new Sahab_Desktop.Controls.Week();
+            Sahab_Desktop.Controls.Week week2 = new Sahab_Desktop.Controls.Week();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.برنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.اضافهکردنبرنامهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +48,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.calendarView = new Sahab_Desktop.Controls.CalendarView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.اولویتبندیشدهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -96,7 +97,8 @@
             this.روزToolStripMenuItem,
             this.هفتهToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.پوستهToolStripMenuItem});
+            this.پوستهToolStripMenuItem,
+            this.اولویتبندیشدهToolStripMenuItem});
             this.نمایشToolStripMenuItem.Name = "نمایشToolStripMenuItem";
             this.نمایشToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.نمایشToolStripMenuItem.Text = "نمایش";
@@ -104,14 +106,14 @@
             // روزToolStripMenuItem
             // 
             this.روزToolStripMenuItem.Name = "روزToolStripMenuItem";
-            this.روزToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.روزToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.روزToolStripMenuItem.Text = "روز";
             this.روزToolStripMenuItem.Click += new System.EventHandler(this.روزToolStripMenuItem_Click);
             // 
             // هفتهToolStripMenuItem
             // 
             this.هفتهToolStripMenuItem.Name = "هفتهToolStripMenuItem";
-            this.هفتهToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.هفتهToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.هفتهToolStripMenuItem.Text = "هفته";
             this.هفتهToolStripMenuItem.Click += new System.EventHandler(this.هفتهToolStripMenuItem_Click);
             // 
@@ -119,14 +121,14 @@
             // 
             this.toolStripMenuItem2.Enabled = false;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(212, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.toolStripMenuItem2.Text = "____________________";
             this.toolStripMenuItem2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // پوستهToolStripMenuItem
             // 
             this.پوستهToolStripMenuItem.Name = "پوستهToolStripMenuItem";
-            this.پوستهToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.پوستهToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.پوستهToolStripMenuItem.Text = "پوسته";
             // 
             // خدماتToolStripMenuItem
@@ -218,9 +220,9 @@
             this.calendarView.Mode = Sahab_Desktop.Controls.CalendarMode.DaySelect;
             this.calendarView.Name = "calendarView";
             this.calendarView.SelectedDate = new System.DateTime(2020, 2, 23, 22, 33, 10, 994);
-            week1.EndDate = new System.DateTime(2020, 3, 13, 0, 0, 0, 0);
-            week1.StartDate = new System.DateTime(2020, 3, 7, 0, 0, 0, 0);
-            this.calendarView.SelectedWeek = week1;
+            week2.EndDate = new System.DateTime(2020, 3, 13, 0, 0, 0, 0);
+            week2.StartDate = new System.DateTime(2020, 3, 7, 0, 0, 0, 0);
+            this.calendarView.SelectedWeek = week2;
             this.calendarView.Size = new System.Drawing.Size(611, 415);
             this.calendarView.TabIndex = 6;
             // 
@@ -233,6 +235,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1127, 449);
             this.panel2.TabIndex = 8;
+            // 
+            // اولویتبندیشدهToolStripMenuItem
+            // 
+            this.اولویتبندیشدهToolStripMenuItem.CheckOnClick = true;
+            this.اولویتبندیشدهToolStripMenuItem.Name = "اولویتبندیشدهToolStripMenuItem";
+            this.اولویتبندیشدهToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.اولویتبندیشدهToolStripMenuItem.Text = "اولویت بندی شده";
+            this.اولویتبندیشدهToolStripMenuItem.Click += new System.EventHandler(this.اولویتبندیشدهToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -279,6 +289,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem اتصالبهحسابToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem اولویتبندیشدهToolStripMenuItem;
     }
 }
 

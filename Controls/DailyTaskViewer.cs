@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sahab_Desktop.Models;
 
 namespace Sahab_Desktop.Controls
 {
@@ -15,7 +16,7 @@ namespace Sahab_Desktop.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Models.Task> Tasks { get; set; } = new List<Models.Task>();
         public DateTime Date { get; internal set; }
-
+        public bool Prioritized { get; set; } = false;
         private Label NowIndicatorLabel { get; set; }
         private const int TimeLabelWidth = 30;
 
@@ -98,17 +99,51 @@ namespace Sahab_Desktop.Controls
                 Task = task,
             };
             Controls.Add(taskView);
-            ReColor();
+            ReDesign();
             NowIndicatorLabel.BringToFront();
+        }
+
+        private void ReDesign()
+        {
+            if (Prioritized)
+            {
+                int priority = 0;
+                foreach (var task in Tasks.OrderBy(t => t.TaskPriorityScore))
+                {
+                    priority += 1;
+                    var priorityLabel = new Label()
+                    {
+                        Name = "Periority",
+                        Text = priority.ToString(),
+                        Left = this.Width - TimeLabelWidth - 33,
+                        AutoSize = true,
+                        Top = (int)task.StartTime.Subtract(new DateTime(task.StartTime.Year, task.StartTime.Month, task.StartTime.Day, 0, 0, 0)).TotalMinutes + 3,
+                        Font = new Font(Font.FontFamily, 10f)
+                    };
+                    int greenAndBlue = (int)(((float)priority * 2 / (float)Tasks.Count * 255f) - 255f);
+                    var color = Color.FromArgb((int)((float)priority / (float)Tasks.Count * 255f), greenAndBlue < 0 ? 0 : greenAndBlue, greenAndBlue < 0 ? 0 : greenAndBlue);
+                    priorityLabel.BackColor = color;
+                    if (color.GetBrightness() < 0.5)
+                    {
+                        priorityLabel.ForeColor = Color.White;
+                    }
+                    Controls.Add(priorityLabel);
+                }
+            }
+            ReColor();
         }
 
         private void DailyTaskViewer_Resize(object sender, EventArgs e)
         {
-            foreach (var control in Controls)
+            foreach (Control control in Controls)
             {
                 if (control.GetType() == typeof(SingleDailyTaskView))
                 {
                     (control as SingleDailyTaskView).Width = Width - TimeLabelWidth;
+                }
+                else if (control.Name == "Periority")
+                {
+                    control.Left = this.Width - TimeLabelWidth - 33;
                 }
                 else if (control.GetType() == typeof(Label))
                 {
@@ -125,11 +160,16 @@ namespace Sahab_Desktop.Controls
         {
             List<Color> them = Utils.Utils.GetThem();
             var colorindex = 0;
-            foreach (var control in Controls)
+            foreach (Control control in Controls)
             {
                 if (control.GetType() == typeof(SingleDailyTaskView))
                 {
                     var color = them[colorindex % them.Count];
+                    if (Prioritized)
+                    {
+                        int greenAndBlue = (int)(((float)GetPriority((control as SingleDailyTaskView).Task) * 2 / (float)Tasks.Count * 255f) - 255f);
+                        color = Color.FromArgb((int)((float)GetPriority((control as SingleDailyTaskView).Task) / (float)Tasks.Count * 255f), greenAndBlue < 0 ? 0 : greenAndBlue, greenAndBlue < 0 ? 0 : greenAndBlue);
+                    }
                     (control as SingleDailyTaskView).BackColor = color;
                     if (color.GetBrightness() < 0.5)
                     {
@@ -137,7 +177,16 @@ namespace Sahab_Desktop.Controls
                     }
                     colorindex += 1;
                 }
+                else if (control.Name == "Periority")
+                {
+                    control.BringToFront();
+                }
             }
+        }
+
+        private int GetPriority(Models.Task task)
+        {
+            return Tasks.OrderBy(t => t.TaskPriorityScore).ToList().IndexOf(task) + 1;
         }
 
         private void Timer1_Tick(object sender, EventArgs e)

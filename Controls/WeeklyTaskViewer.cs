@@ -16,6 +16,7 @@ namespace Sahab_Desktop.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Models.Task> Tasks { get; set; } = new List<Models.Task>();
         public Week Week { get; set; }
+        public bool Prioritized { get; set; } = false;
         public int DPM { get; set; } = 2;
         private Label nowIndicatorLabel;
         public WeeklyTaskViewer()
@@ -91,8 +92,53 @@ namespace Sahab_Desktop.Controls
         public override void Refresh()
         {
             RefreshTasks();
-            ReColor();
+            ReDesign();
             base.Refresh();
+        }
+
+        private void ReDesign()
+        {
+            if (Prioritized)
+            {
+                if (Week != null && Week.StartDate.HasValue)
+                {
+                    var date = Week.StartDate.Value.AddDays(-1);
+                    var row = 0;
+                    do
+                    {
+                        date = date.AddDays(1);
+                        row += 1;
+                        var dateTasks = Tasks.Where(t => t.Dates.Contains(date)).OrderBy(t => t.TaskPriorityScore);
+                        var rowLabel = (Label)panel1.Controls.Find($"label{row}", false)[0];
+                        int priority = 0;
+                        foreach (var dateTask in dateTasks)
+                        {
+                            priority += 1;
+                            var priorityLabel = new Label()
+                            {
+                                Name = "Periority",
+                                Text = priority.ToString(),
+                                Left = (int)dateTask.StartTime.Subtract(new DateTime(dateTask.StartTime.Year, dateTask.StartTime.Month, dateTask.StartTime.Day, 0, 0, 0)).TotalMinutes * DPM + 3,
+                                AutoSize = true,
+                                Top = rowLabel.Top - theScroll.Height + 3,
+                                Font = new Font(Font.FontFamily, 10f)
+                            };
+                            int greenAndBlue = (int)(((float)priority * 2 / (float)Tasks.Count * 255f) - 255f);
+                            var color = Color.FromArgb((int)((float)priority / (float)Tasks.Count * 255f), greenAndBlue < 0 ? 0 : greenAndBlue, greenAndBlue < 0 ? 0 : greenAndBlue);
+                            priorityLabel.BackColor = color;
+                            if (color.GetBrightness() < 0.5)
+                            {
+                                priorityLabel.ForeColor = Color.White;
+                            }
+                            tasksPanel.Controls.Add(priorityLabel);
+                        }
+                    } while (date != Week.EndDate);
+                }
+                foreach (var task in Tasks.OrderBy(t => t.TaskPriorityScore))
+                {
+                }
+            }
+            ReColor();
         }
 
         private void RefreshTasks()
@@ -101,7 +147,7 @@ namespace Sahab_Desktop.Controls
             tasksPanel.Controls.Add(nowIndicatorLabel);
             AddTimeTags();
 
-            if (Week!=null && Week.StartDate.HasValue)
+            if (Week != null && Week.StartDate.HasValue)
             {
                 var date = Week.StartDate.Value.AddDays(-1);
                 var row = 0;
@@ -126,7 +172,7 @@ namespace Sahab_Desktop.Controls
                         };
                         tasksPanel.Controls.Add(label);
                     }
-                } while (date != Week.EndDate); 
+                } while (date != Week.EndDate);
             }
             nowIndicatorLabel.BringToFront();
         }
@@ -139,9 +185,14 @@ namespace Sahab_Desktop.Controls
                 var colorindex = 0;
                 foreach (Control control in tasksPanel.Controls)
                 {
-                    if (control.Name != "Time")
+                    if (control.Name != "Time" && control.Name != "Periority")
                     {
                         var color = them[colorindex % them.Count];
+                        if (Prioritized)
+                        {
+                            int greenAndBlue = (int)(((float)GetPriority(control.Name.Split(',')[0], control.Name.Split(',')[1]) * 2 / (float)Tasks.Count * 255f) - 255f);
+                            color = Color.FromArgb((int)((float)GetPriority(control.Name.Split(',')[0], control.Name.Split(',')[1]) / (float)Tasks.Count * 255f), greenAndBlue < 0 ? 0 : greenAndBlue, greenAndBlue < 0 ? 0 : greenAndBlue);
+                        }
                         (control as Label).BackColor = color;
                         if (color.GetBrightness() < 0.5)
                         {
@@ -149,15 +200,26 @@ namespace Sahab_Desktop.Controls
                         }
                         colorindex += 1;
                     }
+                    else if (control.Name == "Periority")
+                    {
+                        control.BringToFront();
+                    }
                 }
             }
-            catch (Exception){}
+            catch (Exception) { }
+        }
+
+        private int GetPriority(string id, string date)
+        {
+            var dateTime = DateTime.Parse(date);
+            var task = Tasks.Where(t => t.Id == int.Parse(id) && t.Dates.Contains(dateTime)).SingleOrDefault();
+            return Tasks.Where(t => t.Dates.Contains(dateTime)).OrderBy(t => t.TaskPriorityScore).ToList().IndexOf(task) + 1;
         }
 
         private void WeeklyTaskViewer_Load(object sender, EventArgs e)
         {
             RefreshTasks();
-            ReColor();
+            ReDesign();
         }
 
         private void TheScroll_ValueChanged(object sender, EventArgs e)
