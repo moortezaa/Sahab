@@ -123,8 +123,9 @@ namespace Sahab_Desktop.Controls
                                 Top = rowLabel.Top - theScroll.Height + 3,
                                 Font = new Font(Font.FontFamily, 10f)
                             };
-                            int greenAndBlue = (int)(((float)priority * 2 / (float)Tasks.Count * 255f) - 255f);
-                            var color = Color.FromArgb((int)((float)priority / (float)Tasks.Count * 255f), greenAndBlue < 0 ? 0 : greenAndBlue, greenAndBlue < 0 ? 0 : greenAndBlue);
+
+                            Color color = Utils.Utils.GetPeriorityColor((float)(priority - 1) / (float)(Tasks.Count - 1) * 100);
+
                             priorityLabel.BackColor = color;
                             if (color.GetBrightness() < 0.5)
                             {
@@ -190,8 +191,7 @@ namespace Sahab_Desktop.Controls
                         var color = them[colorindex % them.Count];
                         if (Prioritized)
                         {
-                            int greenAndBlue = (int)(((float)GetPriority(control.Name.Split(',')[0], control.Name.Split(',')[1]) * 2 / (float)Tasks.Count * 255f) - 255f);
-                            color = Color.FromArgb((int)((float)GetPriority(control.Name.Split(',')[0], control.Name.Split(',')[1]) / (float)Tasks.Count * 255f), greenAndBlue < 0 ? 0 : greenAndBlue, greenAndBlue < 0 ? 0 : greenAndBlue);
+                            color = Utils.Utils.GetPeriorityColor((float)(GetPriority(control.Name.Split(',')[0], control.Name.Split(',')[1]) - 1) / (float)(Tasks.Count - 1) * 100);
                         }
                         (control as Label).BackColor = color;
                         if (color.GetBrightness() < 0.5)

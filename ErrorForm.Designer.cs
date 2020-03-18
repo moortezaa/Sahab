@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorForm));
             this.textLabel = new System.Windows.Forms.Label();
             this.reportButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,6 +70,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ErrorForm";
             this.Text = "ErrorForm";
             this.panel1.ResumeLayout(false);

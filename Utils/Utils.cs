@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,51 @@ namespace Sahab_Desktop.Utils
 {
     class Utils
     {
+        public static int GetYOverCurve(int x, Point[] points)
+        {
+            int yDomain = points.OrderBy(p => p.Y).Last().Y;
+            GraphicsPath path = new GraphicsPath();
+            path.AddCurve(points.OrderBy(p=>p.X).ToArray(), 0f);
+
+            Point valuer = new Point(x, 0);
+            for (int i = 0; i <= yDomain; i++)
+            {
+                valuer.Y = i;
+                if (path.IsOutlineVisible(valuer, new Pen(Color.Red, 0.01f)))
+                    break;
+            }
+
+            return valuer.Y;
+        }
+
+        public static Color GetPeriorityColor(float persent)
+        {
+            int x = (int)(persent / 100f * 582f);
+
+            Point[] points = new Point[]{
+                new Point(0,0),
+                new Point(463,25),
+                new Point(582,82),
+                };
+            int blue = (int)((float)GetYOverCurve(x, points) / 82f * 255f);
+
+            points = new Point[]{
+                new Point(0,0),
+                new Point(311,61),
+                new Point(582,82),
+                };
+            int green = (int)((float)GetYOverCurve(x, points) / 82f * 255f);
+
+            points = new Point[]{
+                new Point(0,0),
+                new Point(82,64),
+                new Point(582,82),
+                };
+            int red = (int)((float)GetYOverCurve(x, points) / 82f * 255f);
+
+            var color = Color.FromArgb(red, green, blue);
+            return color;
+        }
         public static List<Color> GetThem()
         {
             Models.Them them;

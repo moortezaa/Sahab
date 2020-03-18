@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sahab_Desktop.Models;
+using System.Drawing.Drawing2D;
 
 namespace Sahab_Desktop.Controls
 {
@@ -120,8 +121,7 @@ namespace Sahab_Desktop.Controls
                         Top = (int)task.StartTime.Subtract(new DateTime(task.StartTime.Year, task.StartTime.Month, task.StartTime.Day, 0, 0, 0)).TotalMinutes + 3,
                         Font = new Font(Font.FontFamily, 10f)
                     };
-                    int greenAndBlue = (int)(((float)priority * 2 / (float)Tasks.Count * 255f) - 255f);
-                    var color = Color.FromArgb((int)((float)priority / (float)Tasks.Count * 255f), greenAndBlue < 0 ? 0 : greenAndBlue, greenAndBlue < 0 ? 0 : greenAndBlue);
+                    Color color = Utils.Utils.GetPeriorityColor((float)(priority - 1) / (float)(Tasks.Count - 1) * 100);
                     priorityLabel.BackColor = color;
                     if (color.GetBrightness() < 0.5)
                     {
@@ -167,8 +167,8 @@ namespace Sahab_Desktop.Controls
                     var color = them[colorindex % them.Count];
                     if (Prioritized)
                     {
-                        int greenAndBlue = (int)(((float)GetPriority((control as SingleDailyTaskView).Task) * 2 / (float)Tasks.Count * 255f) - 255f);
-                        color = Color.FromArgb((int)((float)GetPriority((control as SingleDailyTaskView).Task) / (float)Tasks.Count * 255f), greenAndBlue < 0 ? 0 : greenAndBlue, greenAndBlue < 0 ? 0 : greenAndBlue);
+
+                        color = Utils.Utils.GetPeriorityColor((float)GetPriority((control as SingleDailyTaskView).Task) / (float)(Tasks.Count - 1) * 100);
                     }
                     (control as SingleDailyTaskView).BackColor = color;
                     if (color.GetBrightness() < 0.5)
@@ -186,7 +186,7 @@ namespace Sahab_Desktop.Controls
 
         private int GetPriority(Models.Task task)
         {
-            return Tasks.OrderBy(t => t.TaskPriorityScore).ToList().IndexOf(task) + 1;
+            return Tasks.OrderBy(t => t.TaskPriorityScore).ToList().IndexOf(task);
         }
 
         private void Timer1_Tick(object sender, EventArgs e)

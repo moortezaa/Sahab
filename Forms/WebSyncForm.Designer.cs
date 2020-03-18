@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebSyncForm));
             this.statusLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.statusLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WebSyncForm";
             this.RightToLeftLayout = true;
             this.Text = "همگام سازی اینترنتی";

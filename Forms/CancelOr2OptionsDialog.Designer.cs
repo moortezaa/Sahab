@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CancelOr2OptionsDialog));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -40,27 +41,30 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Sahab_Desktop.Properties.Resources.index;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(17, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(98, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(131, 111);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // textLabel
             // 
-            this.textLabel.Location = new System.Drawing.Point(117, 48);
+            this.textLabel.Location = new System.Drawing.Point(156, 59);
+            this.textLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textLabel.Name = "textLabel";
             this.textLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textLabel.Size = new System.Drawing.Size(389, 55);
+            this.textLabel.Size = new System.Drawing.Size(519, 68);
             this.textLabel.TabIndex = 1;
             this.textLabel.Text = "label1";
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(427, 117);
+            this.cancelButton.Location = new System.Drawing.Point(569, 144);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Size = new System.Drawing.Size(100, 28);
             this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "لغو";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -68,9 +72,10 @@
             // 
             // option1Button
             // 
-            this.option1Button.Location = new System.Drawing.Point(346, 117);
+            this.option1Button.Location = new System.Drawing.Point(461, 144);
+            this.option1Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.option1Button.Name = "option1Button";
-            this.option1Button.Size = new System.Drawing.Size(75, 23);
+            this.option1Button.Size = new System.Drawing.Size(100, 28);
             this.option1Button.TabIndex = 2;
             this.option1Button.Text = "option1";
             this.option1Button.UseVisualStyleBackColor = true;
@@ -78,9 +83,10 @@
             // 
             // option2Button
             // 
-            this.option2Button.Location = new System.Drawing.Point(265, 117);
+            this.option2Button.Location = new System.Drawing.Point(353, 144);
+            this.option2Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.option2Button.Name = "option2Button";
-            this.option2Button.Size = new System.Drawing.Size(75, 23);
+            this.option2Button.Size = new System.Drawing.Size(100, 28);
             this.option2Button.TabIndex = 2;
             this.option2Button.Text = "option2";
             this.option2Button.UseVisualStyleBackColor = true;
@@ -90,18 +96,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(453, 13);
+            this.label1.Location = new System.Drawing.Point(604, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(53, 25);
+            this.label1.Size = new System.Drawing.Size(67, 29);
             this.label1.TabIndex = 3;
             this.label1.Text = "هشدار";
             // 
             // CancelOr2OptionsDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 159);
+            this.ClientSize = new System.Drawing.Size(691, 196);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.option2Button);
             this.Controls.Add(this.option1Button);
@@ -109,6 +116,8 @@
             this.Controls.Add(this.textLabel);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CancelOr2OptionsDialog";
             this.Text = "هشدار";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

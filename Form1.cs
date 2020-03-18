@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -269,7 +270,7 @@ namespace Sahab_Desktop
             else
             {
                 dailyTaskViewer.Prioritized = false;
-                weeklyTaskViewer.Prioritized = true;
+                weeklyTaskViewer.Prioritized = false;
                 switch (ShowingMode)
                 {
                     case ShowingMode.Daily:
