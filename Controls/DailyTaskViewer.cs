@@ -75,6 +75,29 @@ namespace Sahab_Desktop.Controls
             }
         }
 
+        internal Control getHeader()
+        {
+            Panel panel = new Panel();
+            panel.Dock = DockStyle.Fill;
+            Label label = new Label();
+            label.Text = "ساعت";
+            label.Dock = DockStyle.Right;
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.BorderStyle = BorderStyle.FixedSingle;
+            label.Width = TimeLabelWidth;
+            SingleDailyTaskView singleDailyTaskView = new SingleDailyTaskView(DateTime.Now);
+            singleDailyTaskView.Dock = DockStyle.Fill;
+            singleDailyTaskView.Task = new Models.Task()
+            {
+                Title = "عنوان",
+                Peoples = "افراد",
+                Location = "محل"
+            };
+            panel.Controls.Add(singleDailyTaskView);
+            panel.Controls.Add(label);
+            return panel;
+        }
+
         public override void Refresh()
         {
             Controls.Clear();

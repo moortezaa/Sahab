@@ -58,6 +58,8 @@ namespace Sahab_Desktop
                     پوستهToolStripMenuItem.DropDownItems.Add(menuItem);
                 }
             }
+
+            taskViewsHeaderPanel.Controls.Add(dailyTaskViewer.getHeader());
         }
 
         private void MainForm_KeyUp(object sender, KeyEventArgs e)
@@ -145,6 +147,9 @@ namespace Sahab_Desktop
                         dailyTaskViewer.Date = CurrentDate.Date;
                         dailyTaskViewer.Tasks = currentDateTasks;
                         dailyTaskViewer.Refresh();
+                        taskViewsHeaderPanel.Controls.Clear();
+                        taskViewsHeaderPanel.Controls.Add(dailyTaskViewer.getHeader());
+                        taskViewsHeaderPanel.Refresh();
                     }
                     break;
                 case ShowingMode.Weekly:
@@ -165,6 +170,9 @@ namespace Sahab_Desktop
                         weeklyTaskViewer.Week = CurrentWeek;
                         weeklyTaskViewer.Tasks = currentWeekTasks;
                         weeklyTaskViewer.Refresh();
+                        taskViewsHeaderPanel.Controls.Clear();
+                        taskViewsHeaderPanel.Controls.Add(weeklyTaskViewer.getHeader());
+                        taskViewsHeaderPanel.Refresh();
                     }
                     break;
                 case ShowingMode.Monthly:
@@ -235,7 +243,7 @@ namespace Sahab_Desktop
                 }
                 else
                 {
-                    var webSyncForm = new WebSyncForm();
+                    var webSyncForm = new WebSyncForm(WebSyncForm.WebSyncType.Send);
                     webSyncForm.Show();
                 }
             }
@@ -284,6 +292,41 @@ namespace Sahab_Desktop
                     default:
                         break;
                 }
+            }
+        }
+
+        private void بازیابیاینترنتیToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var context = new AppDBContext())
+            {
+                var user = context.Users.First();
+                if (user.UserName == "default")
+                {
+                    var linkAccountForm = new LinkAccountForm();
+                    linkAccountForm.Show();
+                }
+                else
+                {
+                    var webSyncForm = new WebSyncForm(WebSyncForm.WebSyncType.Get);
+                    webSyncForm.Show();
+                }
+            }
+        }
+
+        private void پوستهToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
+        {
+            switch (ShowingMode)
+            {
+                case ShowingMode.Daily:
+                    dailyTaskViewer.Refresh();
+                    break;
+                case ShowingMode.Weekly:
+                    weeklyTaskViewer.Refresh();
+                    break;
+                case ShowingMode.Monthly:
+                    break;
+                default:
+                    break;
             }
         }
     }

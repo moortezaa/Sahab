@@ -38,6 +38,7 @@ namespace Sahab_Desktop.Forms
                     {
                         var user = context.Users.First();
                         user.UserName = emailTextBox.Text;
+                        user.Password = passTextBox.Text;
                         context.SaveChanges();
                     }
                     statusLabel.Text = "شما متصل شدید";

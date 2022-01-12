@@ -1,29 +1,30 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Sahab_Desktop.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sahab_Desktop.Forms
 {
     public partial class WebSyncForm : Form
     {
-        BackgroundWorker bgWorker;
+        BackgroundWorker sendBgWorker;
+        BackgroundWorker getBgWorker;
         public static int progress = 0;
         public static string message;
         public static bool ErrorAcured = false;
-        public WebSyncForm()
+        private readonly WebSyncType webSyncType;
+        public WebSyncForm(WebSyncType type)
         {
+            webSyncType = type;
             InitializeComponent();
         }
 
@@ -35,12 +36,27 @@ namespace Sahab_Desktop.Forms
         private void WebSyncForm_Load(object sender, EventArgs e)
         {
             statusLabel.Text = "آماده سازی برای همگام سازی";
-            bgWorker = new BackgroundWorker();
-            bgWorker.WorkerReportsProgress = true;
-            bgWorker.DoWork += Bg_DoWork;
-            bgWorker.RunWorkerCompleted += Bg_RunWorkerCompleted;
-            bgWorker.ProgressChanged += BgWorker_ProgressChanged;
-            bgWorker.RunWorkerAsync();
+            switch (webSyncType)
+            {
+                case WebSyncType.Send:
+                    sendBgWorker = new BackgroundWorker();
+                    sendBgWorker.WorkerReportsProgress = true;
+                    sendBgWorker.DoWork += Send_Bg_DoWork;
+                    sendBgWorker.RunWorkerCompleted += Bg_RunWorkerCompleted;
+                    sendBgWorker.ProgressChanged += BgWorker_ProgressChanged;
+                    sendBgWorker.RunWorkerAsync();
+                    break;
+                case WebSyncType.Get:
+                    getBgWorker = new BackgroundWorker();
+                    getBgWorker.WorkerReportsProgress = true;
+                    getBgWorker.DoWork += Get_Bg_DoWork;
+                    getBgWorker.RunWorkerCompleted += Bg_RunWorkerCompleted;
+                    getBgWorker.ProgressChanged += BgWorker_ProgressChanged;
+                    getBgWorker.RunWorkerAsync();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void BgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -63,7 +79,88 @@ namespace Sahab_Desktop.Forms
             progressBar.Value = progressBar.Maximum;
         }
 
-        private void Bg_DoWork(object sender, DoWorkEventArgs e)
+        private void Get_Bg_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                message = "آماده سازی برای همگام سازی";
+                var context = new AppDBContext();
+                var user = context.Users.First();
+
+                var values = new { user = user };
+                var content = JsonConvert.SerializeObject(values);
+
+                var finalbyte = Encoding.UTF8.GetByteCount(content);
+                var webRequest = WebRequest.Create("http://hadi-dev.ir/services/GetSahabTasks") as HttpWebRequest;
+                webRequest.Method = "POST";
+                webRequest.KeepAlive = true;
+                webRequest.ContentType = "application/json";
+                message = "ارسال درخواست به سرور";
+                getBgWorker.ReportProgress(progress);
+
+                var stream = webRequest.GetRequestStream();
+                stream.Write(Encoding.UTF8.GetBytes(content), 0, Encoding.UTF8.GetByteCount(content));
+
+                progress = 10;
+                message = "دریافت اطلاعات";
+                getBgWorker.ReportProgress(progress);
+
+                var webResponse = webRequest.GetResponse();
+                var responseStream = webResponse.GetResponseStream();
+                var responceStreamReader = new StreamReader(responseStream, Encoding.UTF8);
+
+                var position = 0;
+                var responseString = "";
+                var contentLength = int.Parse(webResponse.Headers.Get("length"));
+                while (!responceStreamReader.EndOfStream)
+                {
+                    responseString += (char)responceStreamReader.Read();
+                    position++;
+                    progress = (position / contentLength * 80) + 10;
+                    message = "ذخیره اطلاعات";
+                    getBgWorker.ReportProgress(progress);
+                }
+                var response = JsonConvert.DeserializeObject<GetSahabTaskRequest>(responseString);
+                var parsedResponse = JsonConvert.DeserializeObject<AddSahabTaskRequest>(response.text);
+                progress = 90;
+                message = "ذخیره اطلاعات";
+                getBgWorker.ReportProgress(progress);
+
+                context.Tasks.AddRange(parsedResponse.tasks);
+                context.SaveChanges();
+
+                message = "پایان";
+                getBgWorker.ReportProgress(progress);
+            }
+            catch (Exception ex)
+            {
+                var text = "";
+                do
+                {
+                    text += $"{ex.Message}\n{ex.StackTrace}\n";
+                    if (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
+                } while (ex.InnerException != null);
+                message = text;
+                ErrorAcured = true;
+                getBgWorker.ReportProgress(progress);
+            }
+        }
+
+        internal class GetSahabTaskRequest
+        {
+            public string text;
+        }
+
+        internal class AddSahabTaskRequest
+        {
+            public User user;
+            public List<Task> tasks;
+        }
+
+        private void Send_Bg_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -93,7 +190,7 @@ namespace Sahab_Desktop.Forms
                     bytesSoFar += bytesRead;
                     progress = (int)(((long)bytesSoFar * 100.0f) / (long)finalbyte);
                     message = "ارسال تسک ها " + progress + "%";
-                    bgWorker.ReportProgress(progress);
+                    sendBgWorker.ReportProgress(progress);
                 }
                 stream.Close();
 
@@ -111,7 +208,7 @@ namespace Sahab_Desktop.Forms
                 webRequest = null;
                 JObject responceQuery = JObject.Parse(data.responseString);
                 message = responceQuery["text"].Value<string>();
-                bgWorker.ReportProgress(progress);
+                sendBgWorker.ReportProgress(progress);
             }
             catch (Exception ex)
             {
@@ -126,7 +223,7 @@ namespace Sahab_Desktop.Forms
                 } while (ex.InnerException != null);
                 message = text;
                 ErrorAcured = true;
-                bgWorker.ReportProgress(progress);
+                sendBgWorker.ReportProgress(progress);
             }
         }
 
@@ -149,6 +246,13 @@ namespace Sahab_Desktop.Forms
 
             WebResponse r = d.EndInvoke(res);
             data.responseString = new StreamReader(r.GetResponseStream()).ReadToEnd();
+        }
+
+        public enum WebSyncType
+        {
+            Send,
+
+            Get,
         }
     }
 }

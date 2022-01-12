@@ -178,6 +178,11 @@ namespace Sahab_Desktop.Controls
             nowIndicatorLabel.BringToFront();
         }
 
+        internal Control getHeader()
+        {
+            throw new NotImplementedException();
+        }
+
         private void ReColor()
         {
             try

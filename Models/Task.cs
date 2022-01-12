@@ -140,6 +140,22 @@ namespace Sahab_Desktop.Models
                 return dates;
             }
         }
+
+        public List<Doctrine> GetDoctrines()
+        {
+            using (var context = new AppDBContext())
+            {
+                return context.DoctrineRelations.Where(dr => dr.Task == this).Select(dr => dr.Doctrine).ToList();
+            }
+        }
+
+        public List<Frame> GetFrames()
+        {
+            using (var context = new AppDBContext())
+            {
+                return context.FrameRelations.Where(fr => fr.Task == this).Select(dr => dr.Frame).ToList();
+            }
+        }
     }
     public enum RepeatMethod
     {

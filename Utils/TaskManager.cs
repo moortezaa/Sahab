@@ -101,12 +101,14 @@ namespace Sahab_Desktop.Utils
                         }
                         else
                         {
-                            TaskForm taskForm = new TaskForm();
-                            taskForm.Task = CopyTask(task);
+                            TaskForm taskForm = new TaskForm(isCopyMode: true);
+                            taskForm.Task = task;
+                            var startDate = task.StartDate;
                             taskForm.Task.StartDate = showingInDate;
 
                             if (taskForm.ShowDialog() == DialogResult.OK)
                             {
+                                task.StartDate = startDate;
                                 context.Tasks.Attach(task);
                                 task.EndDate = task.Dates.Where(d => d.CompareTo(showingInDate) < 0).OrderByDescending(d => d).First();
                                 context.SaveChanges();
@@ -117,37 +119,49 @@ namespace Sahab_Desktop.Utils
                     {
                         if (showingInDate.CompareTo(task.StartDate) == 0)
                         {
-                            TaskForm taskForm = new TaskForm();
-                            taskForm.Task = CopyTask(task);
+                            TaskForm taskForm = new TaskForm(isCopyMode: true);
+                            taskForm.Task = task;
+                            var startDate = task.StartDate;
+                            var endDate = task.EndDate;
                             taskForm.Task.StartDate = showingInDate;
                             taskForm.Task.EndDate = showingInDate;
                             if (taskForm.ShowDialog() == DialogResult.OK)
                             {
+                                task.StartDate = startDate;
+                                task.EndDate = endDate;
                                 context.Tasks.Attach(task);
                                 task.StartDate = task.Dates.Where(d => d.CompareTo(task.StartDate) > 0).OrderBy(d => d).First();
                             }
                         }
                         else if (showingInDate.CompareTo(task.EndDate) == 0)
                         {
-                            TaskForm taskForm = new TaskForm();
-                            taskForm.Task = CopyTask(task);
+                            TaskForm taskForm = new TaskForm(isCopyMode: true);
+                            taskForm.Task = task;
+                            var startDate = task.StartDate;
+                            var endDate = task.EndDate;
                             taskForm.Task.StartDate = showingInDate;
                             taskForm.Task.EndDate = showingInDate;
                             if (taskForm.ShowDialog() == DialogResult.OK)
                             {
+                                task.StartDate = startDate;
+                                task.EndDate = endDate;
                                 context.Tasks.Attach(task);
                                 task.EndDate = task.Dates.Where(d => d.CompareTo(task.EndDate) < 0).OrderByDescending(d => d).First();
                             }
                         }
                         else
                         {
-                            TaskForm taskForm = new TaskForm();
-                            taskForm.Task = CopyTask(task);
+                            TaskForm taskForm = new TaskForm(isCopyMode: true);
+                            taskForm.Task = task;
+                            var startDate = task.StartDate;
+                            var endDate = task.EndDate;
                             taskForm.Task.StartDate = showingInDate;
                             taskForm.Task.EndDate = showingInDate;
                             if (taskForm.ShowDialog() == DialogResult.OK)
                             {
-                                var newTask = CopyTask(task);
+                                task.StartDate = startDate;
+                                task.EndDate = endDate;
+                                var newTask = CopyTask(task,context);
                                 newTask.StartDate = task.Dates.Where(d => d.CompareTo(showingInDate) > 0).OrderBy(d => d).First();
                                 context.Tasks.Add(newTask);
 
@@ -167,9 +181,9 @@ namespace Sahab_Desktop.Utils
             }
         }
 
-        private static Task CopyTask(Task task)
+        private static Task CopyTask(Task task, AppDBContext context)
         {
-            return new Task()
+            var newTask = new Task()
             {
                 DaysOfWeek = task.DaysOfWeek,
                 SpecialDates = task.SpecialDates,
@@ -187,6 +201,27 @@ namespace Sahab_Desktop.Utils
                 Title = task.Title,
                 StartDate = task.StartDate
             };
+            var doctrines = task.GetDoctrines();
+            foreach (var doctrine in doctrines)
+            {
+                var doctrineRelation = new DoctrineRelation()
+                {
+                    Doctrine = doctrine,
+                    Task = newTask
+                };
+                context.DoctrineRelations.Add(doctrineRelation);
+            }
+            var frames = task.GetFrames();
+            foreach (var frame in frames)
+            {
+                var frameRelation = new FrameRelation()
+                {
+                    Frame = frame,
+                    Task = newTask
+                };
+                context.FrameRelations.Add(frameRelation);
+            }
+            return newTask;
         }
     }
 }

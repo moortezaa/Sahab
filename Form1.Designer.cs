@@ -43,10 +43,12 @@
             this.خدماتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.همگامسازیاینترنتیToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.اتصالبهحسابToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.بازیابیاینترنتیToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
             this.dailyTaskViewVScrollBar = new System.Windows.Forms.VScrollBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.taskViewsHeaderPanel = new System.Windows.Forms.Panel();
             this.weeklyTaskViewer = new Sahab_Desktop.Controls.WeeklyTaskViewer();
             this.dailyTaskViewer = new Sahab_Desktop.Controls.DailyTaskViewer();
             this.calendarView = new Sahab_Desktop.Controls.CalendarView();
@@ -131,6 +133,7 @@
             this.پوستهToolStripMenuItem.Name = "پوستهToolStripMenuItem";
             this.پوستهToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.پوستهToolStripMenuItem.Text = "پوسته";
+            this.پوستهToolStripMenuItem.DropDownClosed += new System.EventHandler(this.پوستهToolStripMenuItem_DropDownClosed);
             // 
             // اولویتبندیشدهToolStripMenuItem
             // 
@@ -144,7 +147,8 @@
             // 
             this.خدماتToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.همگامسازیاینترنتیToolStripMenuItem,
-            this.اتصالبهحسابToolStripMenuItem});
+            this.اتصالبهحسابToolStripMenuItem,
+            this.بازیابیاینترنتیToolStripMenuItem});
             this.خدماتToolStripMenuItem.Name = "خدماتToolStripMenuItem";
             this.خدماتToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.خدماتToolStripMenuItem.Text = "خدمات";
@@ -163,16 +167,23 @@
             this.اتصالبهحسابToolStripMenuItem.Text = "اتصال به حساب";
             this.اتصالبهحسابToolStripMenuItem.Click += new System.EventHandler(this.اتصالبهحسابToolStripMenuItem_Click);
             // 
+            // بازیابیاینترنتیToolStripMenuItem
+            // 
+            this.بازیابیاینترنتیToolStripMenuItem.Name = "بازیابیاینترنتیToolStripMenuItem";
+            this.بازیابیاینترنتیToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.بازیابیاینترنتیToolStripMenuItem.Text = "بازیابی اینترنتی";
+            this.بازیابیاینترنتیToolStripMenuItem.Click += new System.EventHandler(this.بازیابیاینترنتیToolStripMenuItem_Click);
+            // 
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.White;
             this.panel.Controls.Add(this.weeklyTaskViewer);
             this.panel.Controls.Add(this.dailyTaskViewer);
-            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel.Location = new System.Drawing.Point(0, 0);
+            this.panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel.Location = new System.Drawing.Point(0, 84);
             this.panel.Margin = new System.Windows.Forms.Padding(4);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1103, 449);
+            this.panel.Size = new System.Drawing.Size(1103, 365);
             this.panel.TabIndex = 3;
             // 
             // dailyTaskViewVScrollBar
@@ -196,6 +207,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.taskViewsHeaderPanel);
             this.panel2.Controls.Add(this.panel);
             this.panel2.Controls.Add(this.dailyTaskViewVScrollBar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -204,10 +216,16 @@
             this.panel2.Size = new System.Drawing.Size(1127, 449);
             this.panel2.TabIndex = 8;
             // 
+            // taskViewsHeaderPanel
+            // 
+            this.taskViewsHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.taskViewsHeaderPanel.Location = new System.Drawing.Point(0, 0);
+            this.taskViewsHeaderPanel.Name = "taskViewsHeaderPanel";
+            this.taskViewsHeaderPanel.Size = new System.Drawing.Size(1103, 84);
+            this.taskViewsHeaderPanel.TabIndex = 6;
+            // 
             // weeklyTaskViewer
             // 
-            this.weeklyTaskViewer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.weeklyTaskViewer.BackColor = System.Drawing.Color.Gray;
             this.weeklyTaskViewer.DPM = 2;
             this.weeklyTaskViewer.Location = new System.Drawing.Point(0, 0);
@@ -294,6 +312,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem اتصالبهحسابToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem اولویتبندیشدهToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem بازیابیاینترنتیToolStripMenuItem;
+        private System.Windows.Forms.Panel taskViewsHeaderPanel;
     }
 }
 

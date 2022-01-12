@@ -32,8 +32,10 @@ namespace Sahab_Desktop
         public ulong TaskPriorityScore { get; set; }
         public List<DayOfWeek> DayOfWeeks = new List<DayOfWeek>();
         private bool IsEditMode { set; get; } = false;
-        public TaskForm()
+        private bool IsCopyMode { set; get; }
+        public TaskForm(bool isCopyMode = false)
         {
+            IsCopyMode = isCopyMode;
             InitializeComponent();
             SetWeeklyImageCheckBoxesImage();
 
@@ -328,10 +330,11 @@ namespace Sahab_Desktop
                     Task.DaysOfWeek = string.Join(",", DayOfWeeks);
                 }
             }
-            if (!IsEditMode)
+            if (!IsEditMode || IsCopyMode)
             {
                 _context.Tasks.Add(Task);
             }
+
             _context.SaveChanges();
             OnTaskSubmited?.Invoke(Task);
             DialogResult = DialogResult.OK;
@@ -627,7 +630,14 @@ namespace Sahab_Desktop
 
             if (IsEditMode)
             {
-                Task = task;
+                if (IsCopyMode)
+                {
+                    Task = new Models.Task();
+                }
+                else
+                {
+                    Task = task;
+                }
             }
             else
             {
